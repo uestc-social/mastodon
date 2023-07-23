@@ -21,7 +21,7 @@ module Mastodon
     end
 
     def suffix
-      "+glitch#{ENV.fetch('MASTODON_VERSION_SUFFIX', '')}"
+      "+glitch#{ENV.fetch('MASTODON_VERSION_SUFFIX', '')}+cs_usocial"
     end
 
     def to_a
