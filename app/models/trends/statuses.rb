@@ -6,10 +6,10 @@ class Trends::Statuses < Trends::Base
   BATCH_SIZE = 100
 
   self.default_options = {
-    threshold: 5,
+    threshold: 3,
     review_threshold: 3,
-    score_halflife: 2.hours.freeze,
-    decay_threshold: 0.3,
+    score_halflife: 18.hours.freeze,
+    decay_threshold: 0.1,
   }
 
   class Query < Trends::Query
