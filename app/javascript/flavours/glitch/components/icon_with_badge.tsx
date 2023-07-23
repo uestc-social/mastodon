@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Icon } from './icon';
 
-const formatNumber = (num: number): number | string => (num > 40 ? '40+' : num);
+const formatNumber = (num: number): number | string => (num > 99 ? '99+' : num);
 
 interface Props {
   id: string;
