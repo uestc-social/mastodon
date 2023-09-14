@@ -27,6 +27,41 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Integrate BirdUI Theme - Checkout
+        run: |
+          mkdir -p app/javascript/styles/mastodon-bird-ui
+          mkdir -p app/javascript/flavours/glitch/styles/mastodon-bird-ui
+          wget https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/main/layout-single-column.css -O app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+          wget https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/main/layout-multiple-columns.css -O app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+          wget https://raw.githubusercontent.com/TheEssem/glitch-bird-ui/master/layout-single-column.css -O app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss
+          wget https://raw.githubusercontent.com/TheEssem/glitch-bird-ui/master/layout-multiple-columns.css -O app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss
+          sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+          sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+          sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+          sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+          sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss
+          sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss
+          sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss
+          sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss
+          mkdir -p app/javascript/skins/vanilla/birdui-contrast
+          mkdir -p app/javascript/skins/vanilla/birdui-light
+          mkdir -p app/javascript/skins/vanilla/birdui-dark
+          mkdir -p app/javascript/skins/glitch/birdui-contrast
+          mkdir -p app/javascript/skins/glitch/birdui-light
+          mkdir -p app/javascript/skins/glitch/birdui-dark
+          echo -e "@import 'styles/contrast';\n@import 'styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/vanilla/birdui-contrast/common.scss
+          echo -e "@import 'styles/mastodon-light';\n@import 'styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/vanilla/birdui-light/common.scss
+          echo -e "@import 'styles/application';\n@import 'styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/vanilla/birdui-dark/common.scss
+          echo -e "@import 'flavours/glitch/styles/contrast';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/glitch/birdui-contrast/common.scss
+          echo -e "@import 'flavours/glitch/styles/mastodon-light';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/glitch/birdui-light/common.scss
+          echo -e "@import 'flavours/glitch/styles/index';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/glitch/birdui-dark/common.scss
+          echo -e "en:\n  skins:\n    vanilla:\n      birdui-contrast: Bird UI (contrast)" > app/javascript/skins/vanilla/birdui-contrast/names.yml
+          echo -e "en:\n  skins:\n    vanilla:\n      birdui-light: Bird UI (light)" > app/javascript/skins/vanilla/birdui-light/names.yml
+          echo -e "en:\n  skins:\n    vanilla:\n      birdui-dark: Bird UI (dark)" > app/javascript/skins/vanilla/birdui-dark/names.yml
+          echo -e "en:\n  skins:\n    glitch:\n      birdui-contrast: Bird UI (contrast)" > app/javascript/skins/glitch/birdui-contrast/names.yml
+          echo -e "en:\n  skins:\n    glitch:\n      birdui-light: Bird UI (light)" > app/javascript/skins/glitch/birdui-light/names.yml
+          echo -e "en:\n  skins:\n    glitch:\n      birdui-dark: Bird UI (dark)" > app/javascript/skins/glitch/birdui-dark/names.yml
+
       - uses: docker/setup-qemu-action@v2
         if: contains(inputs.platforms, 'linux/arm64') && !inputs.use_native_arm64_builder
 
