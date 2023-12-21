@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::V1::Instances::DomainBlocksController < Api::BaseController
+class Api::V1::Instances::DomainBlocksController < Api::V1::Instances::BaseController
   skip_before_action :require_authenticated_user!
 
   before_action :require_enabled_api!
@@ -15,7 +15,7 @@ class Api::V1::Instances::DomainBlocksController < Api::BaseController
       cache_if_unauthenticated!
     end
 
-    render json: @domain_blocks, each_serializer: REST::DomainBlockSerializer, with_comment: (Setting.show_domain_blocks_rationale == 'all' || (Setting.show_domain_blocks_rationale == 'users' && user_signed_in?))
+    render json: @domain_blocks, each_serializer: REST::DomainBlockSerializer, with_comment: show_rationale_in_response?
   end
 
   private
@@ -26,5 +26,17 @@ class Api::V1::Instances::DomainBlocksController < Api::BaseController
 
   def set_domain_blocks
     @domain_blocks = DomainBlock.with_user_facing_limitations.by_severity
+  end
+
+  def show_rationale_in_response?
+    always_show_rationale? || show_rationale_for_user?
+  end
+
+  def always_show_rationale?
+    Setting.show_domain_blocks_rationale == 'all'
+  end
+
+  def show_rationale_for_user?
+    Setting.show_domain_blocks_rationale == 'users' && user_signed_in?
   end
 end
