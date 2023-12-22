@@ -27,7 +27,7 @@ on:
 
 jobs:
   build-image:
-    runs-on: [self-hosted, amd64]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
