@@ -67,6 +67,38 @@ jobs:
           echo -e "en:\n  skins:\n    glitch:\n      birdui-light: Bird UI (light)" > app/javascript/skins/glitch/birdui-light/names.yml
           echo -e "en:\n  skins:\n    glitch:\n      birdui-dark: Bird UI (dark)" > app/javascript/skins/glitch/birdui-dark/names.yml
 
+      - name: Integrate Modern Theme - Checkout
+        run: |
+          mkdir -p app/javascript/styles/modern
+          mkdir -p app/javascript/flavours/glitch/styles/modern
+          wget https://codeberg.org/Freeplay/Mastodon-Modern/raw/branch/waf/modern.css -O app/javascript/styles/modern/style.scss
+          cp app/javascript/styles/modern/style.scss app/javascript/flavours/glitch/styles/modern/style.scss
+          wget https://codeberg.org/Freeplay/Mastodon-Modern/raw/branch/waf/glitch-fixes.css -O app/javascript/flavours/glitch/styles/modern/glitch-fixes.scss
+          echo -e "@import 'mastodon/variables';\n@import 'application';\n@import 'modern/style';" > app/javascript/styles/modern-dark.scss
+          echo -e "@import 'mastodon-light/variables';\n@import 'application';\n@import 'modern/style';\n@import 'mastodon-light/diff';" > app/javascript/styles/modern-light.scss
+          echo -e "@import 'contrast/variables';\n@import 'application';\n@import 'modern/style';\n@import 'contrast/diff';" > app/javascript/styles/modern-contrast.scss
+          echo -e "@import 'variables';\n@import 'index';\n@import 'modern/style';\n@import 'modern/glitch-fixes';" > app/javascript/flavours/glitch/styles/modern-dark.scss
+          echo -e "@import 'mastodon-light/variables';\n@import 'index';\n@import 'modern/style';\n@import 'modern/glitch-fixes';\n@import 'mastodon-light/diff';" > app/javascript/flavours/glitch/styles/modern-light.scss
+          echo -e "@import 'contrast/variables';\n@import 'index';\n@import 'modern/style';\n@import 'modern/glitch-fixes';\n@import 'contrast/diff';" > app/javascript/flavours/glitch/styles/modern-contrast.scss
+          mkdir -p app/javascript/skins/vanilla/modern-dark
+          mkdir -p app/javascript/skins/vanilla/modern-light
+          mkdir -p app/javascript/skins/vanilla/modern-contrast
+          mkdir -p app/javascript/skins/glitch/modern-dark
+          mkdir -p app/javascript/skins/glitch/modern-light
+          mkdir -p app/javascript/skins/glitch/modern-contrast
+          echo -e "@import 'styles/modern-dark';" > app/javascript/skins/vanilla/modern-dark/common.scss
+          echo -e "@import 'styles/modern-light';" > app/javascript/skins/vanilla/modern-light/common.scss
+          echo -e "@import 'styles/modern-contrast';" > app/javascript/skins/vanilla/modern-contrast/common.scss
+          echo -e "@import 'flavours/glitch/styles/modern-dark';" > app/javascript/skins/glitch/modern-dark/common.scss
+          echo -e "@import 'flavours/glitch/styles/modern-light';" > app/javascript/skins/glitch/modern-light/common.scss
+          echo -e "@import 'flavours/glitch/styles/modern-contrast';" > app/javascript/skins/glitch/modern-contrast/common.scss
+          echo -e "en:\n  skins:\n    vanilla:\n      modern-dark: Mastodon Modern (dark)" > app/javascript/skins/vanilla/modern-dark/names.yml
+          echo -e "en:\n  skins:\n    vanilla:\n      modern-light: Mastodon Modern (light)" > app/javascript/skins/vanilla/modern-light/names.yml
+          echo -e "en:\n  skins:\n    vanilla:\n      modern-contrast: Mastodon Modern (contrast)" > app/javascript/skins/vanilla/modern-contrast/names.yml
+          echo -e "en:\n  skins:\n    glitch:\n      modern-dark: Mastodon Modern (dark)" > app/javascript/skins/glitch/modern-dark/names.yml
+          echo -e "en:\n  skins:\n    glitch:\n      modern-light: Mastodon Modern (light)" > app/javascript/skins/glitch/modern-light/names.yml
+          echo -e "en:\n  skins:\n    glitch:\n      modern-contrast: Mastodon Modern (contrast)" > app/javascript/skins/glitch/modern-contrast/names.yml
+
       - uses: docker/setup-qemu-action@v3
         if: contains(inputs.platforms, 'linux/arm64') && !inputs.use_native_arm64_builder
 
