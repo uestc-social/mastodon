@@ -100,6 +100,7 @@ jobs:
           echo -e "en:\n  skins:\n    glitch:\n      modern-contrast: Mastodon Modern (contrast)" > app/javascript/skins/glitch/modern-contrast/names.yml
 
       - name: Apply Emoji Reaction Patch
+        continue-on-error: true
         run: |
           wget https://patch-diff.githubusercontent.com/raw/glitch-soc/mastodon/pull/2462.patch -O /tmp/emoji-reaction.patch
           git apply /tmp/emoji-reaction.patch
