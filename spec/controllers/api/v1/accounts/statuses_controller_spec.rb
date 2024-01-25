@@ -38,12 +38,12 @@ describe Api::V1::Accounts::StatusesController do
         get :index, params: { account_id: user.account.id, exclude_replies: true }
       end
 
-      it 'returns posts along with self replies', :aggregate_failures do
+      it 'returns posts without self replies', :aggregate_failures do
         json = body_as_json
         post_ids = json.map { |item| item[:id].to_i }.sort
 
         expect(response).to have_http_status(200)
-        expect(post_ids).to eq [status.id, status_self_reply.id]
+        expect(post_ids).to eq [status.id]
       end
     end
 
