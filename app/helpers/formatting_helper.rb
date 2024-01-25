@@ -64,4 +64,9 @@ module FormattingHelper
       html_aware_format(field.value, field.account.local?, with_rel_me: with_rel_me, with_domains: true, multiline: false)
     end
   end
+
+  def hide_email(email)
+    p1, p2 = email.split('@')
+    "#{p1[0]}***#{p1[-1]}@#{p2}"
+  end
 end
