@@ -126,6 +126,7 @@ class InitialStateSerializer < ActiveModel::Serializer
       trends_as_landing_page: Setting.trends_as_landing_page,
       trends_enabled: Setting.trends,
       version: instance_presenter.version,
+      news_bot_id: Rails.configuration.x.news_bot_id,
     }
   end
 
