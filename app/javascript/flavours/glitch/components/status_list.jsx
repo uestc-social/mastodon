@@ -7,7 +7,7 @@ import { debounce } from 'lodash';
 
 import RegenerationIndicator from 'flavours/glitch/components/regeneration_indicator';
 
-import StatusContainer from '../containers/status_container';
+import StatusWithComments from './status_with_comments';
 
 import { LoadGap } from './load_gap';
 import ScrollableList from './scrollable_list';
@@ -100,7 +100,7 @@ export default class StatusList extends ImmutablePureComponent {
           onClick={onLoadMore}
         />
       ) : (
-        <StatusContainer
+        <StatusWithComments
           key={statusId}
           id={statusId}
           onMoveUp={this.handleMoveUp}
@@ -114,7 +114,7 @@ export default class StatusList extends ImmutablePureComponent {
 
     if (scrollableContent && featuredStatusIds) {
       scrollableContent = featuredStatusIds.map(statusId => (
-        <StatusContainer
+        <StatusWithComments
           key={`f-${statusId}`}
           id={statusId}
           featured
