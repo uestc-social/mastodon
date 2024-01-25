@@ -24,9 +24,12 @@ const messages = defineMessages({
   regexp: { id: 'settings.content_warnings.regexp', defaultMessage: 'Regular expression' },
   rewrite_mentions_no: { id: 'settings.rewrite_mentions_no', defaultMessage: 'Do not rewrite mentions' },
   rewrite_mentions_acct: { id: 'settings.rewrite_mentions_acct', defaultMessage: 'Rewrite with username and domain (when the account is remote)' },
-  rewrite_mentions_username: { id: 'settings.rewrite_mentions_username', defaultMessage:  'Rewrite with username' },
+  rewrite_mentions_username: { id: 'settings.rewrite_mentions_username', defaultMessage: 'Rewrite with username' },
   pop_in_left: { id: 'settings.pop_in_left', defaultMessage: 'Left' },
-  pop_in_right: { id: 'settings.pop_in_right', defaultMessage:  'Right' },
+  pop_in_right: { id: 'settings.pop_in_right', defaultMessage: 'Right' },
+  sidebar_in_right: { id: 'sidebar.right', defaultMessage: 'Right' },
+  sidebar_in_top: { id: 'sidebar.top', defaultMessage: 'Top' },
+  sidebar_in_bottom: { id: 'sidebar.bottom', defaultMessage: 'Bottom' },
   public: { id: 'privacy.public.short', defaultMessage: 'Public' },
   unlisted: { id: 'privacy.unlisted.short', defaultMessage: 'Unlisted' },
   private: { id: 'privacy.private.short', defaultMessage: 'Followers only' },
@@ -36,10 +39,10 @@ const messages = defineMessages({
 class LocalSettingsPage extends PureComponent {
 
   static propTypes = {
-    index    : PropTypes.number,
-    intl     : PropTypes.object.isRequired,
-    onChange : PropTypes.func.isRequired,
-    settings : ImmutablePropTypes.map.isRequired,
+    index: PropTypes.number,
+    intl: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
+    settings: ImmutablePropTypes.map.isRequired,
   };
 
   pages = [
@@ -168,6 +171,19 @@ class LocalSettingsPage extends PureComponent {
           >
             <FormattedMessage id='settings.wide_view' defaultMessage='Wide view (Desktop mode only)' />
             <span className='hint'><FormattedMessage id='settings.wide_view_hint' defaultMessage='Stretches columns to better fill the available space.' /></span>
+          </LocalSettingsPageItem>
+          <LocalSettingsPageItem
+            settings={settings}
+            item={['sidebar']}
+            id='mastodon-settings--sidebar'
+            options={[
+              { value: 'right', message: intl.formatMessage(messages.sidebar_in_right) },
+              { value: 'top', message: intl.formatMessage(messages.sidebar_in_top) },
+              { value: 'bottom', message: intl.formatMessage(messages.sidebar_in_bottom) },
+            ]}
+            onChange={onChange}
+          >
+            <FormattedMessage id='settings.sidebar' defaultMessage='Sidebar:' />
           </LocalSettingsPageItem>
         </section>
       </div>
@@ -492,7 +508,7 @@ class LocalSettingsPage extends PureComponent {
     ),
   ];
 
-  render () {
+  render() {
     const { pages } = this;
     const { index, intl, onChange, settings } = this.props;
     const CurrentPage = pages[index] || pages[0];

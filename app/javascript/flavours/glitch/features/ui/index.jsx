@@ -83,6 +83,7 @@ const mapStateToProps = state => ({
   hasMediaAttachments: state.getIn(['compose', 'media_attachments']).size > 0,
   canUploadMore: !state.getIn(['compose', 'media_attachments']).some(x => ['audio', 'video'].includes(x.get('type'))) && state.getIn(['compose', 'media_attachments']).size < 4,
   isWide: state.getIn(['local_settings', 'stretch']),
+  sidebarPosition: state.getIn(['local_settings', 'sidebar']),
   dropdownMenuIsOpen: state.dropdownMenu.openId !== null,
   unreadNotifications: state.getIn(['notifications', 'unread']),
   showFaviconBadge: state.getIn(['local_settings', 'notifications', 'favicon_badge']),
@@ -268,6 +269,7 @@ class UI extends PureComponent {
     dispatch: PropTypes.func.isRequired,
     children: PropTypes.node,
     isWide: PropTypes.bool,
+    sidebarPosition: state.getIn(['local_settings', 'sidebar']),
     systemFontUi: PropTypes.bool,
     isComposing: PropTypes.bool,
     hasComposingText: PropTypes.bool,
@@ -600,7 +602,7 @@ class UI extends PureComponent {
 
   render () {
     const { draggingOver } = this.state;
-    const { children, isWide, location, dropdownMenuIsOpen, layout, moved } = this.props;
+    const { children, isWide, sidebarPosition, location, dropdownMenuIsOpen, layout, moved } = this.props;
 
     const columnsClass = layout => {
       switch (layout) {
@@ -613,7 +615,7 @@ class UI extends PureComponent {
       }
     };
 
-    const className = classNames('ui', columnsClass(layout), {
+    const className = classNames('ui',  `sidebar-${sidebarPosition}`, columnsClass(layout), {
       'wide': isWide,
       'system-font': this.props.systemFontUi,
       'hicolor-privacy-icons': this.props.hicolorPrivacyIcons,
