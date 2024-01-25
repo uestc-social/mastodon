@@ -25,7 +25,7 @@ module Mastodon
     end
 
     def build_metadata
-      ['glitch', ENV.fetch('MASTODON_VERSION_METADATA', nil)].compact_blank.join('.')
+      ['glitch', 'closedsocial',ENV.fetch('MASTODON_VERSION_METADATA', nil)].compact_blank.join('.')
     end
 
     def to_a
