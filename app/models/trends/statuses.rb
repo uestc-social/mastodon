@@ -6,10 +6,15 @@ class Trends::Statuses < Trends::Base
   BATCH_SIZE = 100
 
   self.default_options = {
-    threshold: 5,
-    review_threshold: 3,
-    score_halflife: 1.hour.freeze,
-    decay_threshold: 0.3,
+    threshold: 10,
+    review_threshold: 10,
+    score_halflife: 12.hour.freeze,
+    decay_threshold: 1.8,
+    expected: 5.0,
+    # (11 - 5)^2 / 5 * 0.5^2 = 1.8
+    # so a status with 11 favourites can stay 24hours
+    # 17 favourites, 2 days
+    # 29 favourites, 3 days
   }
 
   class Query < Trends::Query
@@ -111,7 +116,7 @@ class Trends::Statuses < Trends::Base
 
   def calculate_scores(statuses, at_time)
     items = statuses.map do |status|
-      expected  = 1.0
+      expected  = options[:expected]
       observed  = (status.reblogs_count + status.favourites_count).to_f
 
       score = if expected > observed || observed < options[:threshold]

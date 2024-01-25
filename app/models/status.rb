@@ -315,7 +315,7 @@ class Status < ApplicationRecord
 
   def trendable?
     if attributes['trendable'].nil?
-      account.trendable?
+      local? || account.trendable?
     else
       attributes['trendable']
     end
