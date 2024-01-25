@@ -21,7 +21,6 @@ import { pollLimits } from 'flavours/glitch/initial_state';
 
 
 import DropdownContainer from '../containers/dropdown_container';
-import LanguageDropdown from '../containers/language_dropdown_container';
 import PrivacyDropdownContainer from '../containers/privacy_dropdown_container';
 
 import TextIconButton from './text_icon_button';
@@ -297,7 +296,6 @@ class ComposerOptions extends ImmutablePureComponent {
             title={formatMessage(messages.spoiler)}
           />
         )}
-        <LanguageDropdown />
         <DropdownContainer
           disabled={disabled || isEditing}
           icon='ellipsis-h'
