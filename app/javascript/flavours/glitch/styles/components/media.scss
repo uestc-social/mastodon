@@ -312,17 +312,17 @@
         }
       }
 
-      &.star-icon.active {
-        color: $gold-star;
+      &.favorite-icon.active {
+        color: $red-bookmark;
 
         &:hover,
         &:focus,
         &:active {
-          background: rgba($gold-star, 0.15);
+          background: rgba($red-bookmark, 0.15);
         }
 
         &:focus {
-          background: rgba($gold-star, 0.3);
+          background: rgba($red-bookmark, 0.3);
         }
       }
 

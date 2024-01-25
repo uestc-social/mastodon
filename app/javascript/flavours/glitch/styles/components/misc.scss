@@ -363,15 +363,15 @@ body > [data-popper-placement] {
   position: absolute;
 }
 
-.icon-button.star-icon.active {
-  color: $gold-star;
-}
-
-.icon-button.bookmark-icon.active {
+.icon-button.favorite-icon.active {
   color: $red-bookmark;
 }
 
-.no-reduce-motion .icon-button.star-icon {
+.icon-button.bookmark-icon.active {
+  color: $gold-star;
+}
+
+.no-reduce-motion .icon-button.favorite-icon {
   &.activate {
     & > .icon {
       animation: spring-rotate-in 1s linear;
