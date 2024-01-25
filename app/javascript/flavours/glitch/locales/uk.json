@@ -1,5 +1,5 @@
 {
-  "about.fork_disclaimer": "Glitch-soc - це вільне програмне забезпечення з відкритим вихідним кодом, форк від Mastodon.",
+  "about.fork_disclaimer": "Closed-social - це вільне програмне забезпечення з відкритим вихідним кодом, форк від Mastodon.",
   "account.disclaimer_full": "Наведена нижче інформація може не повністю відображати профіль користувача.",
   "account.follows": "Підписки",
   "account.joined": "Приєднався {date}",
@@ -32,7 +32,7 @@
   "compose_form.spoiler": "Приховати текст позаду попередження",
   "confirmation_modal.do_not_ask_again": "Більше не запитувати підтвердження",
   "confirmations.deprecated_settings.confirm": "Використовуйте налаштування Mastodon",
-  "confirmations.deprecated_settings.message": "Деякі з специфічних для пристрою glitch-soc {app_settings}, які ви використовуєте, було замінено на Mastodon {preferences}, і їх буде перевизначено:",
+  "confirmations.deprecated_settings.message": "Деякі з специфічних для пристрою closed-social {app_settings}, які ви використовуєте, було замінено на Mastodon {preferences}, і їх буде перевизначено:",
   "confirmations.missing_media_description.confirm": "Все одно надіслати",
   "confirmations.missing_media_description.edit": "Редагувати медіа",
   "confirmations.missing_media_description.message": "Принаймні одна медіа-прикріплення не має опису. Подумайте про описання всіх медіавкладень для людей з порушеннями зору перед відправкою дмуху.",

@@ -1,5 +1,5 @@
 {
-  "about.fork_disclaimer": "Glitch-soc 是從 Mastodon 分支出來的自由開源軟體。",
+  "about.fork_disclaimer": "Closed-social 是從 Mastodon 分支出來的自由開源軟體。",
   "account.disclaimer_full": "下面的資訊可能不完全反映使用者的個人資料。",
   "account.follows": "跟隨",
   "account.joined": "加入於 {date}",
@@ -32,7 +32,7 @@
   "compose_form.spoiler": "將文字隱藏在內容警告後面",
   "confirmation_modal.do_not_ask_again": "不要再顯示確認訊息",
   "confirmations.deprecated_settings.confirm": "使用 Mastodon 偏好",
-  "confirmations.deprecated_settings.message": "您正在使用的某些特定於 glitch-soc 設備的 {app_settings} 已被 Mastodon {preferences} 所取代，並將被覆蓋：",
+  "confirmations.deprecated_settings.message": "您正在使用的某些特定於 closed-social 設備的 {app_settings} 已被 Mastodon {preferences} 所取代，並將被覆蓋：",
   "confirmations.missing_media_description.confirm": "仍要張貼",
   "confirmations.missing_media_description.edit": "編輯媒體",
   "confirmations.missing_media_description.message": "至少有一個媒體附件缺少說明。 在發送貼文之前，請考慮為視障人士在所有媒體附件加上說明。",

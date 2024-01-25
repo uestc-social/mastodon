@@ -1,5 +1,5 @@
 {
-  "about.fork_disclaimer": "Glitch-soc est un logiciel gratuit et open source, fork de Mastodon.",
+  "about.fork_disclaimer": "Closed-social est un logiciel gratuit et open source, fork de Mastodon.",
   "account.disclaimer_full": "Les informations ci-dessous peuvent être incomplètes.",
   "account.follows": "Abonnements",
   "account.joined": "Ici depuis {date}",
@@ -32,7 +32,7 @@
   "compose_form.spoiler": "Cacher le texte derrière un avertissement",
   "confirmation_modal.do_not_ask_again": "Ne plus demander confirmation",
   "confirmations.deprecated_settings.confirm": "Utiliser les préférences de Mastodon",
-  "confirmations.deprecated_settings.message": "Certaines {app_settings} de glitch-soc que vous utilisez ont été remplacées par les {preferences} de Mastodon et seront remplacées :",
+  "confirmations.deprecated_settings.message": "Certaines {app_settings} de closed-social que vous utilisez ont été remplacées par les {preferences} de Mastodon et seront remplacées :",
   "confirmations.missing_media_description.confirm": "Envoyer quand même",
   "confirmations.missing_media_description.edit": "Modifier le média",
   "confirmations.missing_media_description.message": "Au moins un média joint manque d'une description. Pensez à décrire tous les médias attachés pour les malvoyant·e·s avant de publier votre post.",

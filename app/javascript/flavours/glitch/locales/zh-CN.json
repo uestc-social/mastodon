@@ -1,5 +1,5 @@
 {
-  "about.fork_disclaimer": "Glitch-soc是从Mastodon派生的自由开源软件。",
+  "about.fork_disclaimer": "Closed-social是从Mastodon派生的自由开源软件。",
   "account.disclaimer_full": "以下信息可能无法完整代表你的个人资料。",
   "account.follows": "正在关注",
   "account.joined": "加入于 {date}",
@@ -32,7 +32,7 @@
   "compose_form.spoiler": "隐藏并添加内容警告",
   "confirmation_modal.do_not_ask_again": "不再要求确认",
   "confirmations.deprecated_settings.confirm": "使用 Mastodon 偏好设置",
-  "confirmations.deprecated_settings.message": "您正使用的glitch-soc的特定于此设备的 {app_settings} 已被Mastodon {preferences} 替换，并将被覆盖：",
+  "confirmations.deprecated_settings.message": "您正使用的closed-social的特定于此设备的 {app_settings} 已被Mastodon {preferences} 替换，并将被覆盖：",
   "confirmations.missing_media_description.confirm": "仍然发送",
   "confirmations.missing_media_description.edit": "编辑媒体",
   "confirmations.missing_media_description.message": "你没有为一个或多个媒体撰写描述。请考虑为视障人士添加描述。",

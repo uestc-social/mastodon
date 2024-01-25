@@ -1,5 +1,5 @@
 {
-  "about.fork_disclaimer": "Glitch-soc is free open source software forked from Mastodon.",
+  "about.fork_disclaimer": "Closed-social is free open source software forked from Mastodon.",
   "account.add_account_note": "Add note for @{name}",
   "account.disclaimer_full": "Information below may reflect the user's profile incompletely.",
   "account.follows": "Follows",
@@ -37,7 +37,7 @@
   "compose_form.spoiler": "Hide text behind warning",
   "confirmation_modal.do_not_ask_again": "Do not ask for confirmation again",
   "confirmations.deprecated_settings.confirm": "Use Mastodon preferences",
-  "confirmations.deprecated_settings.message": "Some of the glitch-soc device-specific {app_settings} you are using have been replaced by Mastodon {preferences} and will be overriden:",
+  "confirmations.deprecated_settings.message": "Some of the closed-social device-specific {app_settings} you are using have been replaced by Mastodon {preferences} and will be overriden:",
   "confirmations.missing_media_description.confirm": "Send anyway",
   "confirmations.missing_media_description.edit": "Edit media",
   "confirmations.missing_media_description.message": "At least one media attachment is lacking a description. Consider describing all media attachments for the visually impaired before sending your toot.",

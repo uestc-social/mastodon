@@ -1,5 +1,5 @@
 {
-  "about.fork_disclaimer": "Glitch-soc es software gratuito, de código abierto, bifurcado de Mastodon.",
+  "about.fork_disclaimer": "Closed-social es software gratuito, de código abierto, bifurcado de Mastodon.",
   "account.disclaimer_full": "La información aquí presentada puede reflejar de manera incompleta el perfil del usuario.",
   "account.follows": "Sigue",
   "account.joined": "Unido el {date}",
@@ -32,7 +32,7 @@
   "compose_form.spoiler": "Esconder el texto detrás de la advertencia",
   "confirmation_modal.do_not_ask_again": "No preguntar por la confirmación de nuevo",
   "confirmations.deprecated_settings.confirm": "Usar las preferencias de Mastodon",
-  "confirmations.deprecated_settings.message": "Algunas de las {app_settings} de glitch-soc, específicas para el dispositivo que estás usando han sido reemplazadas en las {preferences} de Mastodon y serán sobreescritas:",
+  "confirmations.deprecated_settings.message": "Algunas de las {app_settings} de closed-social, específicas para el dispositivo que estás usando han sido reemplazadas en las {preferences} de Mastodon y serán sobreescritas:",
   "confirmations.missing_media_description.confirm": "Enviar de todos modos",
   "confirmations.missing_media_description.edit": "Editar medios",
   "confirmations.missing_media_description.message": "Al menos a un adjunto le falta una descripción. Considera describir toda la multimedia para los débiles visuales antes de mandar el toot.",
