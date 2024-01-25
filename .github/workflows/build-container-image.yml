@@ -51,11 +51,11 @@ jobs:
           endpoint: tcp://localhost:1234
           platforms: linux/amd64
           append: |
-            - endpoint: tcp://${{ vars.DOCKER_BUILDER_HETZNER_ARM64_01_HOST }}:13865
+            - endpoint: tcp://${{ secrets.DOCKER_BUILDER_HETZNER_ARM64_01_HOST }}:${{ secrets.DOCKER_BUILDER_HETZNER_ARM64_01_PORT }}
               platforms: linux/arm64
-              name: mastodon-docker-builder-arm64-01
+              name: ${{ secrets.DOCKER_BUILDER_HETZNER_ARM64_01_NAME }}
               driver-opts:
-                - servername=mastodon-docker-builder-arm64-01
+                - servername=${{ secrets.DOCKER_BUILDER_HETZNER_ARM64_01_NAME }}
         env:
           BUILDER_NODE_1_AUTH_TLS_CACERT: ${{ secrets.DOCKER_BUILDER_HETZNER_ARM64_01_CACERT }}
           BUILDER_NODE_1_AUTH_TLS_CERT: ${{ secrets.DOCKER_BUILDER_HETZNER_ARM64_01_CERT }}

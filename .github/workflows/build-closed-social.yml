@@ -1,0 +1,45 @@
+name: Build Latest Container Images (ver. Closed Social)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "cs"
+    tags:
+      - "*"
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-image:
+    uses: ./.github/workflows/build-container-image.yml
+    with:
+      file_to_build: Dockerfile
+      platforms: linux/amd64,linux/arm64
+      use_native_arm64_builder: true
+      push_to_images: |
+        ghcr.io/${{ github.repository_owner }}/mastodon
+      flavor: |
+        latest=auto
+      tags: |
+        type=raw,value=latest,enable={{is_default_branch}}
+        type=edge,branch=main
+        type=raw,value=cs,branch=cs
+    secrets: inherit
+
+  build-image-streaming:
+    uses: ./.github/workflows/build-container-image.yml
+    with:
+      file_to_build: streaming/Dockerfile
+      platforms: linux/amd64,linux/arm64
+      use_native_arm64_builder: true
+      push_to_images: |
+        ghcr.io/${{ github.repository_owner }}/mastodon-streaming
+      flavor: |
+        latest=auto
+      tags: |
+        type=raw,value=latest,enable={{is_default_branch}}
+        type=edge,branch=main
+        type=raw,value=cs,branch=cs
+    secrets: inherit
