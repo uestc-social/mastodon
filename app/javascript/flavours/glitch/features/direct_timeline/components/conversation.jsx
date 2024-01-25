@@ -11,7 +11,8 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import { HotKeys } from 'react-hotkeys';
 
 import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
-import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+// import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
 import AttachmentList from 'flavours/glitch/components/attachment_list';
 import AvatarComposite from 'flavours/glitch/components/avatar_composite';
 import { IconButton } from 'flavours/glitch/components/icon_button';
@@ -210,7 +211,7 @@ class Conversation extends ImmutablePureComponent {
             />
 
             <div className='status__action-bar'>
-              <IconButton className='status__action-bar-button' title={intl.formatMessage(messages.reply)} icon='reply' iconComponent={ReplyIcon} onClick={this.handleReply} />
+              <IconButton className='status__action-bar-button' title={intl.formatMessage(messages.reply)} icon='comment' iconComponent={CommentIcon} onClick={this.handleReply} />
 
               <div className='status__action-bar-dropdown'>
                 <DropdownMenuContainer

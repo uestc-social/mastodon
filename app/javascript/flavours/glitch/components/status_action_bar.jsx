@@ -12,8 +12,9 @@ import BookmarkIcon from '@/material-icons/400-24px/bookmark-fill.svg?react';
 import BookmarkBorderIcon from '@/material-icons/400-24px/bookmark.svg?react';
 import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
 import RepeatIcon from '@/material-icons/400-24px/repeat.svg?react';
-import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
-import ReplyAllIcon from '@/material-icons/400-24px/reply_all.svg?react';
+//import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+//import ReplyAllIcon from '@/material-icons/400-24px/reply_all.svg?react';
+import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
 // import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
 // import StarBorderIcon from '@/material-icons/400-24px/star.svg?react';
 import FavoriteIcon from '@/material-icons/400-24px/favorite-fill.svg?react';
@@ -290,12 +291,12 @@ class StatusActionBar extends ImmutablePureComponent {
     }
 
     if (status.get('in_reply_to_id', null) === null) {
-      replyIcon = 'reply';
-      replyIconComponent = ReplyIcon;
+      replyIcon = 'comment';
+      replyIconComponent = CommentIcon;
       replyTitle = intl.formatMessage(messages.reply);
     } else {
-      replyIcon = 'reply-all';
-      replyIconComponent = ReplyAllIcon;
+      replyIcon = 'comments';
+      replyIconComponent = CommentIcon;
       replyTitle = intl.formatMessage(messages.replyAll);
     }
 

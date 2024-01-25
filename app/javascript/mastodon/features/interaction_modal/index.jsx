@@ -11,7 +11,8 @@ import { throttle, escapeRegExp } from 'lodash';
 
 import PersonAddIcon from '@/material-icons/400-24px/person_add.svg?react';
 import RepeatIcon from '@/material-icons/400-24px/repeat.svg?react';
-import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+// import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
 // import StarIcon from '@/material-icons/400-24px/star.svg?react';
 import FavoriteIcon from '@/material-icons/400-24px/favorite.svg?react';
 import { openModal, closeModal } from 'mastodon/actions/modal';
@@ -359,7 +360,7 @@ class InteractionModal extends React.PureComponent {
 
     switch(type) {
     case 'reply':
-      icon = <Icon id='reply' icon={ReplyIcon} />;
+      icon = <Icon id='comment' icon={CommentIcon} />;
       title = <FormattedMessage id='interaction_modal.title.reply' defaultMessage="Reply to {name}'s post" values={{ name }} />;
       actionDescription = <FormattedMessage id='interaction_modal.description.reply' defaultMessage='With an account on Mastodon, you can respond to this post.' />;
       break;

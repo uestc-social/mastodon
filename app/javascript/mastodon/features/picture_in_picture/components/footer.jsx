@@ -11,8 +11,9 @@ import { connect } from 'react-redux';
 
 import OpenInNewIcon from '@/material-icons/400-24px/open_in_new.svg?react';
 import RepeatIcon from '@/material-icons/400-24px/repeat.svg?react';
-import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
-import ReplyAllIcon from '@/material-icons/400-24px/reply_all.svg?react';
+// import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+// import ReplyAllIcon from '@/material-icons/400-24px/reply_all.svg?react';
+import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
 // import StarIcon from '@/material-icons/400-24px/star.svg?react';
 import FavoriteIcon from '@/material-icons/400-24px/favorite.svg?react';
 import { initBoostModal } from 'mastodon/actions/boosts';
@@ -178,12 +179,12 @@ class Footer extends ImmutablePureComponent {
     let replyIcon, replyIconComponent, replyTitle;
 
     if (status.get('in_reply_to_id', null) === null) {
-      replyIcon = 'reply';
-      replyIconComponent = ReplyIcon;
+      replyIcon = 'comment';
+      replyIconComponent = CommentIcon;
       replyTitle = intl.formatMessage(messages.reply);
     } else {
-      replyIcon = 'reply-all';
-      replyIconComponent = ReplyAllIcon;
+      replyIcon = 'comments';
+      replyIconComponent = CommentIcon;
       replyTitle = intl.formatMessage(messages.replyAll);
     }
 
