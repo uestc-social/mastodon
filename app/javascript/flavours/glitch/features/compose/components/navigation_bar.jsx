@@ -21,6 +21,9 @@ export default class NavigationBar extends ImmutablePureComponent {
   };
 
   render () {
+    if (!this.props.account)
+      return null;
+
     const username = this.props.account.get('acct');
     return (
       <div className='navigation-bar'>
