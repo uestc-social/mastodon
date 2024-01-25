@@ -10,7 +10,8 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 
 
 import RepeatIcon from '@/material-icons/400-24px/repeat.svg?react';
-import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+// import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+import FavoriteIcon from '@/material-icons/400-24px/favorite-fill.svg?react';
 import { AnimatedNumber } from 'flavours/glitch/components/animated_number';
 import AttachmentList from 'flavours/glitch/components/attachment_list';
 import EditedTimestamp from 'flavours/glitch/components/edited_timestamp';
@@ -275,7 +276,7 @@ class DetailedStatus extends ImmutablePureComponent {
     if (this.props.history) {
       favouriteLink = (
         <Link to={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}/favourites`} className='detailed-status__link'>
-          <Icon id='star' icon={StarIcon} />
+          <Icon id='favorite' icon={FavoriteIcon} />
           <span className='detailed-status__favorites'>
             <AnimatedNumber value={status.get('favourites_count')} />
           </span>
@@ -284,7 +285,7 @@ class DetailedStatus extends ImmutablePureComponent {
     } else {
       favouriteLink = (
         <a href={`/interact/${status.get('id')}?type=favourite`} className='detailed-status__link' onClick={this.handleModalLink}>
-          <Icon id='star' icon={StarIcon} />
+          <Icon id='favorite' icon={FavoriteIcon} />
           <span className='detailed-status__favorites'>
             <AnimatedNumber value={status.get('favourites_count')} />
           </span>

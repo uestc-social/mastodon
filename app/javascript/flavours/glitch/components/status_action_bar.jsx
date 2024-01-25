@@ -14,8 +14,10 @@ import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
 import RepeatIcon from '@/material-icons/400-24px/repeat.svg?react';
 import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
 import ReplyAllIcon from '@/material-icons/400-24px/reply_all.svg?react';
-import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
-import StarBorderIcon from '@/material-icons/400-24px/star.svg?react';
+// import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+// import StarBorderIcon from '@/material-icons/400-24px/star.svg?react';
+import FavoriteIcon from '@/material-icons/400-24px/favorite-fill.svg?react';
+import FavoriteBorderIcon from '@/material-icons/400-24px/favorite.svg?react';
 import VisibilityIcon from '@/material-icons/400-24px/visibility.svg?react';
 import RepeatDisabledIcon from '@/svg-icons/repeat_disabled.svg';
 import RepeatPrivateIcon from '@/svg-icons/repeat_private.svg';
@@ -331,7 +333,7 @@ class StatusActionBar extends ImmutablePureComponent {
           obfuscateCount
         />
         <IconButton className={classNames('status__action-bar-button', { reblogPrivate })} disabled={!publicStatus && !reblogPrivate} active={status.get('reblogged')} title={reblogTitle} icon={reblogIcon} iconComponent={reblogIconComponent} onClick={this.handleReblogClick} counter={withCounters ? status.get('reblogs_count') : undefined} />
-        <IconButton className='status__action-bar-button star-icon' animate active={status.get('favourited')} title={intl.formatMessage(messages.favourite)} icon='star' iconComponent={status.get('favourited') ? StarIcon : StarBorderIcon} onClick={this.handleFavouriteClick} counter={withCounters ? status.get('favourites_count') : undefined} />
+        <IconButton className='status__action-bar-button favorite-icon' animate active={status.get('favourited')} title={intl.formatMessage(messages.favourite)} icon='favorite' iconComponent={status.get('favourited') ? FavoriteIcon : FavoriteBorderIcon} onClick={this.handleFavouriteClick} counter={withCounters ? status.get('favourites_count') : undefined} />
         <IconButton className='status__action-bar-button bookmark-icon' disabled={!signedIn} active={status.get('bookmarked')} title={intl.formatMessage(messages.bookmark)} icon='bookmark' iconComponent={status.get('bookmarked') ? BookmarkIcon : BookmarkBorderIcon} onClick={this.handleBookmarkClick} />
 
         {filterButton}

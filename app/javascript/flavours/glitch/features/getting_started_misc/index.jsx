@@ -10,7 +10,8 @@ import InfoIcon from '@/material-icons/400-24px/info.svg?react';
 import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
 import PersonCheckIcon from '@/material-icons/400-24px/person_check.svg?react';
 import PushPinIcon from '@/material-icons/400-24px/push_pin.svg?react';
-import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+// import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+import FavoriteIcon from '@/material-icons/400-24px/favorite-fill.svg?react';
 import VolumeOffIcon from '@/material-icons/400-24px/volume_off.svg?react';
 import { openModal } from 'flavours/glitch/actions/modal';
 import Column from 'flavours/glitch/features/ui/components/column';
@@ -55,7 +56,7 @@ class GettingStartedMisc extends ImmutablePureComponent {
       <Column icon='ellipsis-h' iconComponent={MoreHorizIcon} heading={intl.formatMessage(messages.heading)} alwaysShowBackButton>
         <div className='scrollable'>
           <ColumnSubheading text={intl.formatMessage(messages.subheading)} />
-          {signedIn && (<ColumnLink key='favourites' icon='star' iconComponent={StarIcon} text={intl.formatMessage(messages.favourites)} to='/favourites' />)}
+          {signedIn && (<ColumnLink key='favourites' icon='favorite' iconComponent={FavoriteIcon} text={intl.formatMessage(messages.favourites)} to='/favourites' />)}
           {signedIn && (<ColumnLink key='pinned' icon='thumb-tack' iconComponent={PushPinIcon} text={intl.formatMessage(messages.pins)} to='/pinned' />)}
           {signedIn && (<ColumnLink key='featured_users' icon='users' iconComponent={PersonCheckIcon} text={intl.formatMessage(messages.featured_users)} onClick={this.openFeaturedAccountsModal} />)}
           {signedIn && (<ColumnLink key='mutes' icon='volume-off' iconComponent={VolumeOffIcon} text={intl.formatMessage(messages.mutes)} to='/mutes' />)}

@@ -9,7 +9,8 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 
 
-import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+// import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+import FavoriteIcon from '@/material-icons/400-24px/favorite-fill.svg?react';
 import AttachmentList from 'flavours/glitch/components/attachment_list';
 import { Avatar } from 'flavours/glitch/components/avatar';
 import { Button } from 'flavours/glitch/components/button';
@@ -84,7 +85,7 @@ class FavouriteModal extends ImmutablePureComponent {
         </div>
 
         <div className='boost-modal__action-bar'>
-          <div><FormattedMessage id='favourite_modal.combo' defaultMessage='You can press {combo} to skip this next time' values={{ combo: <span>Shift + <Icon id='star' icon={StarIcon} /></span> }} /></div>
+          <div><FormattedMessage id='favourite_modal.combo' defaultMessage='You can press {combo} to skip this next time' values={{ combo: <span>Shift + <Icon id='favorite' icon={FavoriteIcon} /></span> }} /></div>
           <Button text={intl.formatMessage(messages.favourite)} onClick={this.handleFavourite} autoFocus />
         </div>
       </div>

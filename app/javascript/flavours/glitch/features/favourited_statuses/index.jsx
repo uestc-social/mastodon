@@ -10,7 +10,8 @@ import { connect } from 'react-redux';
 
 import { debounce } from 'lodash';
 
-import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+// import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+import FavoriteIcon from '@/material-icons/400-24px/favorite-fill.svg?react';
 import { addColumn, removeColumn, moveColumn } from 'flavours/glitch/actions/columns';
 import { fetchFavouritedStatuses, expandFavouritedStatuses } from 'flavours/glitch/actions/favourites';
 import ColumnHeader from 'flavours/glitch/components/column_header';
@@ -80,8 +81,8 @@ class Favourites extends ImmutablePureComponent {
     return (
       <Column bindToDocument={!multiColumn} ref={this.setRef} label={intl.formatMessage(messages.heading)}>
         <ColumnHeader
-          icon='star'
-          iconComponent={StarIcon}
+          icon='favorite'
+          iconComponent={FavoriteIcon}
           title={intl.formatMessage(messages.heading)}
           onPin={this.handlePin}
           onMove={this.handleMove}

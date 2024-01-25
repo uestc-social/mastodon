@@ -11,7 +11,8 @@ import HomeIcon from '@/material-icons/400-24px/home-fill.svg?react';
 import InsertChartIcon from '@/material-icons/400-24px/insert_chart.svg?react';
 import PushPinIcon from '@/material-icons/400-24px/push_pin.svg?react';
 import RepeatIcon from '@/material-icons/400-24px/repeat.svg?react';
-import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+// import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+import FavoriteIcon from '@/material-icons/400-24px/favorite-fill.svg?react';
 import { Icon } from 'flavours/glitch/components/icon';
 import { me } from 'flavours/glitch/initial_state';
 
@@ -118,8 +119,8 @@ export default class StatusPrepend extends PureComponent {
 
     switch(type) {
     case 'favourite':
-      iconId = 'star';
-      iconComponent = StarIcon;
+      iconId = 'favorite';
+      iconComponent = FavoriteIcon;
       break;
     case 'featured':
       iconId = 'thumb-tack';
