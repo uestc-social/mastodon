@@ -175,7 +175,7 @@ class SwitchingColumnsArea extends PureComponent {
 
     if (signedIn) {
       if (singleColumn) {
-        redirect = <Redirect from='/' to='/home' exact />;
+        redirect = <Redirect from='/' to='/public/local' exact />;
       } else {
         redirect = <Redirect from='/' to='/deck/getting-started' exact />;
       }
