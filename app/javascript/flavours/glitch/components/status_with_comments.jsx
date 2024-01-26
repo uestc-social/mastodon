@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 import StatusContainer from 'flavours/glitch/containers/status_container';
-import LoadMore from 'flavours/glitch/components/load_more';
+import { LoadMore } from './load_more';
 
 const mapStateToProps = (state, { id }) => {
   let status = state.getIn(['statuses', id]);

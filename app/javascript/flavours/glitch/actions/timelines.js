@@ -1,4 +1,3 @@
-import { fetchContext } from './statuses';
 import { Map as ImmutableMap, List as ImmutableList } from 'immutable';
 
 import api, { getLinks } from 'flavours/glitch/api';
@@ -8,6 +7,7 @@ import { toServerSideType } from 'flavours/glitch/utils/filters';
 
 import { importFetchedStatus, importFetchedStatuses } from './importer';
 import { submitMarkers } from './markers';
+import { fetchContext } from './statuses_fetch';
 
 export const TIMELINE_UPDATE  = 'TIMELINE_UPDATE';
 export const TIMELINE_DELETE  = 'TIMELINE_DELETE';
