@@ -99,6 +99,14 @@ jobs:
           echo -e "en:\n  skins:\n    glitch:\n      modern-light: Mastodon Modern (light)" > app/javascript/skins/glitch/modern-light/names.yml
           echo -e "en:\n  skins:\n    glitch:\n      modern-contrast: Mastodon Modern (contrast)" > app/javascript/skins/glitch/modern-contrast/names.yml
 
+      # Note: TangerineUI only supports Vanilla favour
+      - name: Integrate TangerineUI - Checkout
+        run: |
+          git clone https://github.com/nileane/TangerineUI-for-Mastodon tangerine
+          cp -r tangerine/mastodon/app/javascript/styles/* app/javascript/styles
+          cp -r tangerine/mastodon/app/javascript/skins/vanilla/* app/javascript/skins/vanilla
+          rm -rf tangerine
+
       - name: Apply Emoji Reaction Patch
         continue-on-error: true
         run: |
