@@ -149,7 +149,7 @@ export default class StatusPrepend extends PureComponent {
       <aside className={type === 'reblogged_by' || type === 'featured' ? 'status__prepend' : 'notification__message'}>
         <div className={type === 'reblogged_by' || type === 'featured' ? 'status__prepend-icon-wrapper' : 'notification__favourite-icon-wrapper'}>
           <Icon
-            className={`status__prepend-icon ${type === 'favourite' ? 'star-icon' : ''}`}
+            className={`status__prepend-icon ${type === 'favourite' ? 'favorite-icon' : ''}`}
             id={iconId}
             icon={iconComponent}
           />
