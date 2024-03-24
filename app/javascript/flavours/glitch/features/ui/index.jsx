@@ -50,6 +50,8 @@ import {
   DirectTimeline,
   HashtagTimeline,
   Notifications,
+  NotificationRequests,
+  NotificationRequest,
   FollowRequests,
   FavouritedStatuses,
   BookmarkedStatuses,
@@ -84,7 +86,6 @@ const mapStateToProps = state => ({
   canUploadMore: !state.getIn(['compose', 'media_attachments']).some(x => ['audio', 'video'].includes(x.get('type'))) && state.getIn(['compose', 'media_attachments']).size < 4,
   isWide: state.getIn(['local_settings', 'stretch']),
   sidebarPosition: state.getIn(['local_settings', 'sidebar']),
-  dropdownMenuIsOpen: state.dropdownMenu.openId !== null,
   unreadNotifications: state.getIn(['notifications', 'unread']),
   showFaviconBadge: state.getIn(['local_settings', 'notifications', 'favicon_badge']),
   hicolorPrivacyIcons: state.getIn(['local_settings', 'hicolor_privacy_icons']),
@@ -214,7 +215,9 @@ class SwitchingColumnsArea extends PureComponent {
             <WrappedRoute path={['/conversations', '/timelines/direct']} component={DirectTimeline} content={children} />
             <WrappedRoute path='/tags/:id' component={HashtagTimeline} content={children} />
             <WrappedRoute path='/lists/:id' component={ListTimeline} content={children} />
-            <WrappedRoute path='/notifications' component={Notifications} content={children} />
+            <WrappedRoute path='/notifications' component={Notifications} content={children} exact />
+            <WrappedRoute path='/notifications/requests' component={NotificationRequests} content={children} exact />
+            <WrappedRoute path='/notifications/requests/:id' component={NotificationRequest} content={children} exact />
             <WrappedRoute path='/favourites' component={FavouritedStatuses} content={children} />
 
             <WrappedRoute path='/bookmarks' component={BookmarkedStatuses} content={children} />
@@ -276,7 +279,6 @@ class UI extends PureComponent {
     hasMediaAttachments: PropTypes.bool,
     canUploadMore: PropTypes.bool,
     intl: PropTypes.object.isRequired,
-    dropdownMenuIsOpen: PropTypes.bool,
     unreadNotifications: PropTypes.number,
     showFaviconBadge: PropTypes.bool,
     hicolorPrivacyIcons: PropTypes.bool,
@@ -485,7 +487,7 @@ class UI extends PureComponent {
   handleHotkeyNew = e => {
     e.preventDefault();
 
-    const element = this.node.querySelector('.compose-form__autosuggest-wrapper textarea');
+    const element = this.node.querySelector('.autosuggest-textarea__textarea');
 
     if (element) {
       element.focus();
@@ -602,7 +604,7 @@ class UI extends PureComponent {
 
   render () {
     const { draggingOver } = this.state;
-    const { children, isWide, sidebarPosition, location, dropdownMenuIsOpen, layout, moved } = this.props;
+    const { children, isWide, sidebarPosition, location, layout, moved } = this.props;
 
     const className = classNames('ui', `sidebar-${sidebarPosition}`, {
       'wide': isWide,
@@ -634,7 +636,7 @@ class UI extends PureComponent {
 
     return (
       <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
-        <div className={className} ref={this.setRef} style={{ pointerEvents: dropdownMenuIsOpen ? 'none' : null }}>
+        <div className={className} ref={this.setRef}>
           {moved && (<div className='flash-message alert'>
             <FormattedMessage
               id='moved_to_warning'

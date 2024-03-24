@@ -13,7 +13,6 @@ import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
 import FavoriteIcon from '@/material-icons/400-24px/favorite.svg?react';
 import { Icon }  from 'flavours/glitch/components/icon';
 
-
 const tooltips = defineMessages({
   mentions: { id: 'notifications.filter.mentions', defaultMessage: 'Mentions' },
   favourites: { id: 'notifications.filter.favourites', defaultMessage: 'Favorites' },
