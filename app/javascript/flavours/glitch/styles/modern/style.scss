@@ -2836,6 +2836,7 @@ a:focus-visible,
 .layout-single-column .column-back-button--slim .column-back-button .column-header__collapsible {
   transition: none;
   background: var(--modal-background-color);
+  backdrop-filter: var(--background-filter);
 }
 .layout-single-column .tabs-bar__wrapper .collapsed,
 .layout-single-column .column-back-button--slim .column-back-button .collapsed {
@@ -2927,6 +2928,7 @@ a:focus-visible,
     top: calc(100% + 5px);
     bottom: -5px;
     background: var(--modal-background-color);
+    backdrop-filter: var(--background-filter);
     z-index: -1;
     transition: inset 0.1s;
     border-radius: 100px;
