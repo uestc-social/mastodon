@@ -1,4 +1,4 @@
-# <img src="https://github.com/TheEssem/mastodon/raw/main/app/javascript/icons/android-chrome-256x256.png" width="128"> Chuckya
+# <img src="https://github.com/TheEssem/mastodon/raw/main/public/chuckya.png" width="128"> Chuckya
 
 Chuckya is a close-to-upstream soft fork of Mastodon Glitch Edition (more commonly known as glitch-soc) that aims to introduce more experimental features/fixes with the goal of making the overall experience more enjoyable. Although it's mainly developed for and used on the [wetdry.world](https://wetdry.world) instance, it can be deployed by any server admin as a drop-in, backwards-compatible replacement for Mastodon.
 
@@ -15,7 +15,6 @@ Here are some of the changes compared to glitch-soc:
 - Allows dashes in custom emote names
 - Emojis can be put side-by-side
 - Minor media attachment tweaks
-- Custom favicon
 
 Changes previously in Chuckya that made their way into vanilla Mastodon:
 
