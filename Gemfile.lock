@@ -7,6 +7,13 @@ GIT
       hkdf (~> 0.2)
       jwt (~> 2.0)
 
+GIT
+  remote: https://github.com/TheEssem/charlock_holmes.git
+  revision: 226932af4b03eb60d2e31d58b6c3efd72a3ace68
+  ref: 226932af4b03eb60d2e31d58b6c3efd72a3ace68
+  specs:
+    charlock_holmes (0.7.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -159,7 +166,6 @@ GEM
     case_transform (0.2)
       activesupport
     cbor (0.5.9.8)
-    charlock_holmes (0.7.7)
     chewy (7.6.0)
       activesupport (>= 5.2)
       elasticsearch (>= 7.14.0, < 8)
@@ -913,7 +919,7 @@ DEPENDENCIES
   browser
   bundler-audit (~> 0.9)
   capybara (~> 3.39)
-  charlock_holmes (~> 0.7.7)
+  charlock_holmes!
   chewy (~> 7.3)
   climate_control
   cocoon (~> 1.2)
