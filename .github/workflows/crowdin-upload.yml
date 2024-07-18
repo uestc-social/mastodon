@@ -2,9 +2,11 @@ name: Crowdin / Upload translations
 
 on:
   workflow_dispatch:
+  merge_group:
   push:
     branches:
-      - main
+      - 'main'
+      - 'stable-*'
     paths:
       - crowdin-glitch.yml
       - app/javascript/flavours/glitch/locales/en.json
