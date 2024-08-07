@@ -71,9 +71,9 @@ jobs:
         run: |
           mkdir -p app/javascript/styles/modern
           mkdir -p app/javascript/flavours/glitch/styles/modern
-          wget https://codeberg.org/Freeplay/Mastodon-Modern/raw/branch/waf/modern.css -O app/javascript/styles/modern/style.scss
+          wget https://git.gay/freeplay/Mastodon-Modern/raw/branch/waf/modern.css -O app/javascript/styles/modern/style.scss
           cp app/javascript/styles/modern/style.scss app/javascript/flavours/glitch/styles/modern/style.scss
-          wget https://codeberg.org/Freeplay/Mastodon-Modern/raw/branch/waf/glitch-fixes.css -O app/javascript/flavours/glitch/styles/modern/glitch-fixes.scss
+          wget https://git.gay/freeplay/Mastodon-Modern/raw/branch/waf/glitch-fixes.css -O app/javascript/flavours/glitch/styles/modern/glitch-fixes.scss
           echo -e "@import 'mastodon/variables';\n@import 'application';\n@import 'modern/style';" > app/javascript/styles/modern-dark.scss
           echo -e "@import 'mastodon-light/variables';\n@import 'application';\n@import 'modern/style';\n@import 'mastodon-light/diff';" > app/javascript/styles/modern-light.scss
           echo -e "@import 'contrast/variables';\n@import 'application';\n@import 'modern/style';\n@import 'contrast/diff';" > app/javascript/styles/modern-contrast.scss
