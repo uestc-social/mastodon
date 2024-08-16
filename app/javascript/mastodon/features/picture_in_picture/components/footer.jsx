@@ -17,11 +17,11 @@ import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
 // import StarIcon from '@/material-icons/400-24px/star.svg?react';
 import FavoriteIcon from '@/material-icons/400-24px/favorite.svg?react';
 import { replyCompose } from 'mastodon/actions/compose';
-import { reblog, favourite, unreblog, unfavourite } from 'mastodon/actions/interactions';
+import { toggleReblog, toggleFavourite } from 'mastodon/actions/interactions';
 import { openModal } from 'mastodon/actions/modal';
 import { IconButton } from 'mastodon/components/icon_button';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
-import { me, boostModal } from 'mastodon/initial_state';
+import { me } from 'mastodon/initial_state';
 import { makeGetStatus } from 'mastodon/selectors';
 import { WithRouterPropTypes } from 'mastodon/utils/react_router';
 
@@ -33,8 +33,6 @@ const messages = defineMessages({
   cancel_reblog_private: { id: 'status.cancel_reblog_private', defaultMessage: 'Unboost' },
   cannot_reblog: { id: 'status.cannot_reblog', defaultMessage: 'This post cannot be boosted' },
   favourite: { id: 'status.favourite', defaultMessage: 'Favorite' },
-  replyConfirm: { id: 'confirmations.reply.confirm', defaultMessage: 'Reply' },
-  replyMessage: { id: 'confirmations.reply.message', defaultMessage: 'Replying now will overwrite the message you are currently composing. Are you sure you want to proceed?' },
   open: { id: 'status.open', defaultMessage: 'Expand this status' },
 });
 
@@ -63,29 +61,23 @@ class Footer extends ImmutablePureComponent {
   };
 
   _performReply = () => {
-    const { dispatch, status, onClose, history } = this.props;
+    const { dispatch, status, onClose } = this.props;
 
     if (onClose) {
       onClose(true);
     }
 
-    dispatch(replyCompose(status, history));
+    dispatch(replyCompose(status));
   };
 
   handleReplyClick = () => {
-    const { dispatch, askReplyConfirmation, status, intl } = this.props;
+    const { dispatch, askReplyConfirmation, status, onClose } = this.props;
     const { signedIn } = this.props.identity;
 
     if (signedIn) {
       if (askReplyConfirmation) {
-        dispatch(openModal({
-          modalType: 'CONFIRM',
-          modalProps: {
-            message: intl.formatMessage(messages.replyMessage),
-            confirm: intl.formatMessage(messages.replyConfirm),
-            onConfirm: this._performReply,
-          },
-        }));
+        onClose(true);
+        dispatch(openModal({ modalType: 'CONFIRM_REPLY', modalProps: { status } }));
       } else {
         this._performReply();
       }
@@ -106,11 +98,7 @@ class Footer extends ImmutablePureComponent {
     const { signedIn } = this.props.identity;
 
     if (signedIn) {
-      if (status.get('favourited')) {
-        dispatch(unfavourite(status));
-      } else {
-        dispatch(favourite(status));
-      }
+      dispatch(toggleFavourite(status.get('id')));
     } else {
       dispatch(openModal({
         modalType: 'INTERACTION',
@@ -123,23 +111,12 @@ class Footer extends ImmutablePureComponent {
     }
   };
 
-  _performReblog = (status, privacy) => {
-    const { dispatch } = this.props;
-    dispatch(reblog({ statusId: status.get('id'), visibility: privacy }));
-  };
-
   handleReblogClick = e => {
     const { dispatch, status } = this.props;
     const { signedIn } = this.props.identity;
 
     if (signedIn) {
-      if (status.get('reblogged')) {
-        dispatch(unreblog({ statusId: status.get('id') }));
-      } else if ((e && e.shiftKey) || !boostModal) {
-        this._performReblog(status);
-      } else {
-        dispatch(openModal({ modalType: 'BOOST', modalProps: { status, onReblog: this._performReblog } }));
-      }
+      dispatch(toggleReblog(status.get('id'), e && e.shiftKey));
     } else {
       dispatch(openModal({
         modalType: 'INTERACTION',
