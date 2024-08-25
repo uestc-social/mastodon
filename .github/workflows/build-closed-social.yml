@@ -5,7 +5,7 @@ on:
     branches:
       - "cs"
     tags:
-      - "*"
+      - "cs-*"
 
 permissions:
   contents: read
@@ -24,8 +24,9 @@ jobs:
         latest=auto
       tags: |
         type=raw,value=latest,enable={{is_default_branch}}
-        type=edge,branch=main
-        type=raw,value=cs,branch=cs
+        type=raw,value=cs-nightly,event=push,branch=cs
+        type=raw,value=cs,event=tag
+        type=ref,event=tag
     secrets: inherit
 
   build-image-streaming:
@@ -40,6 +41,7 @@ jobs:
         latest=auto
       tags: |
         type=raw,value=latest,enable={{is_default_branch}}
-        type=edge,branch=main
-        type=raw,value=cs,branch=cs
+        type=raw,value=cs-nightly,event=push,branch=cs
+        type=raw,value=cs,event=tag
+        type=ref,event=tag
     secrets: inherit
