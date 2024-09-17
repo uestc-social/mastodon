@@ -2,7 +2,8 @@ import { FormattedMessage } from 'react-intl';
 
 import { Link } from 'react-router-dom';
 
-import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+// import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
+import FavoriteIcon from '@/material-icons/400-24px/favorite-fill.svg?react';
 import type { NotificationGroupFavourite } from 'mastodon/models/notification_group';
 import { useAppSelector } from 'mastodon/store';
 
@@ -14,7 +15,7 @@ const labelRenderer: LabelRenderer = (displayedName, total, seeMoreHref) => {
     return (
       <FormattedMessage
         id='notification.favourite'
-        defaultMessage='{name} favorited your status'
+        defaultMessage='{name} favorited your post'
         values={{ name: displayedName }}
       />
     );
@@ -47,7 +48,7 @@ export const NotificationFavourite: React.FC<{
   return (
     <NotificationGroupWithStatus
       type='favourite'
-      icon={StarIcon}
+      icon={FavoriteIcon}
       iconId='star'
       accountIds={notification.sampleAccountIds}
       statusId={notification.statusId}

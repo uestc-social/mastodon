@@ -90,7 +90,7 @@ if (initialState) {
   try {
     // @ts-expect-error
     initialState.local_settings = JSON.parse(localStorage.getItem('mastodon-settings:v2'));
-  } catch (e) {
+  } catch {
     initialState.local_settings = {};
   }
 }

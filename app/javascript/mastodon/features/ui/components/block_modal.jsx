@@ -10,7 +10,8 @@ import { useDispatch } from 'react-redux';
 import AlternateEmailIcon from '@/material-icons/400-24px/alternate_email.svg?react';
 import BlockIcon from '@/material-icons/400-24px/block.svg?react';
 import CampaignIcon from '@/material-icons/400-24px/campaign.svg?react';
-import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+// import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
 import VisibilityOffIcon from '@/material-icons/400-24px/visibility_off.svg?react';
 import { blockAccount } from 'mastodon/actions/accounts';
 import { closeModal } from 'mastodon/actions/modal';
@@ -67,7 +68,7 @@ export const BlockModal = ({ accountId, acct }) => {
           </div>
 
           <div>
-            <div className='safety-action-modal__bullet-points__icon'><Icon icon={ReplyIcon} /></div>
+            <div className='safety-action-modal__bullet-points__icon'><Icon icon={CommentIcon} /></div>
             <div><FormattedMessage id='block_modal.they_cant_mention' defaultMessage="They can't mention or follow you." /></div>
           </div>
         </div>
@@ -99,7 +100,7 @@ export const BlockModal = ({ accountId, acct }) => {
             <FormattedMessage id='confirmation_modal.cancel' defaultMessage='Cancel' />
           </button>
 
-          <Button onClick={handleClick}>
+          <Button onClick={handleClick} autoFocus>
             <FormattedMessage id='confirmations.block.confirm' defaultMessage='Block' />
           </Button>
         </div>

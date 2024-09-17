@@ -9,7 +9,8 @@ import CampaignIcon from '@/material-icons/400-24px/campaign.svg?react';
 import DomainDisabledIcon from '@/material-icons/400-24px/domain_disabled.svg?react';
 import HistoryIcon from '@/material-icons/400-24px/history.svg?react';
 import PersonRemoveIcon from '@/material-icons/400-24px/person_remove.svg?react';
-import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+// import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
 import VisibilityOffIcon from '@/material-icons/400-24px/visibility_off.svg?react';
 import { blockAccount } from 'mastodon/actions/accounts';
 import { blockDomain } from 'mastodon/actions/domain_blocks';
@@ -65,7 +66,7 @@ export const DomainBlockModal = ({ domain, accountId, acct }) => {
           </div>
 
           <div>
-            <div className='safety-action-modal__bullet-points__icon'><Icon icon={ReplyIcon} /></div>
+            <div className='safety-action-modal__bullet-points__icon'><Icon icon={CommentIcon} /></div>
             <div><FormattedMessage id='domain_block_modal.they_cant_follow' defaultMessage='Nobody from this server can follow you.' /></div>
           </div>
 
@@ -88,7 +89,7 @@ export const DomainBlockModal = ({ domain, accountId, acct }) => {
             <FormattedMessage id='confirmation_modal.cancel' defaultMessage='Cancel' />
           </button>
 
-          <Button onClick={handleClick}>
+          <Button onClick={handleClick} autoFocus>
             <FormattedMessage id='domain_block_modal.block' defaultMessage='Block server' />
           </Button>
         </div>

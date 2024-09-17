@@ -18,7 +18,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     n.item :flavours, safe_join([material_symbol('brush'), t('settings.flavours')]), settings_flavours_path do |flavours|
       Themes.instance.flavours.each do |flavour|
-        flavours.item flavour.to_sym, safe_join([material_symbol('star-fill'), t("flavours.#{flavour}.name", default: flavour)]), settings_flavour_path(flavour)
+        flavours.item flavour.to_sym, safe_join([material_symbol('favorite-fill'), t("flavours.#{flavour}.name", default: flavour)]), settings_flavour_path(flavour)
       end
     end
 

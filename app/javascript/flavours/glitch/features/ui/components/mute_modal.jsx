@@ -10,7 +10,8 @@ import { useDispatch } from 'react-redux';
 
 import AlternateEmailIcon from '@/material-icons/400-24px/alternate_email.svg?react';
 import CampaignIcon from '@/material-icons/400-24px/campaign.svg?react';
-import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+// import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
+import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
 import VisibilityOffIcon from '@/material-icons/400-24px/visibility_off.svg?react';
 import VolumeOffIcon from '@/material-icons/400-24px/volume_off.svg?react';
 import { muteAccount } from 'flavours/glitch/actions/accounts';
@@ -106,7 +107,7 @@ export const MuteModal = ({ accountId, acct }) => {
           </div>
 
           <div>
-            <div className='safety-action-modal__bullet-points__icon'><Icon icon={ReplyIcon} /></div>
+            <div className='safety-action-modal__bullet-points__icon'><Icon icon={CommentIcon} /></div>
             <div><FormattedMessage id='mute_modal.they_can_mention_and_follow' defaultMessage="They can mention and follow you, but you won't see them." /></div>
           </div>
         </div>
@@ -137,7 +138,7 @@ export const MuteModal = ({ accountId, acct }) => {
             <FormattedMessage id='confirmation_modal.cancel' defaultMessage='Cancel' />
           </button>
 
-          <Button onClick={handleClick}>
+          <Button onClick={handleClick} autoFocus>
             <FormattedMessage id='confirmations.mute.confirm' defaultMessage='Mute' />
           </Button>
         </div>
