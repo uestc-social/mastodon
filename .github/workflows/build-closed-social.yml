@@ -21,10 +21,9 @@ jobs:
       push_to_images: |
         ghcr.io/${{ github.repository_owner }}/mastodon
       flavor: |
-        latest=auto
+        latest=false
       tags: |
-        type=raw,value=latest,enable={{is_default_branch}}
-        type=raw,value=cs-nightly,event=push,branch=cs
+        type=raw,value=cs-nightly,event=branch,branch=cs
         type=raw,value=cs,event=tag
         type=ref,event=tag
     secrets: inherit
@@ -38,10 +37,9 @@ jobs:
       push_to_images: |
         ghcr.io/${{ github.repository_owner }}/mastodon-streaming
       flavor: |
-        latest=auto
+        latest=false
       tags: |
-        type=raw,value=latest,enable={{is_default_branch}}
-        type=raw,value=cs-nightly,event=push,branch=cs
+        type=raw,value=cs-nightly,event=branch,branch=cs
         type=raw,value=cs,event=tag
         type=ref,event=tag
     secrets: inherit
