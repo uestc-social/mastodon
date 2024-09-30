@@ -25,6 +25,8 @@ jobs:
       tags: |
         type=raw,value=latest,enable={{is_default_branch}}
         type=edge,branch=main
+        type=pep440,event=tag,pattern=v{{major}}.{{minor}}
+        type=pep440,event=tag,pattern={{raw}}
     secrets: inherit
 
   build-image-streaming:
@@ -40,4 +42,6 @@ jobs:
       tags: |
         type=raw,value=latest,enable={{is_default_branch}}
         type=edge,branch=main
+        type=pep440,event=tag,pattern=v{{major}}.{{minor}}
+        type=pep440,event=tag,pattern={{raw}}
     secrets: inherit
