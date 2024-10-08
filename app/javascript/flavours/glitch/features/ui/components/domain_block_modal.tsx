@@ -6,8 +6,7 @@ import CampaignIcon from '@/material-icons/400-24px/campaign.svg?react';
 import DomainDisabledIcon from '@/material-icons/400-24px/domain_disabled.svg?react';
 import HistoryIcon from '@/material-icons/400-24px/history.svg?react';
 import PersonRemoveIcon from '@/material-icons/400-24px/person_remove.svg?react';
-// import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
-import CommentIcon from '@/material-icons/400-24px/comment.svg?react';
+import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
 import VisibilityOffIcon from '@/material-icons/400-24px/visibility_off.svg?react';
 import { blockAccount } from 'flavours/glitch/actions/accounts';
 import { blockDomain } from 'flavours/glitch/actions/domain_blocks';
@@ -161,7 +160,7 @@ export const DomainBlockModal: React.FC<{
 
           <div className='safety-action-modal__bullet-points--deemphasized'>
             <div className='safety-action-modal__bullet-points__icon'>
-              <Icon id='' icon={CommentIcon} />
+              <Icon id='' icon={ReplyIcon} />
             </div>
             <div>
               <FormattedMessage
