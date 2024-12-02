@@ -183,7 +183,7 @@ const Firehose = ({ feedType, multiColumn }) => {
       <DismissableBanner id='bubble_timeline'>
         <FormattedMessage
           id='dismissable_banner.bubble_timeline'
-          defaultMessage='These are the most recent public posts from people on the social web whose accounts are on other servers selected by {domain}.'
+          defaultMessage='These are the most recent public posts from people on the fediverse whose accounts are on other servers selected by {domain}.'
           values={{ domain }}
         />
       </DismissableBanner>
@@ -199,7 +199,7 @@ const Firehose = ({ feedType, multiColumn }) => {
       <DismissableBanner id='public_timeline'>
         <FormattedMessage
           id='dismissable_banner.public_timeline'
-          defaultMessage='These are the most recent public posts from people on the social web that people on {domain} follow.'
+          defaultMessage='These are the most recent public posts from people on the fediverse that people on {domain} follow.'
           values={{ domain }}
         />
       </DismissableBanner>
