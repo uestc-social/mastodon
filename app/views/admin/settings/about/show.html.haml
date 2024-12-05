@@ -44,7 +44,8 @@
                 include_blank: false,
                 item_wrapper_tag: 'li',
                 label_method: ->(value) { t("admin.settings.bubble_domains.#{value}") },
-                wrapper: :with_label
+                wrapper: :with_label,
+                chuckya_only: true
 
   .fields-group
     = f.input :status_page_url,
