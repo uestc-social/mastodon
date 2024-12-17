@@ -206,8 +206,10 @@ class ActivityPub::ProcessAccountService < BaseService
 
     if value.is_a?(String)
       value = fetch_resource_without_id_validation(value)
-      nil if value.nil?
+      return if value.nil?
     end
+
+    value
   end
 
   def image_url(key)
