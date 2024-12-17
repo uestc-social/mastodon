@@ -199,15 +199,19 @@ class ActivityPub::ProcessAccountService < BaseService
     end
   end
 
-  def image_url(key)
+  def image(key)
     value = first_of_value(@json[key])
 
     return if value.nil?
 
     if value.is_a?(String)
       value = fetch_resource_without_id_validation(value)
-      return if value.nil?
+      nil if value.nil?
     end
+  end
+
+  def image_url(key)
+    value = image(key)
 
     value = first_of_value(value['url']) if value.is_a?(Hash) && value['type'] == 'Image'
     value = value['href'] if value.is_a?(Hash)
@@ -215,11 +219,11 @@ class ActivityPub::ProcessAccountService < BaseService
   end
 
   def image_description(key)
-    value = first_of_value(@json[key])
+    value = image(key)
 
-    return if value.nil? || value.is_a?(String)
+    return unless value.is_a?(Hash)
 
-    value = first_of_value(value['summary']) || first_of_value(value['name']) if value.is_a?(Hash) && value['type'] == 'Image'
+    value = first_of_value(value['summary']) || first_of_value(value['name']) if value['type'] == 'Image'
     value if value.is_a?(String)
   end
 
