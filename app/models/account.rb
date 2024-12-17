@@ -79,6 +79,7 @@ class Account < ApplicationRecord
   USERNAME_LENGTH_LIMIT = 30
   DISPLAY_NAME_LENGTH_LIMIT = (ENV['MAX_DISPLAY_NAME_CHARS'] || 30).to_i
   NOTE_LENGTH_LIMIT = (ENV['MAX_BIO_CHARS'] || 500).to_i
+  DESCRIPTION_LENGTH_LIMIT = 1_500
 
   AUTOMATED_ACTOR_TYPES = %w(Application Service).freeze
 
@@ -120,6 +121,8 @@ class Account < ApplicationRecord
   validates :display_name, length: { maximum: DISPLAY_NAME_LENGTH_LIMIT }, if: -> { local? && will_save_change_to_display_name? }
   validates :note, note_length: { maximum: NOTE_LENGTH_LIMIT }, if: -> { local? && will_save_change_to_note? }
   validates :fields, length: { maximum: DEFAULT_FIELDS_SIZE }, if: -> { local? && will_save_change_to_fields? }
+  validates :avatar_description, length: { maximum: DESCRIPTION_LENGTH_LIMIT }, if: -> { local? && will_save_change_to_avatar_description? }
+  validates :header_description, length: { maximum: DESCRIPTION_LENGTH_LIMIT }, if: -> { local? && will_save_change_to_header_description? }
   with_options on: :create do
     validates :uri, absence: true, if: :local?
     validates :inbox_url, absence: true, if: :local?
