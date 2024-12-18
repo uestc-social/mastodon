@@ -51,8 +51,8 @@
 #  requested_review_at           :datetime
 #  indexable                     :boolean          default(FALSE), not null
 #  attribution_domains           :string           default([]), is an Array
-#  avatar_description            :text
-#  header_description            :text
+#  avatar_description            :text             default(""), not null
+#  header_description            :text             default(""), not null
 #
 
 class Account < ApplicationRecord
