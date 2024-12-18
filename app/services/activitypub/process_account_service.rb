@@ -199,7 +199,7 @@ class ActivityPub::ProcessAccountService < BaseService
     end
   end
 
-  def image(key)
+  def image_url(key)
     value = first_of_value(@json[key])
 
     return if value.nil?
@@ -209,23 +209,17 @@ class ActivityPub::ProcessAccountService < BaseService
       return if value.nil?
     end
 
-    value
-  end
-
-  def image_url(key)
-    value = image(key)
-
     value = first_of_value(value['url']) if value.is_a?(Hash) && value['type'] == 'Image'
     value = value['href'] if value.is_a?(Hash)
     value if value.is_a?(String)
   end
 
   def image_description(key)
-    value = image(key)
+    value = first_of_value(@json[key])
 
-    return unless value.is_a?(Hash)
+    return if value.nil? || value.is_a?(String)
 
-    value = first_of_value(value['summary']) || first_of_value(value['name']) if value['type'] == 'Image'
+    value = first_of_value(value['summary']) || first_of_value(value['name']) if value.is_a?(Hash) && value['type'] == 'Image'
     value if value.is_a?(String)
   end
 
