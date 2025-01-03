@@ -82,10 +82,6 @@ body.app-body.flavour-glitch > #mastodon .status > :not(.status__content):not(.s
   position: relative;
   z-index: 2;
 }
-body.app-body.flavour-glitch > #mastodon .status:not(.status-direct) > .status__content {
-  margin-block: -100px !important;
-  padding-block: 100px !important;
-}
 body.app-body.flavour-glitch > #mastodon .full-width {
   margin-inline: 0 !important;
 }
