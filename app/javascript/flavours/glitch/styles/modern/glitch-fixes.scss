@@ -71,9 +71,6 @@ body.app-body.flavour-glitch > #mastodon .status {
   isolation: isolate;
   overflow: hidden;
 }
-body.app-body.flavour-glitch > #mastodon .status__info {
-  pointer-events: none;
-}
 body.app-body.flavour-glitch > #mastodon .status__avatar,
 body.app-body.flavour-glitch > #mastodon .status__info__icons {
   pointer-events: all;
