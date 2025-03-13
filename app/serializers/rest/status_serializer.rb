@@ -171,7 +171,7 @@ class REST::StatusSerializer < ActiveModel::Serializer
   end
 
   def media_attachments
-    ActiveModel::SerializableResource.new(object.ordered_media_attachments, each_serializer: REST::MediaAttachmentSerializer, discord_hack: instance_options[:discord_hack])
+    ActiveModelSerializers::SerializableResource.new(object.ordered_media_attachments, each_serializer: REST::MediaAttachmentSerializer, discord_hack: instance_options[:discord_hack])
   end
 
   private
