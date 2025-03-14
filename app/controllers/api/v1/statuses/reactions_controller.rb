@@ -4,7 +4,7 @@ class Api::V1::Statuses::ReactionsController < Api::V1::Statuses::BaseController
   REACTIONS_LIMIT = 30
 
   before_action -> { doorkeeper_authorize! :write, :'write:favourites' }, only: [:create, :destroy]
-  before_action -> { authorize_if_got_token! :read, :'read:statuses' }, only: [:index]
+  before_action -> { authorize_if_got_token! :read, :'read:accounts' }, only: [:index]
   before_action :require_user!, only: [:create, :destroy]
   after_action :insert_pagination_headers, only: [:index]
 
