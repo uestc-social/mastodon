@@ -7308,6 +7308,10 @@ img.modal-warning {
       filter: var(--overlay-icon-shadow);
     }
   }
+
+  &--error img {
+    visibility: hidden;
+  }
 }
 
 .media-gallery__item-thumbnail {
