@@ -437,7 +437,6 @@
   "poll.voted": "ਤੁਸੀਂ ਇਸ ਜਵਾਬ ਲਈ ਵੋਟ ਕੀਤਾ",
   "privacy.change": "ਪੋਸਟ ਦੀ ਪਰਦੇਦਾਰੀ ਨੂੰ ਬਦਲੋ",
   "privacy.direct.long": "ਪੋਸਟ ਵਿੱਚ ਜ਼ਿਕਰ ਕੀਤੇ ਹਰ ਕੋਈ",
-  "privacy.direct.short": "ਖਾਸ ਲੋਕ",
   "privacy.private.long": "ਸਿਰਫ਼ ਤੁਹਾਡੇ ਫ਼ਾਲੋਅਰ ਹੀ",
   "privacy.private.short": "ਫ਼ਾਲੋਅਰ",
   "privacy.public.short": "ਜਨਤਕ",
@@ -578,8 +577,6 @@
   "video.expand": "ਵੀਡੀਓ ਨੂੰ ਫੈਲਾਓ",
   "video.fullscreen": "ਪੂਰੀ ਸਕਰੀਨ",
   "video.hide": "ਵੀਡੀਓ ਨੂੰ ਲੁਕਾਓ",
-  "video.mute": "ਆਵਾਜ਼ ਨੂੰ ਬੰਦ ਕਰੋ",
   "video.pause": "ਠਹਿਰੋ",
-  "video.play": "ਚਲਾਓ",
-  "video.unmute": "ਆਵਾਜ਼ ਨੂੰ ਸੁਣਾਓ"
+  "video.play": "ਚਲਾਓ"
 }
