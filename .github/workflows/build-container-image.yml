@@ -38,40 +38,40 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Integrate BirdUI Theme - Checkout
-        run: |
-          mkdir -p app/javascript/styles/mastodon-bird-ui
-          mkdir -p app/javascript/flavours/glitch/styles/mastodon-bird-ui
-          wget https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/main/layout-single-column.css -O app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
-          wget https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/main/layout-multiple-columns.css -O app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
-          wget https://raw.githubusercontent.com/TheEssem/glitch-bird-ui/master/layout-single-column.css -O app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss
-          wget https://raw.githubusercontent.com/TheEssem/glitch-bird-ui/master/layout-multiple-columns.css -O app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss
-          sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
-          sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
-          sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
-          sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
-          sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss
-          sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss
-          sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss
-          sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss
-          mkdir -p app/javascript/skins/vanilla/birdui-contrast
-          mkdir -p app/javascript/skins/vanilla/birdui-light
-          mkdir -p app/javascript/skins/vanilla/birdui-dark
-          mkdir -p app/javascript/skins/glitch/birdui-contrast
-          mkdir -p app/javascript/skins/glitch/birdui-light
-          mkdir -p app/javascript/skins/glitch/birdui-dark
-          echo -e "@import 'styles/contrast';\n@import 'styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/vanilla/birdui-contrast/common.scss
-          echo -e "@import 'styles/mastodon-light';\n@import 'styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/vanilla/birdui-light/common.scss
-          echo -e "@import 'styles/application';\n@import 'styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/vanilla/birdui-dark/common.scss
-          echo -e "@import 'flavours/glitch/styles/contrast';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/glitch/birdui-contrast/common.scss
-          echo -e "@import 'flavours/glitch/styles/mastodon-light';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/glitch/birdui-light/common.scss
-          echo -e "@import 'flavours/glitch/styles/index';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss';\n@import 'flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/glitch/birdui-dark/common.scss
-          echo -e "en:\n  skins:\n    vanilla:\n      birdui-contrast: Bird UI (contrast)" > app/javascript/skins/vanilla/birdui-contrast/names.yml
-          echo -e "en:\n  skins:\n    vanilla:\n      birdui-light: Bird UI (light)" > app/javascript/skins/vanilla/birdui-light/names.yml
-          echo -e "en:\n  skins:\n    vanilla:\n      birdui-dark: Bird UI (dark)" > app/javascript/skins/vanilla/birdui-dark/names.yml
-          echo -e "en:\n  skins:\n    glitch:\n      birdui-contrast: Bird UI (contrast)" > app/javascript/skins/glitch/birdui-contrast/names.yml
-          echo -e "en:\n  skins:\n    glitch:\n      birdui-light: Bird UI (light)" > app/javascript/skins/glitch/birdui-light/names.yml
-          echo -e "en:\n  skins:\n    glitch:\n      birdui-dark: Bird UI (dark)" > app/javascript/skins/glitch/birdui-dark/names.yml
+      # - name: Integrate BirdUI Theme - Checkout
+      #   run: |
+      #     mkdir -p app/javascript/styles/mastodon-bird-ui
+      #     mkdir -p app/javascript/flavours/glitch/styles/mastodon-bird-ui
+      #     wget https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/main/layout-single-column.css -O app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+      #     wget https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/main/layout-multiple-columns.css -O app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+      #     wget https://raw.githubusercontent.com/TheEssem/glitch-bird-ui/master/layout-single-column.css -O app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss
+      #     wget https://raw.githubusercontent.com/TheEssem/glitch-bird-ui/master/layout-multiple-columns.css -O app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss
+      #     sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+      #     sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+      #     sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+      #     sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+      #     sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss
+      #     sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss
+      #     sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss
+      #     sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss
+      #     mkdir -p app/javascript/skins/vanilla/birdui-contrast
+      #     mkdir -p app/javascript/skins/vanilla/birdui-light
+      #     mkdir -p app/javascript/skins/vanilla/birdui-dark
+      #     mkdir -p app/javascript/skins/glitch/birdui-contrast
+      #     mkdir -p app/javascript/skins/glitch/birdui-light
+      #     mkdir -p app/javascript/skins/glitch/birdui-dark
+      #     echo -e "@use 'styles/contrast';\n@use 'styles/mastodon-bird-ui/layout-single-column.scss';\n@use 'styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/vanilla/birdui-contrast/common.scss
+      #     echo -e "@use 'styles/mastodon-light';\n@use 'styles/mastodon-bird-ui/layout-single-column.scss';\n@use 'styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/vanilla/birdui-light/common.scss
+      #     echo -e "@use 'styles/application';\n@use 'styles/mastodon-bird-ui/layout-single-column.scss';\n@use 'styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/vanilla/birdui-dark/common.scss
+      #     echo -e "@use 'flavours/glitch/styles/contrast';\n@use 'flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss';\n@use 'flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/glitch/birdui-contrast/common.scss
+      #     echo -e "@use 'flavours/glitch/styles/mastodon-light';\n@use 'flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss';\n@use 'flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/glitch/birdui-light/common.scss
+      #     echo -e "@use 'flavours/glitch/styles/index';\n@use 'flavours/glitch/styles/mastodon-bird-ui/layout-single-column.scss';\n@use 'flavours/glitch/styles/mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/skins/glitch/birdui-dark/common.scss
+      #     echo -e "en:\n  skins:\n    vanilla:\n      birdui-contrast: Bird UI (contrast)" > app/javascript/skins/vanilla/birdui-contrast/names.yml
+      #     echo -e "en:\n  skins:\n    vanilla:\n      birdui-light: Bird UI (light)" > app/javascript/skins/vanilla/birdui-light/names.yml
+      #     echo -e "en:\n  skins:\n    vanilla:\n      birdui-dark: Bird UI (dark)" > app/javascript/skins/vanilla/birdui-dark/names.yml
+      #     echo -e "en:\n  skins:\n    glitch:\n      birdui-contrast: Bird UI (contrast)" > app/javascript/skins/glitch/birdui-contrast/names.yml
+      #     echo -e "en:\n  skins:\n    glitch:\n      birdui-light: Bird UI (light)" > app/javascript/skins/glitch/birdui-light/names.yml
+      #     echo -e "en:\n  skins:\n    glitch:\n      birdui-dark: Bird UI (dark)" > app/javascript/skins/glitch/birdui-dark/names.yml
 
       - name: Integrate Modern Theme - Checkout
         run: |
@@ -80,24 +80,24 @@ jobs:
           wget https://git.gay/freeplay/Mastodon-Modern/raw/branch/waf/modern.css -O app/javascript/styles/modern/style.scss
           cp app/javascript/styles/modern/style.scss app/javascript/flavours/glitch/styles/modern/style.scss
           wget https://git.gay/freeplay/Mastodon-Modern/raw/branch/waf/glitch-fixes.css -O app/javascript/flavours/glitch/styles/modern/glitch-fixes.scss
-          echo -e "@import 'mastodon/variables';\n@import 'application';\n@import 'modern/style';" > app/javascript/styles/modern-dark.scss
-          echo -e "@import 'mastodon-light/variables';\n@import 'application';\n@import 'modern/style';\n@import 'mastodon-light/diff';" > app/javascript/styles/modern-light.scss
-          echo -e "@import 'contrast/variables';\n@import 'application';\n@import 'modern/style';\n@import 'contrast/diff';" > app/javascript/styles/modern-contrast.scss
-          echo -e "@import 'variables';\n@import 'index';\n@import 'modern/style';\n@import 'modern/glitch-fixes';" > app/javascript/flavours/glitch/styles/modern-dark.scss
-          echo -e "@import 'mastodon-light/variables';\n@import 'index';\n@import 'modern/style';\n@import 'modern/glitch-fixes';\n@import 'mastodon-light/diff';" > app/javascript/flavours/glitch/styles/modern-light.scss
-          echo -e "@import 'contrast/variables';\n@import 'index';\n@import 'modern/style';\n@import 'modern/glitch-fixes';\n@import 'contrast/diff';" > app/javascript/flavours/glitch/styles/modern-contrast.scss
+          echo -e "@use 'mastodon/variables';\n@use 'application';\n@use 'modern/style';" > app/javascript/styles/modern-dark.scss
+          echo -e "@use 'mastodon-light/variables';\n@use 'mastodon-light/css_variables';\n@use 'application';\n@use 'modern/style';\n@use 'mastodon-light/diff';" > app/javascript/styles/modern-light.scss
+          echo -e "@use 'contrast/variables';\n@use 'application';\n@use 'modern/style';\n@use 'contrast/diff';" > app/javascript/styles/modern-contrast.scss
+          echo -e "@use 'variables';\n@use 'index';\n@use 'modern/style';\n@use 'modern/glitch-fixes';" > app/javascript/flavours/glitch/styles/modern-dark.scss
+          echo -e "@use 'mastodon-light/variables';\n@use 'mastodon-light/css_variables';\n@use 'index';\n@use 'modern/style';\n@use 'modern/glitch-fixes';\n@use 'mastodon-light/diff';" > app/javascript/flavours/glitch/styles/modern-light.scss
+          echo -e "@use 'contrast/variables';\n@use 'index';\n@use 'modern/style';\n@use 'modern/glitch-fixes';\n@use 'contrast/diff';" > app/javascript/flavours/glitch/styles/modern-contrast.scss
           mkdir -p app/javascript/skins/vanilla/modern-dark
           mkdir -p app/javascript/skins/vanilla/modern-light
           mkdir -p app/javascript/skins/vanilla/modern-contrast
           mkdir -p app/javascript/skins/glitch/modern-dark
           mkdir -p app/javascript/skins/glitch/modern-light
           mkdir -p app/javascript/skins/glitch/modern-contrast
-          echo -e "@import 'styles/modern-dark';" > app/javascript/skins/vanilla/modern-dark/common.scss
-          echo -e "@import 'styles/modern-light';" > app/javascript/skins/vanilla/modern-light/common.scss
-          echo -e "@import 'styles/modern-contrast';" > app/javascript/skins/vanilla/modern-contrast/common.scss
-          echo -e "@import 'flavours/glitch/styles/modern-dark';" > app/javascript/skins/glitch/modern-dark/common.scss
-          echo -e "@import 'flavours/glitch/styles/modern-light';" > app/javascript/skins/glitch/modern-light/common.scss
-          echo -e "@import 'flavours/glitch/styles/modern-contrast';" > app/javascript/skins/glitch/modern-contrast/common.scss
+          echo -e "@use 'styles/modern-dark';" > app/javascript/skins/vanilla/modern-dark/common.scss
+          echo -e "@use 'styles/modern-light';" > app/javascript/skins/vanilla/modern-light/common.scss
+          echo -e "@use 'styles/modern-contrast';" > app/javascript/skins/vanilla/modern-contrast/common.scss
+          echo -e "@use 'flavours/glitch/styles/modern-dark';" > app/javascript/skins/glitch/modern-dark/common.scss
+          echo -e "@use 'flavours/glitch/styles/modern-light';" > app/javascript/skins/glitch/modern-light/common.scss
+          echo -e "@use 'flavours/glitch/styles/modern-contrast';" > app/javascript/skins/glitch/modern-contrast/common.scss
           echo -e "en:\n  skins:\n    vanilla:\n      modern-dark: Mastodon Modern (dark)" > app/javascript/skins/vanilla/modern-dark/names.yml
           echo -e "en:\n  skins:\n    vanilla:\n      modern-light: Mastodon Modern (light)" > app/javascript/skins/vanilla/modern-light/names.yml
           echo -e "en:\n  skins:\n    vanilla:\n      modern-contrast: Mastodon Modern (contrast)" > app/javascript/skins/vanilla/modern-contrast/names.yml
@@ -105,13 +105,13 @@ jobs:
           echo -e "en:\n  skins:\n    glitch:\n      modern-light: Mastodon Modern (light)" > app/javascript/skins/glitch/modern-light/names.yml
           echo -e "en:\n  skins:\n    glitch:\n      modern-contrast: Mastodon Modern (contrast)" > app/javascript/skins/glitch/modern-contrast/names.yml
 
-      # Note: TangerineUI only supports Vanilla favour
-      - name: Integrate TangerineUI - Checkout
-        run: |
-          git clone https://github.com/nileane/TangerineUI-for-Mastodon tangerine
-          cp -r tangerine/mastodon/app/javascript/styles/* app/javascript/styles
-          cp -r tangerine/mastodon/app/javascript/skins/vanilla/* app/javascript/skins/vanilla
-          rm -rf tangerine
+      # # Note: TangerineUI only supports Vanilla favour
+      # - name: Integrate TangerineUI - Checkout
+      #   run: |
+      #     git clone https://github.com/nileane/TangerineUI-for-Mastodon tangerine
+      #     cp -r tangerine/mastodon/app/javascript/styles/* app/javascript/styles
+      #     cp -r tangerine/mastodon/app/javascript/skins/vanilla/* app/javascript/skins/vanilla
+      #     rm -rf tangerine
 
       - name: Apply Emoji Reaction Patch
         continue-on-error: true
