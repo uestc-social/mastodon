@@ -434,6 +434,36 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install search plugins
+        if: matrix.search-image
+        run: |
+          set -ex
+          CONTAINER_ID=$(docker ps --filter "ancestor=${{ matrix.search-image }}" -q)
+          if [ -z "$CONTAINER_ID" ]; then
+            echo "Search container not found!"
+            exit 1
+          fi
+          if [[ "${{ matrix.search-image }}" == *"elasticsearch"* ]]; then
+            VERSION=$(echo "${{ matrix.search-image }}" | cut -d: -f2)
+            echo "Installing IK and STConvert plugins version $VERSION for Elasticsearch..."
+            docker exec $CONTAINER_ID bin/elasticsearch-plugin install --batch "https://get.infini.cloud/elasticsearch/analysis-ik/$VERSION"
+            docker exec $CONTAINER_ID bin/elasticsearch-plugin install --batch "https://get.infini.cloud/elasticsearch/analysis-stconvert/$VERSION"
+          elif [[ "${{ matrix.search-image }}" == *"opensearch"* ]]; then
+            echo "Detecting OpenSearch version..."
+            OS_VERSION_RAW=$(docker exec $CONTAINER_ID bin/opensearch --version)
+            VERSION=$(echo "$OS_VERSION_RAW" | sed -n 's/.*Version: \([0-9\.]*\).*/\1/p')
+            if [ -z "$VERSION" ]; then
+              echo "Failed to detect OpenSearch version from output: '$OS_VERSION_RAW'. Falling back to 2.14.0."
+              VERSION="2.14.0"
+            fi
+            echo "Installing IK and STConvert plugins for detected OpenSearch version $VERSION"
+            docker exec $CONTAINER_ID bin/opensearch-plugin install --batch "https://get.infini.cloud/opensearch/analysis-ik/$VERSION"
+            docker exec $CONTAINER_ID bin/opensearch-plugin install --batch "https://get.infini.cloud/opensearch/analysis-stconvert/$VERSION"
+          fi
+          echo "Restarting search container to apply plugins..."
+          docker restart $CONTAINER_ID
+          echo "Waiting for search container to be healthy..."
+
       - uses: actions/download-artifact@v4
         with:
           path: './'
