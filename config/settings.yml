@@ -19,8 +19,8 @@ defaults: &defaults
   flavour: 'glitch'
   skin: 'system'
   trends: true
-  trends_as_landing_page: true
-  trendable_by_default: false
+  trends_as_landing_page: false
+  trendable_by_default: true
   trending_status_cw: true
   visible_reactions: 6
   hide_followers_count: false
@@ -50,8 +50,8 @@ defaults: &defaults
   bootstrap_timeline_accounts: ''
   activity_api_enabled: true
   peers_api_enabled: true
-  show_reblogs_in_public_timelines: false
-  show_replies_in_public_timelines: false
+  show_reblogs_in_public_timelines: true
+  show_replies_in_public_timelines: true
   default_content_type: 'text/markdown'
   show_domain_blocks: 'disabled'
   show_domain_blocks_rationale: 'disabled'
