@@ -6,11 +6,11 @@ class Trends::Links < Trends::Base
   BATCH_SIZE = 100
 
   self.default_options = {
-    threshold: 5,
-    review_threshold: 3,
-    max_score_cooldown: 2.days.freeze,
-    max_score_halflife: 8.hours.freeze,
-    decay_threshold: 1,
+    threshold: ENV.fetch('TRENDS_LINKS_THRESHOLD', ENV.fetch('TRENDS_THRESHOLD', 5)).to_i,
+    review_threshold: ENV.fetch('TRENDS_LINKS_REVIEW_THRESHOLD', ENV.fetch('TRENDS_REVIEW_THRESHOLD', 3)).to_i,
+    max_score_cooldown: TrendsSettingsParser.parse_duration(ENV.fetch('TRENDS_LINKS_MAX_SCORE_COOLDOWN', ENV.fetch('TRENDS_MAX_SCORE_COOLDOWN', nil)), 2.days).freeze,
+    max_score_halflife: TrendsSettingsParser.parse_duration(ENV.fetch('TRENDS_LINKS_MAX_SCORE_HALFLIFE', ENV.fetch('TRENDS_MAX_SCORE_HALFLIFE', nil)), 8.hours).freeze,
+    decay_threshold: ENV.fetch('TRENDS_LINKS_DECAY_THRESHOLD', ENV.fetch('TRENDS_DECAY_THRESHOLD', 1)).to_i,
   }
 
   class Query < Trends::Query
