@@ -1,0 +1,39 @@
+name: Build latest container image
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-image:
+    uses: ./.github/workflows/build-container-image.yml
+    with:
+      file_to_build: Dockerfile
+      cache: false
+      push_to_images: |
+        ghcr.io/${{ github.repository_owner }}/mastodon
+      flavor: |
+        latest=auto
+      tags: |
+        type=raw,value=edge
+        type=pep440,pattern={{raw}}        
+    secrets: inherit
+
+  build-image-streaming:
+    uses: ./.github/workflows/build-container-image.yml
+    with:
+      file_to_build: streaming/Dockerfile
+      cache: false
+      push_to_images: |
+        ghcr.io/${{ github.repository_owner }}/mastodon-streaming
+      flavor: |
+        latest=auto
+      tags: |
+        type=raw,value=edge
+        type=pep440,pattern={{raw}}   
+    secrets: inherit
