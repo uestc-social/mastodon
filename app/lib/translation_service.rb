@@ -11,7 +11,8 @@ class TranslationService
     if configuration.deepl[:api_key].present?
       TranslationService::DeepL.new(
         configuration.deepl[:plan],
-        configuration.deepl[:api_key]
+        configuration.deepl[:api_key],
+        configuration.deepl[:api_endpoint]
       )
     elsif configuration.libre_translate[:endpoint].present?
       TranslationService::LibreTranslate.new(

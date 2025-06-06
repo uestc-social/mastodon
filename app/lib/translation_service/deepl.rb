@@ -3,11 +3,12 @@
 class TranslationService::DeepL < TranslationService
   include JsonLdHelper
 
-  def initialize(plan, api_key)
+  def initialize(plan, api_key, api_endpoint = nil)
     super()
 
-    @plan    = plan
-    @api_key = api_key
+    @plan         = plan
+    @api_key      = api_key
+    @api_endpoint = api_endpoint
   end
 
   def translate(texts, source_language, target_language)
@@ -60,6 +61,8 @@ class TranslationService::DeepL < TranslationService
   end
 
   def base_url
+    return @api_endpoint if @api_endpoint.present?
+
     if @plan == 'free'
       'https://api-free.deepl.com'
     else
