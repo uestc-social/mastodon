@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - "main"
+      - 'main'
 
 permissions:
   contents: read
@@ -21,7 +21,7 @@ jobs:
         latest=auto
       tags: |
         type=raw,value=edge
-        type=pep440,pattern={{raw}}        
+        type=pep440,pattern={{raw}}
     secrets: inherit
 
   build-image-streaming:
@@ -35,5 +35,5 @@ jobs:
         latest=auto
       tags: |
         type=raw,value=edge
-        type=pep440,pattern={{raw}}   
+        type=pep440,pattern={{raw}}
     secrets: inherit

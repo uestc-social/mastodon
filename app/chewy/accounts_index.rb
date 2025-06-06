@@ -5,78 +5,85 @@ require_relative 'analysis/language/chinese'
 class AccountsIndex < Chewy::Index
   include DatetimeClampingConcern
 
-  settings [
-    {
-      index: index_preset(refresh_interval: '30s'),
-      analysis: {
-      filter: {
-        english_stop: {
-          type: 'stop',
-          stopwords: '_english_',
-        },
+  LANGUAGES = [
+    Analysis::Language::Chinese,
+  ].freeze
 
-        english_stemmer: {
-          type: 'stemmer',
-          language: 'english',
-        },
+  settings(
+    [
+      {
+        index: index_preset(refresh_interval: '30s'),
+        analysis: {
+          filter: {
+            english_stop: {
+              type: 'stop',
+              stopwords: '_english_',
+            },
 
-        english_possessive_stemmer: {
-          type: 'stemmer',
-          language: 'possessive_english',
-        },
+            english_stemmer: {
+              type: 'stemmer',
+              language: 'english',
+            },
 
-        word_joiner: {
-          type: 'shingle',
-          output_unigrams: true,
-          token_separator: '',
+            english_possessive_stemmer: {
+              type: 'stemmer',
+              language: 'possessive_english',
+            },
+
+            word_joiner: {
+              type: 'shingle',
+              output_unigrams: true,
+              token_separator: '',
+            },
+          },
+
+          analyzer: {
+            # "The FOOING's bar" becomes "foo bar"
+            natural: {
+              tokenizer: 'standard',
+              filter: %w(
+                lowercase
+                asciifolding
+                cjk_width
+                elision
+                english_possessive_stemmer
+                english_stop
+                english_stemmer
+              ),
+            },
+
+            # "FOO bar" becomes "foo bar"
+            verbatim: {
+              tokenizer: 'standard',
+              filter: %w(lowercase asciifolding cjk_width),
+            },
+
+            # "Foo bar" becomes "foo bar foobar"
+            word_join_analyzer: {
+              type: 'custom',
+              tokenizer: 'standard',
+              filter: %w(lowercase asciifolding cjk_width word_joiner),
+            },
+
+            # "Foo bar" becomes "f fo foo b ba bar"
+            edge_ngram: {
+              tokenizer: 'edge_ngram',
+              filter: %w(lowercase asciifolding cjk_width),
+            },
+          },
+
+          tokenizer: {
+            edge_ngram: {
+              type: 'edge_ngram',
+              min_gram: 1,
+              max_gram: 15,
+            },
+          },
         },
       },
-
-      analyzer: {
-        # "The FOOING's bar" becomes "foo bar"
-        natural: {
-          tokenizer: 'standard',
-          filter: %w(
-            lowercase
-            asciifolding
-            cjk_width
-            elision
-            english_possessive_stemmer
-            english_stop
-            english_stemmer
-          ),
-        },
-
-        # "FOO bar" becomes "foo bar"
-        verbatim: {
-          tokenizer: 'standard',
-          filter: %w(lowercase asciifolding cjk_width),
-        },
-
-        # "Foo bar" becomes "foo bar foobar"
-        word_join_analyzer: {
-          type: 'custom',
-          tokenizer: 'standard',
-          filter: %w(lowercase asciifolding cjk_width word_joiner),
-        },
-
-        # "Foo bar" becomes "f fo foo b ba bar"
-        edge_ngram: {
-          tokenizer: 'edge_ngram',
-          filter: %w(lowercase asciifolding cjk_width),
-        },
-      },
-
-      tokenizer: {
-        edge_ngram: {
-          type: 'edge_ngram',
-          min_gram: 1,
-          max_gram: 15,
-        },
-      },
-    },
-    Analysis::Language::Chinese.settings,
-  ].reduce({}, :deep_merge)
+      *LANGUAGES.map(&:settings),
+    ].reduce({}, :deep_merge)
+  )
 
   index_scope ::Account.searchable.includes(:account_stat)
 

@@ -5,41 +5,48 @@ require_relative 'analysis/language/chinese'
 class TagsIndex < Chewy::Index
   include DatetimeClampingConcern
 
-  settings [
-    {
-      index: index_preset(refresh_interval: '30s'),
-      analysis: {
-      analyzer: {
-        content: {
-          tokenizer: 'keyword',
-          filter: %w(
-            word_delimiter_graph
-            lowercase
-            asciifolding
-            cjk_width
-          ),
-        },
+  LANGUAGES = [
+    Analysis::Language::Chinese,
+  ].freeze
 
-        edge_ngram: {
-          tokenizer: 'edge_ngram',
-          filter: %w(
-            lowercase
-            asciifolding
-            cjk_width
-          ),
+  settings(
+    [
+      {
+        index: index_preset(refresh_interval: '30s'),
+        analysis: {
+          analyzer: {
+            content: {
+              tokenizer: 'keyword',
+              filter: %w(
+                word_delimiter_graph
+                lowercase
+                asciifolding
+                cjk_width
+              ),
+            },
+
+            edge_ngram: {
+              tokenizer: 'edge_ngram',
+              filter: %w(
+                lowercase
+                asciifolding
+                cjk_width
+              ),
+            },
+          },
+
+          tokenizer: {
+            edge_ngram: {
+              type: 'edge_ngram',
+              min_gram: 2,
+              max_gram: 15,
+            },
+          },
         },
       },
-
-      tokenizer: {
-        edge_ngram: {
-          type: 'edge_ngram',
-          min_gram: 2,
-          max_gram: 15,
-        },
-      },
-    },
-    Analysis::Language::Chinese.settings,
-  ].reduce({}, :deep_merge)
+      *LANGUAGES.map(&:settings),
+    ].reduce({}, :deep_merge)
+  )
 
   index_scope ::Tag.listable
 

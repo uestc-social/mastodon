@@ -5,59 +5,66 @@ require_relative 'analysis/language/chinese'
 class StatusesIndex < Chewy::Index
   include DatetimeClampingConcern
 
-  settings [
-    {
-      index: index_preset(refresh_interval: '30s', number_of_shards: 5),
-      analysis: {
-      filter: {
-        english_stop: {
-          type: 'stop',
-          stopwords: '_english_',
-        },
+  LANGUAGES = [
+    Analysis::Language::Chinese,
+  ].freeze
 
-        english_stemmer: {
-          type: 'stemmer',
-          language: 'english',
-        },
+  settings(
+    [
+      {
+        index: index_preset(refresh_interval: '30s', number_of_shards: 5),
+        analysis: {
+          filter: {
+            english_stop: {
+              type: 'stop',
+              stopwords: '_english_',
+            },
 
-        english_possessive_stemmer: {
-          type: 'stemmer',
-          language: 'possessive_english',
+            english_stemmer: {
+              type: 'stemmer',
+              language: 'english',
+            },
+
+            english_possessive_stemmer: {
+              type: 'stemmer',
+              language: 'possessive_english',
+            },
+          },
+
+          analyzer: {
+            verbatim: {
+              tokenizer: 'uax_url_email',
+              filter: %w(lowercase),
+            },
+
+            content: {
+              tokenizer: 'standard',
+              filter: %w(
+                lowercase
+                asciifolding
+                cjk_width
+                elision
+                english_possessive_stemmer
+                english_stop
+                english_stemmer
+              ),
+            },
+
+            hashtag: {
+              tokenizer: 'keyword',
+              filter: %w(
+                word_delimiter_graph
+                lowercase
+                asciifolding
+                cjk_width
+              ),
+            },
+          },
         },
       },
-
-      analyzer: {
-        verbatim: {
-          tokenizer: 'uax_url_email',
-          filter: %w(lowercase),
-        },
-
-        content: {
-          tokenizer: 'standard',
-          filter: %w(
-            lowercase
-            asciifolding
-            cjk_width
-            elision
-            english_possessive_stemmer
-            english_stop
-            english_stemmer
-          ),
-        },
-
-        hashtag: {
-          tokenizer: 'keyword',
-          filter: %w(
-            word_delimiter_graph
-            lowercase
-            asciifolding
-            cjk_width
-          ),
-        },
-      },
-    },
-    Analysis::Language::Chinese.settings,
-  ].reduce({}, :deep_merge)
+      *LANGUAGES.map(&:settings),
+    ].reduce({}, :deep_merge)
+  )
 
   index_scope ::Status.unscoped.kept.without_reblogs.includes(:media_attachments, :local_mentioned, :local_favorited, :local_reblogged, :local_bookmarked, :tags, preview_cards_status: :preview_card, preloadable_poll: :local_voters), delete_if: ->(status) { status.searchable_by.empty? }
 
@@ -68,7 +75,7 @@ class StatusesIndex < Chewy::Index
       field(:stemmed, type: 'text', analyzer: 'content')
       field(:chinese, type: 'text', analyzer: 'chinese_ik')
     end
-    field(:tags, type: 'text', analyzer: 'hashtag',  value: ->(status) { status.tags.map(&:display_name) })
+    field(:tags, type: 'text', analyzer: 'hashtag', value: ->(status) { status.tags.map(&:display_name) })
     field(:searchable_by, type: 'long', value: ->(status) { status.searchable_by })
     field(:language, type: 'keyword')
     field(:properties, type: 'keyword', value: ->(status) { status.searchable_properties })
