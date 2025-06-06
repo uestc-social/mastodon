@@ -11,7 +11,7 @@ class Api::BaseController < ApplicationController
   include Api::ErrorHandling
   include Api::Pagination
 
-  skip_before_action :require_functional!, unless: :limited_federation_mode?
+  skip_before_action :require_functional!, if: :functional_endpoint_in_limited_federation_mode?
 
   before_action :require_authenticated_user!, if: :disallow_unauthenticated_api_access?
   before_action :require_not_suspended!
@@ -96,6 +96,20 @@ class Api::BaseController < ApplicationController
   end
 
   private
+
+  def functional_endpoint_in_limited_federation_mode?
+    return true unless limited_federation_mode?
+
+    allowed_paths = [
+      '/api/v1/instance',
+      '/api/v2/instance',
+      '/api/v1/custom_emojis',
+      '/api/v1/instance/rules',
+      '/api/v1/instance/extended_description',
+    ]
+
+    allowed_paths.include?(request.path)
+  end
 
   def respond_with_error(code)
     render json: { error: Rack::Utils::HTTP_STATUS_CODES[code] }, status: code
