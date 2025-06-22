@@ -133,7 +133,7 @@ class InitialStateSerializer < ActiveModel::Serializer
       trends_enabled: Setting.trends,
       version: instance_presenter.version,
       visible_reactions: Setting.visible_reactions,
-      terms_of_service_enabled: TermsOfService.live.exists?,
+      terms_of_service_enabled: TermsOfService.current.present?,
     }
   end
 
