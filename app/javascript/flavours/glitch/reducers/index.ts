@@ -38,6 +38,7 @@ import status_lists from './status_lists';
 import status_reactions from './status_reactions';
 import statuses from './statuses';
 import { suggestionsReducer } from './suggestions';
+import { followedTagsReducer } from './tags';
 import timelines from './timelines';
 import trends from './trends';
 import user_lists from './user_lists';
@@ -70,6 +71,7 @@ const reducers = {
   height_cache,
   custom_emojis,
   lists: listsReducer,
+  followedTags: followedTagsReducer,
   filters,
   conversations,
   suggestions: suggestionsReducer,

@@ -54,10 +54,6 @@ export function GettingStarted () {
   return import('../../getting_started');
 }
 
-export function GettingStartedMisc () {
-  return import('../../getting_started_misc');
-}
-
 export function KeyboardShortcuts () {
   return import('../../keyboard_shortcuts');
 }
