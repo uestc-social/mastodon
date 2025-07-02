@@ -108,6 +108,8 @@ class Api::BaseController < ApplicationController
       '/api/v2/instance',
       '/api/v1/custom_emojis',
       '/api/v1/instance/rules',
+      '/api/v1/instance/terms_of_service',
+      '/api/v1/instance/privacy_policy',
       '/api/v1/instance/extended_description',
     ]
 
