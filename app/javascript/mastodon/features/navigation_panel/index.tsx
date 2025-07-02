@@ -260,7 +260,7 @@ export const NavigationPanel: React.FC<{ multiColumn?: boolean }> = ({
         {(signedIn || timelinePreview) && (
           <ColumnLink
             transparent
-            to='/public/local'
+            to='/public'
             icon='globe'
             iconComponent={PublicIcon}
             isActive={isFirehoseActive}
