@@ -463,6 +463,22 @@ class Status < ApplicationRecord
     '👁'
   end
 
+  def marked_anonymous?
+    anon_config = Rails.configuration.x.anon
+    return false unless anon_config.enabled && anon_config.tag.present?
+    
+    pattern = /#{Regexp.escape(anon_config.tag)}\s*(?:#{Regexp.escape(local_only_emoji)}\ufe0f?)?\s*\z/
+    pattern.match?(content)
+  end
+
+  def clean_anonymous_tag(text)
+    anon_config = Rails.configuration.x.anon
+    return text unless anon_config.enabled && anon_config.tag.present?
+    
+    pattern = /#{Regexp.escape(anon_config.tag)}\s*(?=(?:#{Regexp.escape(local_only_emoji)}\ufe0f?)?\s*\z)/
+    text.gsub(pattern, '')
+  end
+
   def status_stat
     super || build_status_stat
   end

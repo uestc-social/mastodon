@@ -63,9 +63,35 @@ class Api::V1::StatusesController < Api::BaseController
   end
 
   def create
+    original_text = status_params[:status]
+
+    if should_post_anonymously?(original_text)
+      anon_config = Rails.configuration.x.anon
+      proxy_account = Account.find_by(username: anon_config.account_username)
+
+      if proxy_account
+        anonymous_name = generate_anonymous_name(current_user.account)
+
+        if anonymous_name
+          cleaned_text = Status.new.clean_anonymous_tag(original_text)
+          processed_text = "[#{anonymous_name}]:\n#{cleaned_text}"
+          sender_account = proxy_account
+        else
+          processed_text = original_text
+          sender_account = current_user.account
+        end
+      else
+        processed_text = original_text
+        sender_account = current_user.account
+      end
+    else
+      sender_account = current_user.account
+      processed_text = original_text
+    end
+
     @status = PostStatusService.new.call(
-      current_user.account,
-      text: status_params[:status],
+      sender_account,
+      text: processed_text,
       thread: @thread,
       media_ids: status_params[:media_ids],
       sensitive: status_params[:sensitive],
@@ -192,5 +218,72 @@ class Api::V1::StatusesController < Api::BaseController
 
   def serialized_accounts(accounts)
     ActiveModel::Serializer::CollectionSerializer.new(accounts, serializer: REST::AccountSerializer)
+  end
+
+  def should_post_anonymously?(text)
+    anon_config = Rails.configuration.x.anon
+    anon_config.enabled &&
+    anon_config.account_username.present? &&
+    anon_config.tag.present? &&
+    text.strip.match?(/#{Regexp.escape(anon_config.tag)}(?:\s+#{Regexp.escape('👁')}\ufe0f?)?\s*\z/)
+  end
+
+  def generate_anonymous_name(account)
+    anon_config = Rails.configuration.x.anon
+    return nil unless anon_config.enabled && anon_config.account_username.present? && anon_config.name_list.any?
+
+    # Calculate time window
+    period_hours = anon_config.period_hours
+    current_time_utc = Time.current.utc
+    hours_since_epoch = current_time_utc.to_i / 3600
+    time_window = hours_since_epoch / period_hours
+    
+    redis_key = "anon_names:#{time_window}"
+    
+    # Check name conflict
+    existing_name = redis.hget(redis_key, account.username)
+    return existing_name if existing_name.present?
+
+    input = "#{account.username}#{anon_config.salt}#{time_window}"
+    name_index = Digest::SHA2.hexdigest(input).to_i(16) % anon_config.name_list.size
+
+    selected_name = with_redis do |redis_conn|
+      redis_conn.multi do |transaction|
+        used_names = transaction.hvals(redis_key).value || []
+
+        available_name = find_available_name(anon_config.name_list, used_names, name_index)
+
+        transaction.hset(redis_key, account.username, available_name)
+        transaction.expire(redis_key, (period_hours + 1) * 3600)
+        
+        available_name
+      end.last
+    end
+    
+    selected_name
+  rescue Redis::BaseError => e
+    Rails.logger.warn("Anonymous name generation failed: #{e.message}")
+    # Fallback: generate name without collision detection
+    input = "#{account.username}#{anon_config.salt}#{time_window}"
+    name_index = Digest::SHA2.hexdigest(input).to_i(16) % anon_config.name_list.size
+    anon_config.name_list[name_index]
+  end
+
+  private
+
+  def find_available_name(name_list, used_names, start_index)
+    used_names_set = used_names.to_set
+
+    name_list.size.times do |offset|
+      index = (start_index + offset) % name_list.size
+      name = name_list[index]
+      return name unless used_names_set.include?(name)
+    end
+
+    # If all names used, generate combination
+    base_name = name_list[start_index]
+    suffix_index = used_names.size % name_list.size
+    suffix_name = name_list[suffix_index]
+    "#{base_name}#{suffix_name}"
   end
 end
