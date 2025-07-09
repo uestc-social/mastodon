@@ -2,6 +2,7 @@
 
 class Api::V1::StatusesController < Api::BaseController
   include Authorization
+  include Redisable
 
   before_action -> { authorize_if_got_token! :read, :'read:statuses' }, except: [:create, :update, :destroy]
   before_action -> { doorkeeper_authorize! :write, :'write:statuses' }, only:   [:create, :update, :destroy]
@@ -241,23 +242,23 @@ class Api::V1::StatusesController < Api::BaseController
     redis_key = "anon_names:#{time_window}"
     
     # Check name conflict
-    existing_name = redis.hget(redis_key, account.username)
+    existing_name = with_redis { |redis_conn| redis_conn.hget(redis_key, account.username) }
     return existing_name if existing_name.present?
 
     input = "#{account.username}#{anon_config.salt}#{time_window}"
     name_index = Digest::SHA2.hexdigest(input).to_i(16) % anon_config.name_list.size
 
     selected_name = with_redis do |redis_conn|
+      used_names = redis_conn.hvals(redis_key) || []
+
+      available_name = find_available_name(anon_config.name_list, used_names, name_index)
+
       redis_conn.multi do |transaction|
-        used_names = transaction.hvals(redis_key).value || []
-
-        available_name = find_available_name(anon_config.name_list, used_names, name_index)
-
         transaction.hset(redis_key, account.username, available_name)
         transaction.expire(redis_key, (period_hours + 1) * 3600)
-        
-        available_name
-      end.last
+      end
+      
+      available_name
     end
     
     selected_name
