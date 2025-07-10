@@ -3,140 +3,140 @@ zh-CN:
   activerecord:
     attributes:
       doorkeeper/application:
-        name: Application name
-        redirect_uri: Redirect URI
-        scopes: Scopes
-        website: Application website
+        name: 应用程序名称
+        redirect_uri: 重定向 URI
+        scopes: 范围
+        website: 应用程序网站
     errors:
       models:
         doorkeeper/application:
           attributes:
             redirect_uri:
-              fragment_present: cannot contain a fragment.
-              invalid_uri: must be a valid URI.
-              relative_uri: must be an absolute URI.
-              secured_uri: must be an HTTPS/SSL URI.
+              fragment_present: 不能包含片段。
+              invalid_uri: 必须是有效的 URI。
+              relative_uri: 必须是绝对 URI。
+              secured_uri: 必须是 HTTPS/SSL URI。
   doorkeeper:
     applications:
       buttons:
         authorize: Authorize
         cancel: Cancel
-        destroy: Destroy
+        destroy: 销毁
         edit: Edit
         submit: Submit
       confirmations:
         destroy: Are you sure?
       edit:
-        title: Edit application
+        title: 编辑应用程序
       form:
-        error: Whoops! Check your form for possible errors
+        error: 哎呀！请检查您的表单中可能存在的错误
       help:
-        native_redirect_uri: Use %{native_redirect_uri} for local tests
-        redirect_uri: Use one line per URI
-        scopes: Separate scopes with spaces. Leave blank to use the default scopes.
+        native_redirect_uri: 使用 %{native_redirect_uri} 进行本地测试
+        redirect_uri: 每个 URI 占一行
+        scopes: 使用空格分隔范围。留空以使用默认范围。
       index:
         application: Application
-        callback_url: Callback URL
+        callback_url: 回调 URL
         delete: Delete
-        empty: You have no applications.
+        empty: 您还没有任何应用程序。
         name: Name
-        new: New application
-        scopes: Scopes
-        show: Show
-        title: Your applications
+        new: 新建应用程序
+        scopes: 范围
+        show: 查看
+        title: 您的应用程序
       new:
-        title: New application
+        title: 新建应用程序
       show:
-        actions: Actions
-        application_id: Client key
-        callback_urls: Callback URLs
-        scopes: Scopes
-        secret: Client secret
-        title: 'Application: %{name}'
+        actions: 操作
+        application_id: 客户端 ID
+        callback_urls: 回调 URL
+        scopes: 范围
+        secret: 客户端密钥
+        title: '应用程序：%{name}'
     authorizations:
       buttons:
         authorize: Authorize
-        deny: Deny
+        deny: 拒绝
       error:
-        title: An error has occurred
+        title: 发生错误
       new:
-        prompt_html: "%{client_name} would like permission to access your account. <strong>Only approve this request if you recognize and trust this source.</strong>"
-        review_permissions: Review permissions
-        title: Authorization required
+        prompt_html: "%{client_name} 希望获得访问您帐户的权限。<strong>仅当您认识并信任此来源时，才批准此请求。</strong>"
+        review_permissions: 审查权限
+        title: 需要授权
       show:
-        title: Copy this authorization code and paste it to the application.
+        title: 复制此授权码并将其粘贴到应用程序中。
     authorized_applications:
       buttons:
         revoke: Revoke
       confirmations:
         revoke: Are you sure?
       index:
-        authorized_at: Authorized on %{date}
-        description_html: These are applications that can access your account using the API. If there are applications you do not recognize here, or an application is misbehaving, you can revoke its access.
-        last_used_at: Last used on %{date}
-        never_used: Never used
+        authorized_at: 授权于 %{date}
+        description_html: 这些是可以使用 API 访问您帐户的应用程序。如果您在此处发现不认识的应用程序，或者某个应用程序行为不当，您可以撤销其访问权限。
+        last_used_at: 上次使用于 %{date}
+        never_used: 从未使用
         scopes: Permissions
-        superapp: Internal
-        title: Your authorized applications
+        superapp: 内部
+        title: 您授权的应用程序
     errors:
       messages:
-        access_denied: The resource owner or authorization server denied the request.
-        credential_flow_not_configured: Resource Owner Password Credentials flow failed due to Doorkeeper.configure.resource_owner_from_credentials being unconfigured.
-        invalid_client: Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method.
-        invalid_code_challenge_method: The code challenge method must be S256, plain is unsupported.
-        invalid_grant: The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.
-        invalid_redirect_uri: The redirect uri included is not valid.
+        access_denied: 资源所有者或授权服务器拒绝了该请求。
+        credential_flow_not_configured: 资源所有者密码凭据流程失败，因为 Doorkeeper.configure.resource_owner_from_credentials 未配置。
+        invalid_client: 客户端认证失败，原因是客户端未知、未包含客户端认证或认证方法不被支持。
+        invalid_code_challenge_method: 代码质询方法必须为 S256，不支持 plain。
+        invalid_grant: 提供的授权许可无效、已过期、已撤销、与授权请求中使用的重定向 URI不匹配，或已颁发给其他客户端。
+        invalid_redirect_uri: 提供的重定向 URI 无效。
         invalid_request:
-          missing_param: 'Missing required parameter: %{value}.'
-          request_not_authorized: Request need to be authorized. Required parameter for authorizing request is missing or invalid.
-          unknown: The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.
-        invalid_resource_owner: The provided resource owner credentials are not valid, or resource owner cannot be found
-        invalid_scope: The requested scope is invalid, unknown, or malformed.
+          missing_param: '缺少必需参数：%{value}。'
+          request_not_authorized: 请求需要授权。用于授权请求的必需参数缺失或无效。
+          unknown: 请求缺少必需参数、包含不支持的参数值或格式错误。
+        invalid_resource_owner: 提供的资源所有者凭据无效，或找不到资源所有者。
+        invalid_scope: 请求的范围无效、未知或格式错误。
         invalid_token:
-          expired: The access token expired
-          revoked: The access token was revoked
-          unknown: The access token is invalid
-        resource_owner_authenticator_not_configured: Resource Owner find failed due to Doorkeeper.configure.resource_owner_authenticator being unconfiged.
-        server_error: The authorization server encountered an unexpected condition which prevented it from fulfilling the request.
-        temporarily_unavailable: The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.
-        unauthorized_client: The client is not authorized to perform this request using this method.
-        unsupported_grant_type: The authorization grant type is not supported by the authorization server.
-        unsupported_response_type: The authorization server does not support this response type.
+          expired: 访问令牌已过期
+          revoked: 访问令牌已被撤销
+          unknown: 访问令牌无效
+        resource_owner_authenticator_not_configured: 由于 Doorkeeper.configure.resource_owner_authenticator 未配置，资源所有者查找失败。
+        server_error: 授权服务器遇到意外情况，导致无法完成请求。
+        temporarily_unavailable: 由于服务器临时过载或正在维护，授权服务器目前无法处理该请求。
+        unauthorized_client: 客户端无权使用此方法执行此请求。
+        unsupported_grant_type: 授权服务器不支持此授权授予类型。
+        unsupported_response_type: 授权服务器不支持此响应类型。
     flash:
       applications:
         create:
-          notice: Application created.
+          notice: 已创建应用程序。
         destroy:
-          notice: Application deleted.
+          notice: 已删除应用程序。
         update:
-          notice: Application updated.
+          notice: 已更新应用程序。
       authorized_applications:
         destroy:
-          notice: Application revoked.
+          notice: 已撤销应用程序。
     grouped_scopes:
       access:
-        read: Read-only access
-        read/write: Read and write access
-        write: Write-only access
+        read: 只读权限
+        read/write: 读写权限
+        write: 仅写入权限
       title:
         accounts: Accounts
-        admin/accounts: Administration of accounts
-        admin/all: All administrative functions
-        admin/reports: Administration of reports
-        all: Full access to your Mastodon account
-        blocks: Blocks
+        admin/accounts: 帐户管理
+        admin/all: 所有管理功能
+        admin/reports: 报告管理
+        all: 对您的 Mastodon 帐户的完整访问权限
+        blocks: 屏蔽
         bookmarks: Bookmarks
         conversations: Conversations
-        crypto: End-to-end encryption
+        crypto: 端到端加密
         favourites: Favorites
         filters: Filters
-        follow: Follows, Mutes and Blocks
+        follow: 关注、隐藏动态和屏蔽
         follows: Follows
         lists: Lists
         media: Media attachments
-        mutes: Mutes
+        mutes: 隐藏动态
         notifications: Notifications
-        profile: Your Mastodon profile
+        profile: 您的 Mastodon 个人资料
         push: Push notifications
         reports: Reports
         search: Search
@@ -144,55 +144,55 @@ zh-CN:
     layouts:
       admin:
         nav:
-          applications: Applications
-          oauth2_provider: OAuth2 Provider
+          applications: 应用程序
+          oauth2_provider: OAuth2 提供商
       application:
-        title: OAuth authorization required
+        title: 需要 OAuth 授权
     scopes:
-      "admin:read": read all data on the server
-      "admin:read:accounts": read sensitive information of all accounts
-      "admin:read:canonical_email_blocks": read sensitive information of all canonical email blocks
-      "admin:read:domain_allows": read sensitive information of all domain allows
-      "admin:read:domain_blocks": read sensitive information of all domain blocks
-      "admin:read:email_domain_blocks": read sensitive information of all email domain blocks
-      "admin:read:ip_blocks": read sensitive information of all IP blocks
-      "admin:read:reports": read sensitive information of all reports and reported accounts
-      "admin:write": modify all data on the server
-      "admin:write:accounts": perform moderation actions on accounts
-      "admin:write:canonical_email_blocks": perform moderation actions on canonical email blocks
-      "admin:write:domain_allows": perform moderation actions on domain allows
-      "admin:write:domain_blocks": perform moderation actions on domain blocks
-      "admin:write:email_domain_blocks": perform moderation actions on email domain blocks
-      "admin:write:ip_blocks": perform moderation actions on IP blocks
-      "admin:write:reports": perform moderation actions on reports
-      crypto: use end-to-end encryption
-      follow: modify account relationships
-      profile: read only your account's profile information
-      push: receive your push notifications
-      read: read all your account's data
-      "read:accounts": see accounts information
-      "read:blocks": see your blocks
-      "read:bookmarks": see your bookmarks
-      "read:favourites": see your favorites
-      "read:filters": see your filters
-      "read:follows": see your follows
-      "read:lists": see your lists
-      "read:mutes": see your mutes
-      "read:notifications": see your notifications
-      "read:reports": see your reports
-      "read:search": search on your behalf
-      "read:statuses": see all posts
-      write: modify all your account's data
-      "write:accounts": modify your profile
-      "write:blocks": block accounts and domains
-      "write:bookmarks": bookmark posts
-      "write:conversations": mute and delete conversations
-      "write:favourites": favorite posts
-      "write:filters": create filters
-      "write:follows": follow people
-      "write:lists": create lists
-      "write:media": upload media files
-      "write:mutes": mute people and conversations
-      "write:notifications": clear your notifications
-      "write:reports": report other people
-      "write:statuses": publish posts
+      "admin:read": 读取服务器上的所有数据
+      "admin:read:accounts": 读取所有账户的敏感信息
+      "admin:read:canonical_email_blocks": 读取所有规范电子邮件屏蔽的敏感信息
+      "admin:read:domain_allows": 读取所有允许域名的敏感信息
+      "admin:read:domain_blocks": 读取所有屏蔽域名的敏感信息
+      "admin:read:email_domain_blocks": 读取所有电子邮件域名屏蔽的敏感信息
+      "admin:read:ip_blocks": 读取所有 IP 屏蔽的敏感信息
+      "admin:read:reports": 读取所有举报和被举报账户的敏感信息
+      "admin:write": 修改服务器上的所有数据
+      "admin:write:accounts": 对账户执行管理操作
+      "admin:write:canonical_email_blocks": 对规范化电子邮件黑名单执行管理操作
+      "admin:write:domain_allows": 对域名白名单执行管理操作
+      "admin:write:domain_blocks": 对域名黑名单执行管理操作
+      "admin:write:email_domain_blocks": 对电子邮件域名黑名单执行管理操作
+      "admin:write:ip_blocks": 对 IP 黑名单执行管理操作
+      "admin:write:reports": 对举报执行管理操作
+      crypto: 使用端到端加密
+      follow: 修改账户关系
+      profile: 只读您的账户个人资料信息
+      push: 接收您的推送通知
+      read: 读取您的全部帐户数据
+      "read:accounts": 查看帐户信息
+      "read:blocks": 查看您已屏蔽的用户
+      "read:bookmarks": 查看您的书签
+      "read:favourites": 查看您收藏的内容
+      "read:filters": 查看您的过滤器
+      "read:follows": 查看您关注的人
+      "read:lists": 查看您的列表
+      "read:mutes": 查看您已设为静音的用户
+      "read:notifications": 查看您的通知
+      "read:reports": 查看您的举报
+      "read:search": 代表您进行搜索
+      "read:statuses": 查看所有帖子
+      write: 修改您的所有账户数据
+      "write:accounts": 修改您的个人资料
+      "write:blocks": 屏蔽账户和域名
+      "write:bookmarks": 为帖子添加书签
+      "write:conversations": 静音和删除对话
+      "write:favourites": 收藏帖子
+      "write:filters": 创建过滤器
+      "write:follows": 关注用户
+      "write:lists": 创建列表
+      "write:media": 上传媒体文件
+      "write:mutes": 静音用户和对话
+      "write:notifications": 清空您的通知
+      "write:reports": 举报他人
+      "write:statuses": 发布帖子
