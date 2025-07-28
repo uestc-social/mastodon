@@ -2,45 +2,53 @@
 zh-CN:
   admin:
     custom_emojis:
-      batch_copy_error: '复制部分所选表情时发生错误: %{message}'
-      batch_error: 发生了一个错误：%{message}
+      batch_copy_error: 'An error occurred when copying some of the selected emoji: %{message}'
+      batch_error: 'An error occurred: %{message}'
     settings:
       bubble_domains:
-        all: 对所有人展示
-        disabled: 不对任何人展示
-        users: 只对本地登录用户展示
+        all: To everyone
+        disabled: To no one
+        users: To logged-in local users
       captcha_enabled:
-        desc_html: 这依赖于来自hCaptcha的外部脚本，这可能是一个安全和隐私问题。 此外， <strong>这可能使得某些人(尤其是残疾人)</strong>的注册简单程度大幅减少。 出于这些原因，请考虑采取其他措施，例如基于审核或邀请的注册。<br>通过限定邀请链接注册的用户将不需要解决验证码问题
-        title: 要求新用户解决验证码以确认他们的账户
+        desc_html: This relies on external scripts from hCaptcha, which may be a security and privacy concern. In addition, <strong>this can make the registration process significantly less accessible to some (especially disabled) people</strong>. For these reasons, please consider alternative measures such as approval-based or invite-based registration.
+        title: Require new users to solve a CAPTCHA to confirm their account
       flavour_and_skin:
-        title: 风格与皮肤
+        title: Flavour and skin
       hide_followers_count:
-        desc_html: 不要在用户资料卡中显示粉丝数
-        title: 隐藏粉丝数
+        desc_html: Do not show followers count on user profiles
+        title: Hide followers count
       other:
-        preamble: 各种不适合归类到其他类别的glitch-soc设置。
-        title: 其它
+        preamble: Various glitch-soc settings not fitting in other categories.
+        title: Other
       outgoing_spoilers:
-        desc_html: 在交换嘟文的时候，将这个内容警告添加到没有内容警告的嘟文中。如果你的服务器专用于其他服务器可能希望有内容警告的内容，它会很有用。媒体也将被标记为敏感。
-        title: 对外添加嘟文内容警告
+        desc_html: When federating toots, add this content warning to toots that do not have one. It is useful if your server is specialized in content other servers might want to have under a Content Warning. Media will also be marked as sensitive.
+        title: Content warning for outgoing toots
       show_reblogs_in_public_timelines:
-        desc_html: 在本站和跨站时间线中显示公开嘟文的转嘟。
-        title: 在公共时间线中显示转嘟
+        desc_html: Show public boosts of public toots in local and public timelines.
+        title: Show boosts in public timelines
       show_replies_in_public_timelines:
-        desc_html: 除公开的自我回复（嘟文串）外，在本地和跨站时间轴中显示公开回复。
-        title: 在公共时间线中显示回复
+        desc_html: In addition to public self-replies (threads), show public replies in local and public timelines.
+        title: Show replies in public timelines
       trending_status_cw:
-        desc_html: 当热门帖子被启用时，允许带有内容警告的帖子获得资格。此设置的更改不具有追溯性。
-        title: 允许带有内容警告的帖子进入热门
+        desc_html: When trending posts are enabled, allow posts with Content Warnings to be eligible. Changes to this setting are not retroactive.
+        title: Allow posts with Content Warnings to trend
   appearance:
     localization:
       glitch_guide_link: https://crowdin.com/project/glitch-soc
-      glitch_guide_link_text: Glitch-soc也是如此！
+      glitch_guide_link_text: And likewise for glitch-soc!
   auth:
     captcha_confirmation:
-      hint_html: 只需最后一步！为了确认您的账户，本服务器需要您解决一个验证码。如果您有疑问或需要帮助确认您的账户，请<a href="/about/more">联系服务器管理员</a>。
-      title: 用户验证
+      hint_html: Just one more step! To confirm your account, this server requires you to solve a CAPTCHA. You can <a href="/about/more">contact the server administrator</a> if you have questions or need assistance with confirming your account.
+      title: User verification
   generic:
-    use_this: 使用这个
+    use_this: Use this
+  gif:
+    errors:
+      too_many_requests: There have been too many requests to the GIF search service recently.
+  notification_mailer:
+    reaction:
+      body: "%{name} reacted to your post:"
+      subject: "%{name} reacted to your post"
+      title: New reaction
   settings:
-    flavours: 风格
+    flavours: Flavours
