@@ -3,10 +3,10 @@ zh-CN:
   activerecord:
     attributes:
       doorkeeper/application:
-        name: 应用程序名称
+        name: 应用名称
         redirect_uri: 重定向 URI
         scopes: 范围
-        website: 应用程序网站
+        website: 应用网站
     errors:
       models:
         doorkeeper/application:
@@ -27,7 +27,7 @@ zh-CN:
       confirmations:
         destroy: 你确定吗？
       edit:
-        title: 编辑应用程序
+        title: 编辑应用
       form:
         error: 哎呀！请检查你的表单中可能存在的错误
       help:
@@ -38,21 +38,21 @@ zh-CN:
         application: 应用
         callback_url: 回调 URL
         delete: 删除
-        empty: 你还没有任何应用程序。
+        empty: 你还没有任何应用。
         name: 名称
-        new: 新建应用程序
+        new: 新建应用
         scopes: 范围
         show: 查看
-        title: 你的应用程序
+        title: 你的应用
       new:
-        title: 新建应用程序
+        title: 新建应用
       show:
         actions: 操作
         application_id: 客户端 ID
         callback_urls: 回调 URL
         scopes: 范围
         secret: 客户端密钥
-        title: '应用程序：%{name}'
+        title: '应用：%{name}'
     authorizations:
       buttons:
         authorize: 同意
@@ -64,7 +64,7 @@ zh-CN:
         review_permissions: 审查权限
         title: 需要授权
       show:
-        title: 复制此授权码并将其粘贴到应用程序中。
+        title: 复制此授权码并将其粘贴到应用中。
     authorized_applications:
       buttons:
         revoke: 撤销
@@ -72,19 +72,19 @@ zh-CN:
         revoke: 你确定吗？
       index:
         authorized_at: 授权于 %{date}
-        description_html: 这些是可以使用 API 访问你帐户的应用程序。如果你在此处发现不认识的应用程序，或者某个应用程序行为不当，你可以撤销其访问权限。
+        description_html: 这些是可以使用 API 访问你帐户的应用。如果你在此处发现不认识的应用，或者某个应用行为不当，你可以撤销其访问权限。
         last_used_at: 上次使用于 %{date}
         never_used: 从未使用
         scopes: 权限
         superapp: 内部
-        title: 你授权的应用程序
+        title: 你授权的应用
     errors:
       messages:
         access_denied: 资源所有者或授权站点拒绝了该请求。
         credential_flow_not_configured: 资源所有者密码凭据流程失败，因为 Doorkeeper.configure.resource_owner_from_credentials 未配置。
         invalid_client: 客户端认证失败，原因是客户端未知、未包含客户端认证或认证方法不被支持。
         invalid_code_challenge_method: 代码质询方法必须为 S256，不支持 plain。
-        invalid_grant: 提供的授权许可无效、已过期、已撤销、与授权请求中使用的重定向 URI不匹配，或已颁发给其他客户端。
+        invalid_grant: 提供的授权许可无效、已过期、已撤销、与授权请求中使用的重定向 URI不匹配，或已颁发给其它客户端。
         invalid_redirect_uri: 提供的重定向 URI 无效。
         invalid_request:
           missing_param: '缺少必需参数：%{value}。'
@@ -105,24 +105,24 @@ zh-CN:
     flash:
       applications:
         create:
-          notice: 已创建应用程序。
+          notice: 已创建应用。
         destroy:
-          notice: 已删除应用程序。
+          notice: 已删除应用。
         update:
-          notice: 已更新应用程序。
+          notice: 已更新应用。
       authorized_applications:
         destroy:
-          notice: 已撤销应用程序。
+          notice: 已撤销应用。
     grouped_scopes:
       access:
         read: 只读权限
         read/write: 读写权限
         write: 仅写入权限
       title:
-        accounts: 帐号
+        accounts: 账户
         admin/accounts: 帐户管理
         admin/all: 所有管理功能
-        admin/reports: 报告管理
+        admin/reports: 举报管理
         all: 对你的 Mastodon 帐户的完整访问权限
         blocks: 屏蔽
         bookmarks: 收藏夹
@@ -130,39 +130,39 @@ zh-CN:
         crypto: 端到端加密
         favourites: 点赞
         filters: 过滤规则
-        follow: 关注、隐藏动态和屏蔽
+        follow: 关注、隐藏与屏蔽
         follows: 关注
         lists: 列表
         media: 媒体附件
-        mutes: 隐藏动态
+        mutes: 隐藏
         notifications: 通知
         profile: 你的 Mastodon 账户
         push: 推送通知
-        reports: 报告
+        reports: 举报
         search: 搜索
         statuses: 贴文
     layouts:
       admin:
         nav:
-          applications: 应用程序
+          applications: 应用
           oauth2_provider: OAuth2 提供者
       application:
         title: 需要 OAuth 授权
     scopes:
       "admin:read": 读取站点上的所有数据
       "admin:read:accounts": 读取所有账户的敏感信息
-      "admin:read:canonical_email_blocks": 读取所有规范电子邮件屏蔽的敏感信息
+      "admin:read:canonical_email_blocks": 读取所有规范邮件屏蔽的敏感信息
       "admin:read:domain_allows": 读取所有允许域名的敏感信息
       "admin:read:domain_blocks": 读取所有屏蔽域名的敏感信息
-      "admin:read:email_domain_blocks": 读取所有电子邮件域名屏蔽的敏感信息
+      "admin:read:email_domain_blocks": 读取所有邮件域名屏蔽的敏感信息
       "admin:read:ip_blocks": 读取所有 IP 屏蔽的敏感信息
       "admin:read:reports": 读取所有举报和被举报账户的敏感信息
       "admin:write": 修改站点上的所有数据
       "admin:write:accounts": 对账户执行管理操作
-      "admin:write:canonical_email_blocks": 对规范化电子邮件黑名单执行管理操作
+      "admin:write:canonical_email_blocks": 对规范化邮件黑名单执行管理操作
       "admin:write:domain_allows": 对域名白名单执行管理操作
       "admin:write:domain_blocks": 对域名黑名单执行管理操作
-      "admin:write:email_domain_blocks": 对电子邮件域名黑名单执行管理操作
+      "admin:write:email_domain_blocks": 对邮件域名黑名单执行管理操作
       "admin:write:ip_blocks": 对 IP 黑名单执行管理操作
       "admin:write:reports": 对举报执行管理操作
       crypto: 使用端到端加密
