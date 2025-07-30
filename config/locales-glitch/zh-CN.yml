@@ -2,15 +2,15 @@
 zh-CN:
   admin:
     custom_emojis:
-      batch_copy_error: '复制部分选定的表情符号时发生错误：%{message}'
+      batch_copy_error: '复制部分选定的表情时发生错误：%{message}'
       batch_error: '发生错误：%{message}'
     settings:
       bubble_domains:
         all: 对所有人
         disabled: 不对任何人
-        users: 对已登录的本地用户
+        users: 对已登录的本站用户
       captcha_enabled:
-        desc_html: 这依赖于来自 hCaptcha 的外部脚本，这可能会带来安全和隐私问题。此外，<strong>这可能会让注册过程对某些用户（特别是残障人士）的可访问性大大降低</strong>。出于这些原因，请考虑采用其他措施，例如基于批准或基于邀请的注册。
+        desc_html: 这依赖于来自 hCaptcha 的外部脚本，这可能会带来安全和隐私问题。此外，<strong>这可能会让注册过程对某些用户（特别是残障人士）的可访问性大大降低</strong>。出于这些原因，请考虑采用其它措施，例如基于申请或基于邀请的注册。
         title: 要求新用户完成人机验证以确认其帐户
       flavour_and_skin:
         title: 风格与皮肤
@@ -18,10 +18,10 @@ zh-CN:
         desc_html: 不在用户账户页显示粉丝数
         title: 隐藏粉丝数
       other:
-        preamble: 不属于其他分类的各种 glitch-soc 设置。
-        title: 其他
+        preamble: 不属于其它分类的各种 glitch-soc 设置。
+        title: 其它
       outgoing_spoilers:
-        desc_html: 当联合转送贴文时，给没有内容警告的贴文添加此内容警告。如果你的站点专门提供其他站点可能希望置于内容警告下的内容，此功能会很有用。媒体文件也将被标记为敏感。
+        desc_html: 当联合转送贴文时，给没有内容警告的贴文添加此内容警告。如果你的站点专门提供其它站点可能希望置于内容警告下的内容，此功能会很有用。媒体文件也将被标记为敏感。
         title: 为外发贴文设置内容警告
       show_reblogs_in_public_timelines:
         desc_html: 在本地和公共时间线上显示对公开贴文的公开转发。
