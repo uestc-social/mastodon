@@ -5,17 +5,17 @@ zh-CN:
       doorkeeper/application:
         name: 应用名称
         redirect_uri: 重定向 URI
-        scopes: 范围
-        website: 应用网站
+        scopes: 作用域
+        website: 网站
     errors:
       models:
         doorkeeper/application:
           attributes:
             redirect_uri:
-              fragment_present: 不能包含片段。
-              invalid_uri: 必须是有效的 URI。
-              relative_uri: 必须是绝对 URI。
-              secured_uri: 必须是 HTTPS/SSL URI。
+              fragment_present: 无法包含片段。
+              invalid_uri: 必须为合法 URI。
+              relative_uri: 必须为绝对 URI。
+              secured_uri: 必须为 HTTPS/SSL URI。
   doorkeeper:
     applications:
       buttons:
@@ -29,11 +29,11 @@ zh-CN:
       edit:
         title: 编辑应用
       form:
-        error: 哎呀！请检查你的表单中可能存在的错误
+        error: 啊哦！请检查你的表单中可能存在的错误
       help:
         native_redirect_uri: 使用 %{native_redirect_uri} 进行本地测试
-        redirect_uri: 每个 URI 占一行
-        scopes: 使用空格分隔范围。留空以使用默认范围。
+        redirect_uri: 每个 URI 一行
+        scopes: 使用空格分隔作用域。留空以使用默认作用域。
       index:
         application: 应用
         callback_url: 回调 URL
@@ -41,7 +41,7 @@ zh-CN:
         empty: 你还没有任何应用。
         name: 名称
         new: 新建应用
-        scopes: 范围
+        scopes: 作用域
         show: 查看
         title: 你的应用
       new:
@@ -50,7 +50,7 @@ zh-CN:
         actions: 操作
         application_id: 客户端 ID
         callback_urls: 回调 URL
-        scopes: 范围
+        scopes: 作用域
         secret: 客户端密钥
         title: '应用：%{name}'
     authorizations:
@@ -60,8 +60,8 @@ zh-CN:
       error:
         title: 发生错误
       new:
-        prompt_html: "%{client_name} 希望获得访问你帐户的权限。<strong>仅当你认识并信任此来源时，才批准此请求。</strong>"
-        review_permissions: 审查权限
+        prompt_html: "%{client_name} 希望访问你的账户。<strong>请仅在当你认识并信任此来源的情况下批准。</strong>"
+        review_permissions: 检查权限
         title: 需要授权
       show:
         title: 复制此授权码并将其粘贴到应用中。
@@ -72,7 +72,7 @@ zh-CN:
         revoke: 你确定吗？
       index:
         authorized_at: 授权于 %{date}
-        description_html: 这些是可以使用 API 访问你帐户的应用。如果你在此处发现不认识的应用，或者某个应用行为不当，你可以撤销其访问权限。
+        description_html: 以下是可以使用 API 访问你帐户的应用。如果你在此处发现不认识的应用，或者某个应用行为不当，你可以撤销其访问权限。
         last_used_at: 上次使用于 %{date}
         never_used: 从未使用
         scopes: 权限
@@ -81,48 +81,48 @@ zh-CN:
     errors:
       messages:
         access_denied: 资源所有者或授权站点拒绝了该请求。
-        credential_flow_not_configured: 资源所有者密码凭据流程失败，因为 Doorkeeper.configure.resource_owner_from_credentials 未配置。
-        invalid_client: 客户端认证失败，原因是客户端未知、未包含客户端认证或认证方法不被支持。
+        credential_flow_not_configured: 资源所有者的密码凭据流程失败，因为尚未配置 Doorkeeper.configure.resource_owner_from_credentials 。
+        invalid_client: 客户端认证失败，原因为客户端未知、未包含客户端认证或认证方法不被支持。
         invalid_code_challenge_method: 代码质询方法必须为 S256，不支持 plain。
-        invalid_grant: 提供的授权许可无效、已过期、已撤销、与授权请求中使用的重定向 URI不匹配，或已颁发给其它客户端。
+        invalid_grant: 提供的授权许可无效、已过期、已被撤销、与授权请求中使用的重定向 URI不匹配，或已颁发给其它客户端。
         invalid_redirect_uri: 提供的重定向 URI 无效。
         invalid_request:
           missing_param: '缺少必需参数：%{value}。'
-          request_not_authorized: 请求需要授权。用于授权请求的必需参数缺失或无效。
+          request_not_authorized: 请求需要经过授权。用于授权请求的必需参数缺失或无效。
           unknown: 请求缺少必需参数、包含不支持的参数值或格式错误。
-        invalid_resource_owner: 提供的资源所有者凭据无效，或找不到资源所有者
-        invalid_scope: 请求的范围无效、未知或格式错误。
+        invalid_resource_owner: 提供的资源所有者凭据无效，或无法找到资源所有者
+        invalid_scope: 请求的作用域无效、未知或格式错误。
         invalid_token:
           expired: 访问令牌已过期
           revoked: 访问令牌已被撤销
           unknown: 访问令牌无效
-        resource_owner_authenticator_not_configured: 由于 Doorkeeper.configure.resource_owner_authenticator 未配置，资源所有者查找失败。
+        resource_owner_authenticator_not_configured: 资源所有者查找失败，原因为未配置 Doorkeeper.configure.resource_owner_authenticator。
         server_error: 授权站点遇到意外情况，导致无法完成请求。
         temporarily_unavailable: 由于站点临时过载或正在维护，授权站点目前无法处理该请求。
         unauthorized_client: 客户端无权使用此方法执行此请求。
-        unsupported_grant_type: 授权站点不支持此授权授予类型。
-        unsupported_response_type: 授权站点不支持此响应类型。
+        unsupported_grant_type: 授权站点不支持该授权类型。
+        unsupported_response_type: 授权站点不支持该响应类型。
     flash:
       applications:
         create:
-          notice: 已创建应用。
+          notice: 应用已创建。
         destroy:
-          notice: 已删除应用。
+          notice: 应用已删除。
         update:
-          notice: 已更新应用。
+          notice: 应用已更新。
       authorized_applications:
         destroy:
-          notice: 已撤销应用。
+          notice: 应用已撤销。
     grouped_scopes:
       access:
-        read: 只读权限
-        read/write: 读写权限
-        write: 仅写入权限
+        read: 只读
+        read/write: 读写
+        write: 仅写入
       title:
         accounts: 账户
-        admin/accounts: 帐户管理
+        admin/accounts: 管理账户
         admin/all: 所有管理功能
-        admin/reports: 举报管理
+        admin/reports: 管理举报
         all: 对你的 Mastodon 帐户的完整访问权限
         blocks: 屏蔽
         bookmarks: 收藏夹
@@ -151,48 +151,48 @@ zh-CN:
     scopes:
       "admin:read": 读取站点上的所有数据
       "admin:read:accounts": 读取所有账户的敏感信息
-      "admin:read:canonical_email_blocks": 读取所有规范邮件屏蔽的敏感信息
-      "admin:read:domain_allows": 读取所有允许域名的敏感信息
-      "admin:read:domain_blocks": 读取所有屏蔽域名的敏感信息
-      "admin:read:email_domain_blocks": 读取所有邮件域名屏蔽的敏感信息
-      "admin:read:ip_blocks": 读取所有 IP 屏蔽的敏感信息
+      "admin:read:canonical_email_blocks": 读取所有标准邮件地址黑名单条目的敏感信息
+      "admin:read:domain_allows": 读取所有站点白名单条目的敏感信息
+      "admin:read:domain_blocks": 读取所有站点黑名单条目的敏感信息
+      "admin:read:email_domain_blocks": 读取所有邮件域名黑名单条目的敏感信息
+      "admin:read:ip_blocks": 读取所有 IP 黑名单条目的敏感信息
       "admin:read:reports": 读取所有举报和被举报账户的敏感信息
       "admin:write": 修改站点上的所有数据
       "admin:write:accounts": 对账户执行管理操作
-      "admin:write:canonical_email_blocks": 对规范化邮件黑名单执行管理操作
-      "admin:write:domain_allows": 对域名白名单执行管理操作
-      "admin:write:domain_blocks": 对域名黑名单执行管理操作
+      "admin:write:canonical_email_blocks": 对标准邮件地址黑名单条目执行管理操作
+      "admin:write:domain_allows": 对站点白名单条目执行管理操作
+      "admin:write:domain_blocks": 对站点黑名单条目执行管理操作
       "admin:write:email_domain_blocks": 对邮件域名黑名单执行管理操作
-      "admin:write:ip_blocks": 对 IP 黑名单执行管理操作
+      "admin:write:ip_blocks": 对 IP 黑名单条目执行管理操作
       "admin:write:reports": 对举报执行管理操作
       crypto: 使用端到端加密
       follow: 修改账户关系
-      profile: 只读你的账户账户信息
+      profile: 仅读取你的账户账户信息
       push: 接收你的推送通知
-      read: 读取你的全部帐户数据
+      read: 读取你的所有帐户数据
       "read:accounts": 查看帐户信息
-      "read:blocks": 查看你已屏蔽的用户
-      "read:bookmarks": 查看你的书签
-      "read:favourites": 查看你收藏的内容
+      "read:blocks": 查看你的屏蔽列表
+      "read:bookmarks": 查看你的收藏夹
+      "read:favourites": 查看你的点赞
       "read:filters": 查看你的过滤规则
-      "read:follows": 查看你关注的人
+      "read:follows": 查看你的关注列表
       "read:lists": 查看你的列表
-      "read:mutes": 查看你已设为静音的用户
+      "read:mutes": 查看你的隐藏列表
       "read:notifications": 查看你的通知
       "read:reports": 查看你的举报
-      "read:search": 代表你进行搜索
+      "read:search": 使用你的账户执行搜索
       "read:statuses": 查看所有贴文
       write: 修改你的所有账户数据
       "write:accounts": 修改你的账户
-      "write:blocks": 屏蔽账户和域名
-      "write:bookmarks": 为贴文添加书签
+      "write:blocks": 屏蔽账户和站点
+      "write:bookmarks": 收藏贴文
       "write:conversations": 静音和删除对话
-      "write:favourites": 收藏贴文
+      "write:favourites": 点赞贴文
       "write:filters": 创建过滤规则
       "write:follows": 关注用户
       "write:lists": 创建列表
       "write:media": 上传媒体文件
-      "write:mutes": 静音用户和对话
+      "write:mutes": 隐藏用户和静音对话
       "write:notifications": 清空你的通知
-      "write:reports": 举报他人
+      "write:reports": 举报它人
       "write:statuses": 发布贴文
