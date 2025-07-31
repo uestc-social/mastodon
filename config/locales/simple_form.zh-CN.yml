@@ -56,7 +56,7 @@ zh-CN:
         scopes: 该应用将被允许访问哪些 API。如果你选择了一个顶层作用域，则无需选择单个作用域。
         setting_aggregate_reblogs: 对于近期被转发过的贴文，不再显示新的转发（仅影响新收到的转发）
         setting_always_send_emails: 当你活跃使用 Mastodon 时，通常不会发送邮件通知
-        setting_default_quote_policy: 被提及的用户将始终被允许引用。此设置仅对使用下一个 Mastodon 版本创建的贴文生效，但你可以提前选择你的偏好
+        setting_default_quote_policy: 被提及的用户将始终被允许引用。此设置仅对使用下一个 Mastodon 版本创建的贴文生效，但你可以提前选择你的设置
         setting_default_sensitive: 敏感内容默认隐藏，点击即可显示
         setting_display_media_default: 隐藏被标为敏感的内容
         setting_display_media_hide_all: 始终隐藏媒体内容
@@ -248,58 +248,58 @@ zh-CN:
         setting_reduce_motion: 减少动画中的动态效果
         setting_system_font_ui: 使用系统默认字体
         setting_system_scrollbars_ui: 使用系统默认滚动条
-        setting_theme: 网站主题
-        setting_trends: 显示今日热榜
-        setting_unfollow_modal: 在取消关注某人前显示确认对话框
+        setting_theme: 站点主题
+        setting_trends: 显示今日热门
+        setting_unfollow_modal: 在取关前显示确认对话框
         setting_use_blurhash: 为隐藏的媒体文件显示彩色渐变
         setting_use_pending_items: 慢速模式
-        severity: 严重性
+        severity: 严重程度
         sign_in_token_attempt: 安全码
         title: 标题
         type: 导入类型
         username: 用户名
         username_or_email: 用户名或邮箱
-        whole_word: 全字匹配
+        whole_word: 整词匹配
       email_domain_block:
         with_dns_records: 包含该域名的 MX 记录和 IP
       featured_tag:
         name: 话题
       filters:
         actions:
-          blur: 隐藏媒体内容并显示警告
+          blur: 隐藏媒体并显示警告
           hide: 完全隐藏
           warn: 隐藏并显示警告
       form_admin_settings:
         activity_api_enabled: 在 API 中发布用户活动的汇总统计信息
         app_icon: 应用图标
-        backups_retention_period: 用户存档保留期限
-        bootstrap_timeline_accounts: 始终向新用户推荐这些账户
+        backups_retention_period: 用户归档保留期限
+        bootstrap_timeline_accounts: 始终向新用户推荐以下账户
         closed_registrations_message: 注册服务关闭时的自定义消息
-        content_cache_retention_period: 远程内容保留期限
+        content_cache_retention_period: 外站内容保留期限
         custom_css: 自定义 CSS
-        favicon: 网站图标
+        favicon: 站点图标
         mascot: 自定义吉祥物（旧版）
-        media_cache_retention_period: 媒体缓存保留期限
+        media_cache_retention_period: 媒体缓存留存期限
         min_age: 最低年龄要求
-        peers_api_enabled: 在 API 中发布已发现的站点列表
+        peers_api_enabled: 通过 API 发布已发现的站点列表
         profile_directory: 启用账户目录
         registrations_mode: 谁可以注册
-        require_invite_text: 需要加入理由
-        show_domain_blocks: 显示域名屏蔽
-        show_domain_blocks_rationale: 显示域名屏蔽原因
-        site_contact_email: 联系邮件
-        site_contact_username: 联系用户名
+        require_invite_text: 需要注册理由
+        show_domain_blocks: 显示站点屏蔽条目
+        show_domain_blocks_rationale: 显示站点屏蔽原因
+        site_contact_email: 联系邮箱
+        site_contact_username: 联系账户
         site_extended_description: 扩展描述
         site_short_description: 站点描述
         site_terms: 隐私政策
         site_title: 站点名称
-        status_page_url: 状态页面 URL
+        status_page_url: 状态页 URL
         theme: 默认主题
         thumbnail: 站点缩略图
-        timeline_preview: 允许未经身份验证的用户访问公开时间线
-        trendable_by_default: 允许未经事先审查的热门话题
-        trends: 启用热门话题
-        trends_as_landing_page: 使用热门话题作为着陆页
+        timeline_preview: 允许用户不经身份验证访问公开时间线
+        trendable_by_default: 允许话题不经审核进入热门
+        trends: 启用热门
+        trends_as_landing_page: 将热门作为首页
       interactions:
         must_be_follower: 屏蔽来自非粉丝的通知
         must_be_following: 屏蔽来自你未关注的人的通知
@@ -307,7 +307,7 @@ zh-CN:
       invite:
         comment: 评论
       invite_request:
-        text: 你为什么想加入？
+        text: 你为什么想加入这里？
       ip_block:
         comment: 评论
         ip: IP
@@ -319,11 +319,11 @@ zh-CN:
       notification_emails:
         appeal: 有人对管理员的决定提出申诉
         digest: 发送摘要邮件
-        favourite: 有人收藏了你的贴文
+        favourite: 有人点赞了你的贴文
         follow: 有人关注了你
         follow_request: 有人请求关注你
-        mention: 有人提及了你
-        pending_account: 新帐户需要审核
+        mention: 有人提到了你
+        pending_account: 有新帐户需要审核
         reblog: 有人转发了你的贴文
         report: 有新举报提交
         software_updates:
@@ -331,8 +331,8 @@ zh-CN:
           critical: 仅在有重要更新时通知
           label: 有新的 Mastodon 版本可用
           none: 从不通知更新（不推荐）
-          patch: 漏洞修复更新时通知
-        trending_tag: 新热点话题需要审核
+          patch: 在有漏洞修复更新时通知
+        trending_tag: 有新热门话题需要审核
       rule:
         hint: 附加信息
         text: 规则
@@ -340,21 +340,21 @@ zh-CN:
         indexable: 在搜索引擎中显示账户页
         show_application: 显示你发送贴文所使用的应用
       tag:
-        listable: 允许该话题出现在搜索和推荐中
+        listable: 允许话题出现在搜索和推荐中
         name: 话题
-        trendable: 允许该话题出现在热门趋势中
-        usable: 允许贴文在本地使用此话题
+        trendable: 允许话题出现在热门中
+        usable: 允许本站贴文使用此话题
       terms_of_service:
-        changelog: 有什么变化？
+        changelog: 内容变更
         effective_date: 生效日期
         text: 服务条款
       terms_of_service_generator:
-        admin_email: 用于法律通知的邮件地址
-        arbitration_address: 用于仲裁通知的实体地址
-        arbitration_website: 提交仲裁通知的网站
+        admin_email: 用于接收法律通知的邮件地址
+        arbitration_address: 用于接收仲裁通知的实体地址
+        arbitration_website: 提交仲裁通知的站点
         choice_of_law: 法律选择
-        dmca_address: 用于 DMCA/版权声明的实体地址
-        dmca_email: 用于 DMCA/版权通知的邮件地址
+        dmca_address: 用于接收DMCA/版权声明的实体地址
+        dmca_email: 用于接收DMCA/版权通知的邮件地址
         domain: 域名
         jurisdiction: 法律管辖区
         min_age: 最低年龄
@@ -366,13 +366,13 @@ zh-CN:
         time_zone: 时区
       user_role:
         color: 徽章颜色
-        highlighted: 在用户账户页上以徽章形式显示身份组
+        highlighted: 在账户页上以徽章形式显示身份组
         name: 名称
         permissions_as_keys: 权限
         position: 优先级
       webhook:
         events: 已启用的事件
-        template: 有效负载模板
+        template: 内容模板
         url: 端点 URL
     'no': '否'
     not_recommended: 不推荐
@@ -383,5 +383,5 @@ zh-CN:
       text: 必填
     title:
       sessions:
-        webauthn: 使用你的一个安全密钥登录
+        webauthn: 使用你的安全密钥登录
     'yes': '是'
