@@ -2003,30 +2003,30 @@ zh-CN:
         delete_statuses: 你的部分贴文因违反一项或多项社区准则，已被 %{instance} 的管理员移除。
         disable: 你不能再使用你的账户，但你的账户和其它数据将不受影响。你可以请求备份你的数据、更改帐号设置或删除你的帐号。
         mark_statuses_as_sensitive: 你的部分贴文已被 %{instance} 的管理员标记为敏感。这意味着用户需要先点击贴文中的媒体内容才能显示预览。你以后在发布内容时也可自行将媒体标记为敏感。
-        sensitive: 从现在开始，你上传的所有媒体文件都将被标记为敏感内容，并隐藏在点击后可见的警告之后。
+        sensitive: 从现在开始，你上传的所有媒体都将被标记为敏感，并隐藏在点击后可见的警告之后。
         silence: 你仍可以使用你的帐号，但只有已经关注你的人才能在此站点上看到你的贴文，并且你可能会被排除在各种发现功能之外。但是，其它人仍然可以手动关注你。
-        suspend: 你将无法再使用你的帐号，你的账户和其它数据将无法访问。你仍然可以登录以请求备份你的数据，直到数据在大约 30 天后被完全删除，但我们会保留一些基本数据以防止你规避封禁。
+        suspend: 你将无法再使用你的帐号，你的账户和其它数据将无法访问。你仍然可以登录并请求备份你的数据，直到数据在大约 30 天后被完全删除，但我们会保留一些基本数据以防止你规避封禁。
       reason: '原因：'
       statuses: '引用的贴文：'
       subject:
         delete_statuses: 你在 %{acct} 上的贴文已被删除
-        disable: 你的帐号 %{acct} 已被冻结
-        mark_statuses_as_sensitive: 你在 %{acct} 上的贴文已被标记为敏感内容
+        disable: 你的账户 %{acct} 已被冻结
+        mark_statuses_as_sensitive: 你在 %{acct} 上的贴文已被标记为敏感
         none: 给 %{acct} 的警告
-        sensitive: 你在 %{acct} 上的贴文将从此被标记为敏感内容
+        sensitive: 你在 %{acct} 上的贴文将从此被标记为敏感
         silence: 你的帐号 %{acct} 已受限
         suspend: 你的帐号 %{acct} 已被封禁
       title:
-        delete_statuses: 贴文已删除
-        disable: 帐号已冻结
-        mark_statuses_as_sensitive: 贴文被标记为敏感内容
+        delete_statuses: 贴文已被删除
+        disable: 账户已被冻结
+        mark_statuses_as_sensitive: 贴文被标记为敏感
         none: 警告
         sensitive: 账户被标记为敏感
         silence: 账户受限
         suspend: 帐号已被封禁
     welcome:
-      apps_android_action: 在 Google Play 上获取
-      apps_ios_action: 在 App Store 上下载
+      apps_android_action: 在 Google Play 获取
+      apps_ios_action: 在 App Store 下载
       apps_step: 下载我们的官方应用。
       apps_title: Mastodon 应用
       checklist_subtitle: '让我们带你开启这段全新的社交前沿之旅：'
@@ -2037,13 +2037,13 @@ zh-CN:
       explanation: 这里有一些能帮助你入门的小提示
       feature_action: 了解更多
       feature_audience: Mastodon 为你提供了一个无需中间商即可管理粉丝的独特机会。将 Mastodon 部署在你自己的站点上，你就可以关注任何其它 Mastodon 站点上的用户或被他们关注，而且它完全在你的掌控之下。
-      feature_audience_title: 放心建立你的关注群
-      feature_control: 你最清楚自己想在主页时间线上看到什么。没有算法或广告浪费你的时间。你可以用一个帐户关注任何 Mastodon 站点上的任何人，并按时间顺序接收他们的贴文，让你的互联网一隅更像你自己。
-      feature_control_title: 掌控你自己的时间线
-      feature_creativity: Mastodon 支持音频、视频和图片贴文，以及无障碍描述、投票、内容警告、贴文头像、自定义表情、缩略图裁剪控制等功能，助你在网上尽情表达自我。无论你是发布艺术作品、音乐还是播客，Mastodon 都能满足你的需求。
+      feature_audience_title: 放手吸引受众
+      feature_control: 你最清楚自己想在主页时间线上看到什么。这里没有算法或广告浪费你的时间。你可以用一个帐户关注任何 Mastodon 站点上的任何人，并按时间顺序接收Ta的贴文，在互联网打造自己的一方天地。
+      feature_control_title: 掌控自己的时间线
+      feature_creativity: Mastodon 支持音频、视频和图片贴文，以及无障碍描述、投票、内容警告、动态头像、自定义表情、缩略图裁剪控制等功能，助你在网上尽情表达自我。无论你是发布艺术作品、音乐还是播客，Mastodon 都能满足你的需求。
       feature_creativity_title: 无与伦比的创造力
-      feature_moderation: Mastodon 将决策权交还给你。每个站点都创建自己的规则和条例，这些规则和条例在本地执行，而不是像企业社交媒体那样自上而下，这使得它在响应不同人群的需求方面最为灵活。加入一个你同意其规则的站点，或者自己托管一个。
-      feature_moderation_title: 恰如其分的审核方式
+      feature_moderation: Mastodon 将决策权交还给你。每个站点都可以创建自己的规则和条款，这些规则和条例在站点内得到贯彻执行，而不是像企业社交媒体那样自上而下，这使得它在响应不同人群的需求方面最为灵活。你可以选择一个有着你能接受的规则的站点并加入，或者自己托管一个站点。
+      feature_moderation_title: 审核本应如此
       follow_action: 关注
       follow_step: 关注有趣的人是 Mastodon 的精髓所在。
       follow_title: 个性化你的首页时间线
@@ -2066,18 +2066,18 @@ zh-CN:
   users:
     follow_limit_reached: 你关注的用户不能超过 %{limit} 个
     go_to_sso_account_settings: 前往你的身份提供者的帐户设置
-    invalid_otp_token: 无效的两步验证码
+    invalid_otp_token: 无效的双因素验证码
     otp_lost_help_html: 如果你两者都无法访问，可以联系 %{email}
-    rate_limited: 验证尝试过多，请稍后再试。
-    seamless_external_login: 你正通过外部服务登录，因此密码和邮件设置不可用。
+    rate_limited: 验证尝试次数过多，请稍后再试。
+    seamless_external_login: 你正通过外部服务登录，因此密码和邮件地址设置不可用。
     signed_in_as: '登录身份：'
   verification:
-    extra_instructions_html: <strong>提示：</strong>你网站上的链接可以设置为不可见的。重要的是 <code>rel="me"</code> 这个部分，它可以防止在有用户生成内容的网站上发生身份冒用。你甚至可以在页面的头部使用 <code>link</code> 标签来代替 <code>a</code> 标签，但该 HTML 必须在不执行 JavaScript 的情况下可以访问。
+    extra_instructions_html: <strong>提示：</strong>你要添加到网站上的链接可以是不可见的。重要的是 <code>rel="me"</code> 这个部分，它可以防止在有用户生成内容的网站上发生身份冒用。你甚至可以在页面头部使用 <code>link</code> 标签来代替 <code>a</code> 标签，但该 HTML 必须可以在不执行 JavaScript 的情况下被访问。
     here_is_how: 方法如下
-    hint_html: "<strong>在 Mastodon 上验证你的身份，人人皆可。</strong>它基于开放网络标准，现在以及未来永远免费。你只需要一个能让大家认出你的个人网站即可。当你在账户中链接到此网站时，我们将检查该网站是否反向链接回你的账户，并在你的账户上显示一个可视化标记。"
-    instructions_html: 将以下代码复制并粘贴到你网站的 HTML 中。然后在“编辑账户”选项卡中，将你网站的地址添加到你账户的其中一个附加字段中并保存更改。
+    hint_html: "<strong>在 Mastodon，人人皆可验证自己的身份。</strong>它基于开放网络标准，从现在到未来永远免费。你只需要一个能让大家认出你的个人网站即可验证。当你将账户链接到此网站时，我们将检查该网站是否反向链接回你的账户，并在你的账户页显示一个可见标记。"
+    instructions_html: 将以下代码复制并粘贴到你网站的 HTML 中。然后在“编辑账户”选项卡中，将你网站的地址添加到你账户的其中一个附加字段中，然后保存更改。
     verification: 验证
-    verified_links: 你已验证的链接
+    verified_links: 你的已验证链接
     website_verification: 网站验证
   webauthn_credentials:
     add: 添加新的安全密钥
@@ -2094,5 +2094,5 @@ zh-CN:
     nickname_hint: 输入新安全密钥的昵称
     not_enabled: 你尚未启用 WebAuthn
     not_supported: 此浏览器不支持安全密钥
-    otp_required: 要使用安全密钥，请先启用双重身份验证。
+    otp_required: 要使用安全密钥，请先启用双因素身份验证。
     registered_on: 注册于 %{date}
