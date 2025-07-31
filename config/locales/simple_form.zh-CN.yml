@@ -6,17 +6,17 @@ zh-CN:
         attribution_domains: 每行一个。防止错误归属。
         discoverable: 你的公开贴文和账户可能会在Mastodon的各个区域被推荐或展示，你的账户也可能会被推荐给其它用户。
         display_name: 你的全名或有趣的昵称。
-        fields: 你的主页、代词、年龄等任何你想填写的信息。
-        indexable: 你的公开贴文可能会出现在Mastodon的搜索结果中。无论如何，与你的贴文互动过的人都可以搜索到它们。
+        fields: 你的主页、人称代词、年龄等任何你想填写的信息。
+        indexable: 你的公开贴文可能会出现在 Mastodon 的搜索结果中。无论此处设置如何，与你的贴文互动过的人都可以搜索到它们。
         note: '你可以 @提及 其它人或使用 #话题。'
-        show_collections: 其它人将能够浏览你的关注和被关注列表。无论如何，你关注的人都会看到你关注了他们。
-        unlocked: 其它人将能够直接关注你，而无需请求批准。如果你希望审核关注请求，并决定是接受还是拒绝新的粉丝，请取消勾选此项。
+        show_collections: 其它人将能够浏览你的关注和粉丝列表。无论此处设置如何，你关注的人都会看到你关注了他们。
+        unlocked: 其它人将能够直接关注你，而无需请求同意。如果你希望审核关注请求，并决定是接受还是拒绝新的粉丝，请取消勾选此项。
       account_alias:
         acct: 指定你要从中迁出的账户的 用户名@域名
       account_migration:
         acct: 指定你要转移到的帐户的 用户名@域名
       account_warning_preset:
-        text: 你可以使用贴文语法，例如 URL、话题和提及
+        text: 你可以使用贴文中的语法，例如 URL、话题和提及
         title: 可选。不会向接收者显示
       admin_account_action:
         include_statuses: 用户将看到哪些贴文导致了管理操作或警告
@@ -25,10 +25,10 @@ zh-CN:
         type_html: 选择要如何处理 <strong>%{acct}</strong>
         types:
           disable: 阻止用户使用其帐户，但不会删除或隐藏其内容。
-          none: 使用此选项向用户发送警告，而不会触发任何其它操作。
-          sensitive: 强制将该用户的所有媒体附件标记为敏感内容。
-          silence: 阻止该用户发布公开可见的贴文，并向未关注他们的人隐藏其贴文和通知。关闭所有针对该账户的举报。
-          suspend: 阻止与该账户的任何互动，并删除其内容。30 天内可撤销。关闭所有针对该账户的举报。
+          none: 使用此选项向用户发送警告，不会触发任何其它操作。
+          sensitive: 将该用户的所有媒体强制标记为敏感。
+          silence: 阻止该用户发布公开可见的贴文，并向未关注该用户的人隐藏其贴文和通知。关闭所有针对该账户的举报。
+          suspend: 阻止与该账户的任何互动，并删除其内容。可在 30 天内撤销。关闭所有针对该账户的举报。
         warning_preset_id: 可选。你仍然可以在预设内容的末尾添加自定义文本
       announcement:
         all_day: 勾选后，将在对应的时间范围内全天显示
@@ -41,24 +41,24 @@ zh-CN:
       defaults:
         autofollow: 通过邀请注册的用户将自动关注你
         avatar: 支持 WEBP、PNG、GIF 或 JPG 格式。最大 %{size}。将缩小至 %{dimensions} 像素
-        bot: 向他人表明该帐户主要执行自动操作，可能无人监控
-        context: 过滤规则将应用的一个或多个情景
+        bot: 向它人表明该帐户主要执行自动化操作，可能无人监控
+        context: 过滤规则将生效的一个或多个情景
         current_password: 为安全起见，请输入当前帐户的密码
         current_username: 为进行确认，请输入当前帐户的用户名
         digest: 仅在你长时间不活跃并且在你离开期间收到任何私信时发送
         email: 你将收到一封确认邮件
         header: 支持 WEBP、PNG、GIF 或 JPG 格式。最大 %{size}。将缩小至 %{dimensions} 像素
-        inbox_url: 从你想使用的中继站点首页复制 URL
-        irreversible: 被过滤的贴文将不可逆地消失，即使之后过滤规则被移除
+        inbox_url: 从你想使用的中继首页复制 URL
+        irreversible: 被过滤的贴文将不可逆地消失，即使之后过滤规则被移除也是如此
         locale: 用户界面、邮件和推送通知的语言
         password: 请使用至少 8 个字符
         phrase: 无论贴文文本或内容警告中的大小写如何，都将进行匹配
-        scopes: 该应用将被允许访问哪些 API。如果你选择了一个顶层范围，则无需选择单个范围。
+        scopes: 该应用将被允许访问哪些 API。如果你选择了一个顶层作用域，则无需选择单个作用域。
         setting_aggregate_reblogs: 对于近期被转发过的贴文，不再显示新的转发（仅影响新收到的转发）
-        setting_always_send_emails: 通常情况下，当你正在活跃地使用 Mastodon 时，不会发送邮件通知
+        setting_always_send_emails: 当你活跃使用 Mastodon 时，通常不会发送邮件通知
         setting_default_quote_policy: 被提及的用户将始终被允许引用。此设置仅对使用下一个 Mastodon 版本创建的贴文生效，但你可以提前选择你的偏好
         setting_default_sensitive: 敏感内容默认隐藏，点击即可显示
-        setting_display_media_default: 隐藏被标记为敏感的内容
+        setting_display_media_default: 隐藏被标为敏感的内容
         setting_display_media_hide_all: 始终隐藏媒体内容
         setting_display_media_show_all: 始终显示媒体内容
         setting_emoji_style: 如何显示表情。“自动”会尝试使用系统原生表情，但对于旧版浏览器会回退到 Twemoji。
@@ -82,40 +82,40 @@ zh-CN:
           warn: 将被过滤的内容隐藏在一条包含过滤规则标题的警告之后
       form_admin_settings:
         activity_api_enabled: 以周为单位统计的本站贴文数、活跃用户数和新注册数
-        app_icon: WEBP、PNG、GIF 或 JPG 格式。使用自定义图标覆盖移动设备上的默认应用图标。
+        app_icon: 支持 WEBP、PNG、GIF 或 JPG。使用自定义图标覆盖移动设备上的默认应用图标。
         backups_retention_period: 用户可以生成其贴文的存档供日后下载。当设置为正值时，这些存档将在指定天数后自动从你的存储中删除。
-        bootstrap_timeline_accounts: 这些帐户将被固定在新用户关注推荐的顶部。
+        bootstrap_timeline_accounts: 这些帐户将在新用户关注推荐列表中置顶。
         closed_registrations_message: 在注册关闭时显示
-        content_cache_retention_period: 来自其它站点的所有贴文（包括转发和回复）都将在指定的天数后被删除，无论本地用户与这些贴文有何互动。这包括本地用户已标记为书签或收藏的贴文。不同实例用户之间的私人提及也将丢失且无法恢复。此设置旨在用于特殊用途的实例，在用于通用目的时会打破许多用户的期望。
+        content_cache_retention_period: 来自其它站点的所有贴文（包括转发和回复）都将在指定的天数后被删除，无论本站用户与这些贴文有何互动都会如此。这包括本站用户已收藏或点赞的贴文。不同站点的用户之间的私信也将丢失且无法恢复。此设置旨在用于特殊用途的实例，在用于通用目的时会打破许多用户的期望。
         custom_css: 你可以在网页版Mastodon上应用自定义样式。
-        favicon: WEBP、PNG、GIF 或 JPG 格式。使用自定义图标覆盖默认的 Mastodon 网站图标。
+        favicon: 支持 WEBP、PNG、GIF 或 JPG。使用自定义图标覆盖默认的 Mastodon 网站图标。
         mascot: 覆盖高级 Web 界面中的插图。
-        media_cache_retention_period: 来自远程用户的贴文中的媒体文件会缓存在你的站点上。当设置为正值时，媒体将在指定天数后被删除。如果媒体数据在删除后被请求，并且源内容仍然可用，它将被重新下载。由于对链接预览卡轮询第三方网站的频率有限制，建议将此值设置为至少 14 天，否则链接预览卡在此之前将不会按需更新。
+        media_cache_retention_period: 外站用户贴文中的媒体文件会缓存在你的站点上。当设置为正值时，媒体将在指定天数后被删除。如果媒体数据在删除后被请求，并且来源仍然可用，它将被重新下载。由于生成链接预览卡时轮询第三方网站的频率有限制，建议将此值设置为至少 14 天，否则链接预览卡在此之前将不会按需更新。
         min_age: 用户在注册时将被要求确认其出生日期
-        peers_api_enabled: 此站点在联邦宇宙中遇到的域名列表。此处不包含任何关于你是否与给定站点联合的数据，只包含此站点知道该站点存在。这被用于一般意义上收集联邦统计数据的服务。
+        peers_api_enabled: 此站点在联邦宇宙中遇到的站点列表。此处不包含任何关于你是否与给定站点联合的数据，只包含此站点知道该站点存在。这被用于一般意义上收集联邦统计数据的服务。
         profile_directory: 公开账户目录会列出所有选择可被发现的用户。
         require_invite_text: 当注册需要手动批准时，将“你为什么想加入？”文本输入设为必填项而非可选项
         site_contact_email: 人们如何就法律或支持问题与你联系。
         site_contact_username: 人们如何在 Mastodon 上与你联系。
-        site_extended_description: 任何可能对访客和你的用户有用的附加信息。可以使用 Markdown 语法进行结构化。
+        site_extended_description: 任何可能对访客和你的用户有用的附加信息。可以使用 Markdown 语法进行排版。
         site_short_description: 一段简短描述，以帮助唯一地识别你的站点。它由谁运营，为谁服务？
-        site_terms: 使用你自己的隐私政策，或留空以使用默认政策。可以使用 Markdown 语法进行结构化。
+        site_terms: 使用你自己的隐私政策，或留空以使用默认政策。可以使用 Markdown 语法进行排版。
         site_title: 除了域名之外，人们如何称呼你的站点。
         status_page_url: 一个页面的 URL，人们可以在服务中断期间查看此站点的状态
         theme: 未登录的访客和新用户看到的主题。
-        thumbnail: 与你的站点信息一同显示的大致 2:1 比例的图片。
-        timeline_preview: 未登录的访客将能够浏览站点上最新的公开贴文。
-        trendable_by_default: 跳过对热门内容的人工审核。单个项目仍然可以在事后从热门趋势中移除。
-        trends: 热门趋势会显示哪些贴文、话题和新闻故事正在你的站点上获得关注。
-        trends_as_landing_page: 向未登录的用户和访客显示热门内容，而非本站点的描述。需要启用热门趋势功能。
+        thumbnail: 与你的站点信息一同显示的图片，比例大致为 2:1。
+        timeline_preview: 未登录的访客将能够浏览站点上的最新公开贴文。
+        trendable_by_default: 跳过对热门内容的人工审核。单个热门项目仍然可以从热门中移除。
+        trends: 热门会显示哪些贴文、话题和新闻故事正在你的站点上获得关注。
+        trends_as_landing_page: 向未登录的用户和访客显示热门内容，而非本站点的描述。需要启用热门功能。
       form_challenge:
-        current_password: 你正在进入一个安全区域
+        current_password: 你正在进入安全区
       imports:
         data: 从另一个 Mastodon 站点导出的 CSV 文件
       invite_request:
         text: 这将帮助我们审核你的申请
       ip_block:
-        comment: 可选。请记住你添加此规则的原因。
+        comment: 可选。有助于记住你添加此规则的原因。
         expires_in: IP 地址是有限的资源，有时会被共享，并且经常易手。因此，不建议无限期地封禁 IP 地址。
         ip: 输入 IPv4 或 IPv6 地址。你可以使用 CIDR 语法封禁整个地址段。注意不要封禁你自己的地址！
         severities:
@@ -130,19 +130,19 @@ zh-CN:
         otp: '输入你的手机应用生成的双因素验证码，或使用你的恢复代码之一：'
         webauthn: 如果它是一个 USB 密钥，请确保插入它，并在必要时轻触它。
       settings:
-        indexable: 你的账户页可能会出现在 Google、Bing 等搜索引擎的结果中。
-        show_application: 无论如何，你始终可以看到是哪个应用发布了你的贴文。
+        indexable: 你的账户可能会出现在 Google、Bing 等搜索引擎的结果中。
+        show_application: 无论如何，你始终可以看到哪个应用发布了你的贴文。
       tag:
-        name: 你只能更改字母的大小写，例如，使其更具可读性
+        name: 你可以更改字母的大小写，使其更具可读性
       terms_of_service:
         changelog: 可以使用 Markdown 语法来组织结构。
-        effective_date: 从你通知用户之日起，一个合理的时间范围可以是 10 到 30 天。
+        effective_date: 从你通知用户之日起，合理的时间范围通常在 10 到 30 天。
         text: 可以使用 Markdown 语法来组织结构。
       terms_of_service_generator:
-        admin_email: 法律声明包括反通知、法院命令、移除请求和执法请求。
-        arbitration_address: 可以与上方的实际地址相同，或在使用邮件时填“N/A”。
+        admin_email: 法律声明包括反通知、法院命令、移除请求和执法部门请求。
+        arbitration_address: 可以与上方的实际地址相同，使用邮件时可填“N/A”。
         arbitration_website: 可以是网页表单，如果使用邮件则填“N/A”。
-        choice_of_law: 管辖所有索赔事宜的内部实体法所属的城市、地区、领地或州。
+        choice_of_law: 管辖所有主张的内部实体法所属的市、区、领或州。
         dmca_address: 对于美国运营者，请使用在 DMCA 指派代理目录中注册的地址。你可以直接申请使用邮政信箱地址，要这样做，请通过 DMCA 指派代理邮政信箱豁免请求向版权局发送邮件，并说明你是居家工作的内容审核员，担心因你的行为而遭到报复，需要使用邮政信箱来避免在公开信息中列出你的家庭住址。
         dmca_email: 可以与上述“法律通知邮件地址”相同。
         domain: 你所提供的在线服务的唯一标识。
@@ -156,22 +156,22 @@ zh-CN:
       user_role:
         color: 在整个用户界面中用于该身份组的颜色，为十六进制格式的 RGB 值
         highlighted: 这将使该身份组公开可见
-        name: 如果身份组设置为显示为徽章，此处为身份组的公开名称
+        name: 身份组的公开名称，用于在启用相应设置时外显为徽章
         permissions_as_keys: 此身份组中的用户将有权访问…
-        position: 在某些情况下，由较高等级的身份组决定冲突的解决方式。某些操作只能对优先级较低的身份组执行
+        position: 在某些情况下，由较高优先级的身份组决定冲突的解决方式。某些操作只能对优先级较低的身份组执行
       webhook:
         events: 选择要发送的事件
-        template: 使用变量插值撰写你自己的 JSON 负载。留空则使用默认 JSON。
-        url: 事件将被发送到的位置
+        template: 使用变量插值撰写你自己的 JSON 数据。留空则使用默认 JSON。
+        url: 事件被发送到的位置
     labels:
       account:
-        attribution_domains: 允许归功于你的网站
+        attribution_domains: 允许标记你为来源的网站
         discoverable: 在发现算法中推荐账户和贴文
         fields:
           name: 标签
           value: 内容
         indexable: 在搜索结果中包含公开贴文
-        show_collections: 在账户页上显示关注和被关注列表
+        show_collections: 在账户页显示关注和被关注列表
         unlocked: 自动接受新的粉丝
       account_alias:
         acct: 旧帐户的用户名
@@ -191,59 +191,59 @@ zh-CN:
           sensitive: 敏感
           silence: 限制
           suspend: 封禁
-        warning_preset_id: 使用警告预设
+        warning_preset_id: 使用预设警告
       announcement:
-        all_day: 全天活动
-        ends_at: 活动结束时间
+        all_day: 全天有效
+        ends_at: 结束时间
         scheduled_at: 预设发布时间
-        starts_at: 活动开始时间
+        starts_at: 开始时间
         text: 公告
       appeal:
-        text: 说明应撤销此决定的原因
+        text: 说明撤销此决定的原因
       defaults:
-        autofollow: 邀请他人关注你的账户
+        autofollow: 让被邀请人关注你的账户
         avatar: 头像
-        bot: 这是一个自动化账户
+        bot: 这是一个无人值守账户
         chosen_languages: 筛选语言
         confirm_new_password: 确认新密码
         confirm_password: 确认密码
-        context: 筛选上下文
+        context: 筛选情景
         current_password: 当前密码
         data: 数据
         display_name: 昵称
         email: 邮件地址
-        expires_in: 在此之后过期
-        fields: 额外字段
-        header: 头图
+        expires_in: 剩余时间
+        fields: 额外属性
+        header: 资料卡头图
         honeypot: "%{label}（请勿填写）"
-        inbox_url: 中继收件箱的 URL
+        inbox_url: 中继收件箱 URL
         irreversible: 丢弃而非隐藏
         locale: 界面语言
         max_uses: 最大使用次数
         new_password: 新密码
         note: 简介
-        otp_attempt: 两步验证码
+        otp_attempt: 双因素验证码
         password: 密码
-        phrase: 关键词或短语
+        phrase: 关键词
         setting_advanced_layout: 启用高级网页界面
-        setting_aggregate_reblogs: 在时间线中将转发分组
+        setting_aggregate_reblogs: 在时间线中将转发单独分组
         setting_always_send_emails: 总是发送邮件通知
         setting_auto_play_gif: 自动播放 GIF 动画
         setting_boost_modal: 在转发前显示确认对话框
         setting_default_language: 贴文语言
         setting_default_privacy: 贴文可见范围
         setting_default_quote_policy: 谁可以引用
-        setting_default_sensitive: 总是将媒体文件标记为敏感内容
+        setting_default_sensitive: 总是将媒体标记为敏感
         setting_delete_modal: 在删除贴文前显示确认对话框
-        setting_disable_hover_cards: 禁用鼠标悬停时显示账户卡片
+        setting_disable_hover_cards: 鼠标悬停时不显示账户卡片
         setting_disable_swiping: 禁用滑动手势
-        setting_display_media: 媒体文件显示
+        setting_display_media: 显示媒体
         setting_display_media_default: 默认
         setting_display_media_hide_all: 全部隐藏
         setting_display_media_show_all: 全部显示
         setting_emoji_style: Emoji 风格
-        setting_expand_spoilers: 总是展开标有内容警告的贴文
-        setting_hide_network: 隐藏你的社交关系图
+        setting_expand_spoilers: 总是展开有内容警告的贴文
+        setting_hide_network: 隐藏你的社交关系
         setting_missing_alt_text_modal: 在发布没有替代文本的媒体前显示确认对话框
         setting_reduce_motion: 减少动画中的动态效果
         setting_system_font_ui: 使用系统默认字体
