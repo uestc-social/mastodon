@@ -13,21 +13,21 @@ zh-CN:
         desc_html: 这依赖于来自 hCaptcha 的外部脚本，这可能会带来安全和隐私问题。此外，<strong>这可能会让注册过程对某些用户（特别是残障人士）的可访问性大大降低</strong>。出于这些原因，请考虑采用其它措施，例如基于申请或基于邀请的注册。
         title: 要求新用户完成人机验证以确认其帐户
       flavour_and_skin:
-        title: 风格与皮肤
+        title: 界面与皮肤
       hide_followers_count:
-        desc_html: 不在用户账户页显示粉丝数
+        desc_html: 不在账户页显示粉丝数
         title: 隐藏粉丝数
       other:
         preamble: 不属于其它分类的各种 glitch-soc 设置。
         title: 其它
       outgoing_spoilers:
-        desc_html: 当联合转送贴文时，给没有内容警告的贴文添加此内容警告。如果你的站点专门提供其它站点可能希望置于内容警告下的内容，此功能会很有用。媒体文件也将被标记为敏感。
+        desc_html: 当向外站发送贴文时，为没有内容警告的贴文添加此内容警告。如果你的站点专门提供其它站点可能希望置于内容警告下的内容，此功能会很有用。媒体文件也将被标记为敏感。
         title: 为外发贴文设置内容警告
       show_reblogs_in_public_timelines:
-        desc_html: 在本地和公共时间线上显示对公开贴文的公开转发。
+        desc_html: 在本站时间线和公共时间线上显示对公开贴文的公开转发。
         title: 在公共时间线上显示转发
       show_replies_in_public_timelines:
-        desc_html: 除了公开的自我回复（串），还在本地和公共时间线上显示公开回复。
+        desc_html: 除显示公开的自我回复（贴文串）外，还在本地和公共时间线上显示公开回复。
         title: 在公共时间线上显示回复
       trending_status_cw:
         desc_html: 启用热门贴文后，允许带有“内容警告”的贴文参与排行。此设置的更改不会追溯生效。
@@ -44,11 +44,11 @@ zh-CN:
     use_this: 使用此项
   gif:
     errors:
-      too_many_requests: 最近对 GIF 搜索服务的请求过多。
+      too_many_requests: 最近对 GIF 搜索服务的请求过于频繁。
   notification_mailer:
     reaction:
-      body: "%{name} 对你的贴文作出了回应："
-      subject: "%{name} 对你的贴文作出了回应"
+      body: "%{name} 回应了你的贴文："
+      subject: "%{name} 回应了你的贴文"
       title: 新回应
   settings:
-    flavours: 风格
+    flavours: 界面
