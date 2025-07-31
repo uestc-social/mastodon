@@ -869,7 +869,7 @@ zh-CN:
       destroyed_msg: 站点上传文件已成功删除！
     software_updates:
       critical_update: 严重 — 请尽快更新
-      description: 建议你将你的 Mastodon 保持在最新状态，以便享受最新的修复和功能。此外，及时更新 Mastodon 有时对于避免安全问题至关重要。因此，Mastodon 会每 30 分钟检查一次更新，并根据你的邮件通知偏好通知你。
+      description: 建议你将你的 Mastodon 保持在最新状态，以便享受最新的修复和功能。此外，及时更新 Mastodon 有时对于避免安全问题至关重要。因此，Mastodon 会每 30 分钟检查一次更新，并根据你的邮件通知设置通知你。
       documentation_link: 了解更多
       release_notes: 发布说明
       title: 可用更新
@@ -1029,7 +1029,7 @@ zh-CN:
         confirm_allow_provider: 你确定要允许所选发布者吗？
         confirm_disallow: 你确定要拒绝所选链接吗？
         confirm_disallow_provider: 你确定要拒绝所选发布者吗？
-        description_html: 这些是你的站点发现的所有账户中，当前正被大量分享的链接。这可以帮助你的用户了解世界上正在发生的事情。在你批准发布者之前，任何链接都不会公开显示。你也可以允许或拒绝单个链接。
+        description_html: 以下是你的站点发现的所有账户中，当前正被大量分享的链接。这可以帮助你的用户了解世界上正在发生的事情。在你批准发布者之前，任何链接都不会公开显示。你也可以允许或拒绝单个链接。
         disallow: 拒绝链接
         disallow_provider: 拒绝发布者
         no_link_selected: 未选中任何链接，因此没有链接被更改
@@ -1055,7 +1055,7 @@ zh-CN:
         confirm_allow_account: 你确定要允许所选的账户吗？
         confirm_disallow: 你确定要禁止所选的贴文吗？
         confirm_disallow_account: 你确定要禁止所选的账户吗？
-        description_html: 这些是你的站点已知的，目前正被大量分享和点赞的贴文。这可以帮助你的新老用户找到更多可以关注的人。在你批准作者，并且作者允许其账户被推荐给其它人之前，任何贴文都不会被公开显示。你也可以允许或拒绝单条贴文。
+        description_html: 以下是你的站点已知的，目前正被大量分享和点赞的贴文。这可以帮助你的新老用户找到更多可以关注的人。在你批准作者，并且作者允许其账户被推荐给其它人之前，任何贴文都不会被公开显示。你也可以允许或拒绝单条贴文。
         disallow: 不允许贴文
         disallow_account: 禁止作者
         no_status_selected: 未选中任何贴文，因此没有热门贴文被更改
@@ -1071,7 +1071,7 @@ zh-CN:
           tag_servers_dimension: 热门站点
           tag_servers_measure: 不同站点
           tag_uses_measure: 总使用次数
-        description_html: 这些是你的站点目前在大量贴文中看到的话题。这可以帮助你的用户发现大家此刻正在热议的话题。在你批准之前，任何话题都不会被公开显示。
+        description_html: 以下是你的站点目前在大量贴文中看到的话题。这可以帮助你的用户发现大家此刻正在热议的话题。在你批准之前，任何话题都不会被公开显示。
         listable: 可被推荐
         no_tag_selected: 未选择任何话题，因此没有任何更改
         not_listable: 不可推荐
@@ -1169,9 +1169,9 @@ zh-CN:
       guide_link_text: 所有人都可以参与贡献。
     sensitive_content: 敏感内容
   application_mailer:
-    notification_preferences: 更改邮件偏好
+    notification_preferences: 更改邮件设置
     salutation: "%{name}，"
-    settings: '更改邮件偏好：%{link}'
+    settings: '更改邮件设置：%{link}'
     unsubscribe: 取消订阅
     view: '查看：'
     view_profile: 查看账户
@@ -1330,7 +1330,7 @@ zh-CN:
       approve_appeal: 批准申诉
       associated_report: 相关举报
       created_at: 日期
-      description_html: 这些是 %{instance} 的工作人员对你的账户采取的措施以及发送给你的警告。
+      description_html: 以下是 %{instance} 的工作人员对你的账户采取的措施以及发送给你的警告。
       recipient: 发送给
       reject_appeal: 驳回申诉
       status: '贴文 #%{id}'
@@ -1815,7 +1815,7 @@ zh-CN:
     import_and_export: 导入与导出
     migrate: 账户迁移
     notifications: 邮件通知
-    preferences: 偏好设置
+    preferences: 设置
     profile: 公开资料
     relationships: 关注与粉丝
     severed_relationships: 已断开的关系
