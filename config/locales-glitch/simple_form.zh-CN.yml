@@ -5,25 +5,29 @@ zh-CN:
     glitch_only: glitch-soc
     hints:
       defaults:
-        avatar_description: 一个您头像的描述，用于盲人和低视力者。
-        header_description: 一个您封面图的描述，用于盲人和低视力者。
-        setting_default_content_type_html: 在撰写嘟文时，除非另有指定，假定它们使用原始 HTML 语言撰写
-        setting_default_content_type_markdown: 在撰写嘟文时，除非另有指定，假定它们使用 Markdown 进行富文本格式化
-        setting_default_content_type_plain: 在撰写嘟文时，除非另有指定，假定它们是没有特殊格式的纯文本（默认的 Mastodon 行为）
-        setting_default_language: 你的嘟文语言可以自动检测，但不一定准确
-        setting_show_followers_count: 在您的个人资料页上显示您的粉丝数。如果隐藏了您的粉丝数，即使自己也将无法看到，并且某些应用可能会显示负的粉丝数。
-        setting_skin: 更换为所选择的 Mastodon 风格
+        avatar_description: 为盲人或低视力人群提供的头像描述。
+        header_description: 为盲人或低视力人群提供的资料卡头图描述。
+        setting_default_content_type_html: 在发贴时默认使用原始 HTML 格式，除非另外指定
+        setting_default_content_type_markdown: 在发帖时默认使用 Markdown 进行富文本格式化，除非另外指定
+        setting_default_content_type_plain: 在发帖时默认使用无特殊格式的纯文本，除非另外指定（这是 Mastodon 的默认行为）
+        setting_default_language: 系统可以自动检测你贴文的语言，但结果可能不一定准确
+        setting_show_followers_count: 在你的账户页显示粉丝数量。如果你隐藏粉丝数量，该数字对自己也将不可见，并且某些应用可能会将粉丝数显示为负数。
+        setting_skin: 为所选的 Mastodon 界面更换皮肤
     labels:
       defaults:
-        setting_default_content_type: 嘟文默认格式
+        avatar_description: 头像描述
+        header_description: 资料卡头图描述
+        setting_default_content_type: 贴文的默认格式
         setting_default_content_type_html: HTML
         setting_default_content_type_markdown: Markdown
         setting_default_content_type_plain: 纯文本
-        setting_favourite_modal: 在点赞嘟文前询问我 (仅限于 Glitch 风格)
+        setting_favourite_modal: 在点赞前显示确认对话框（仅适用于 Glitch 界面）
         setting_show_followers_count: 显示粉丝数
         setting_skin: 皮肤
-        setting_system_emoji_font: 使用系统自带表情 (仅限于 Glitch 风格)
+        setting_system_emoji_font: 为表情使用系统默认字体（仅适用于 Glitch 界面）
+        setting_visible_reactions: 可见回应的数量
       notification_emails:
-        trending_link: 新热门链接需要审核
-        trending_status: 新热门嘟文需要审核
-        trending_tag: 新热门话题需要审核
+        reaction: 有人回应了你的贴文
+        trending_link: 有新的热门链接需要审核
+        trending_status: 有新的热门贴文需要审核
+        trending_tag: 有新的热门话题需要审核
