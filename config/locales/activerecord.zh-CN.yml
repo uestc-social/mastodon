@@ -7,7 +7,7 @@ zh-CN:
         options: 选项
       user:
         agreement: 服务协议
-        email: 电子邮件地址
+        email: 邮件地址
         locale: 语言区域
         password: 密码
       user/account:
@@ -58,7 +58,7 @@ zh-CN:
             date_of_birth:
               below_limit: 低于年龄限制
             email:
-              blocked: 使用了不允许的电子邮件提供者
+              blocked: 使用了不允许的邮件提供者
               unreachable: 似乎不存在
             role_id:
               elevated: 不能高于你当前的身份组
