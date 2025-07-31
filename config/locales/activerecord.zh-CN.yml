@@ -8,7 +8,7 @@ zh-CN:
       user:
         agreement: 服务协议
         email: 邮件地址
-        locale: 语言区域
+        locale: 语言
         password: 密码
       user/account:
         username: 用户名
@@ -17,25 +17,25 @@ zh-CN:
     errors:
       attributes:
         domain:
-          invalid: 不是一个有效的域名
+          invalid: 不是合法域名
       messages:
-        invalid_domain_on_line: "%{value} 不是一个有效的域名"
+        invalid_domain_on_line: "%{value} 不是合法域名"
       models:
         account:
           attributes:
             fields:
-              fields_with_values_missing_labels: 包含缺少标签的值
+              fields_with_values_missing_labels: 有的值缺少对应的属性名
             username:
               invalid: 只能包含字母、数字和下划线
-              reserved: 已被保留
+              reserved: 已被预留
         admin/webhook:
           attributes:
             url:
-              invalid: 不是一个有效的 URL
+              invalid: 不是合法 URL
         doorkeeper/application:
           attributes:
             website:
-              invalid: 不是一个有效的 URL
+              invalid: 不是合法 URL
         import:
           attributes:
             data:
@@ -58,7 +58,7 @@ zh-CN:
             date_of_birth:
               below_limit: 低于年龄限制
             email:
-              blocked: 使用了不允许的邮件提供者
+              blocked: 使用了不被允许的邮件提供者
               unreachable: 似乎不存在
             role_id:
               elevated: 不能高于你当前的身份组
@@ -66,11 +66,11 @@ zh-CN:
           attributes:
             permissions_as_keys:
               dangerous: 包含对于基础身份组不安全的权限
-              elevated: 不能包含你当前身份组不拥有的权限
-              own_role: 无法用你当前的身份组进行更改
+              elevated: 不能包含你当前身份组未拥有的权限
+              own_role: 无法使用你当前的身份组进行更改
             position:
               elevated: 不能高于你当前的身份组
-              own_role: 无法用你当前的身份组进行更改
+              own_role: 无法使用你当前的身份组进行更改
         webhook:
           attributes:
             events:
