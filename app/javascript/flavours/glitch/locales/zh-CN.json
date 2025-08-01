@@ -56,7 +56,7 @@
   "limited_account_hint.instance_limit.reason": "原因：{reason}",
   "limited_account_hint.instance_limit.title": "此账户所在站点已被 {domain} 的管理员限制。",
   "moved_to_warning": "此账户已迁移至 {moved_to_link}，因此可能无法接受新的关注。",
-  "navigation_bar.app_settings": "应用设置",
+  "navigation_bar.app_settings": "界面调整",
   "navigation_bar.live_feed_bubble": "精选动态",
   "notification.reaction": "{name} 回应了你的贴文<e>：</e>",
   "notification.reaction.name_and_others_with_link": "{name} 和<a>{count, plural, other {其它 # 人}}</a>回应了你的贴文",
