@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/TheEssem/sidekiq-undertaker.git
+  revision: 0dcf15dd8062b3510484740a9fec345e7ef349c0
+  specs:
+    sidekiq-undertaker (1.8.0)
+      rubyzip (~> 3)
+      sidekiq (~> 8)
+
+GIT
   remote: https://github.com/mastodon/webpush.git
   revision: 9631ac63045cfabddacc69fc06e919b4c13eb913
   ref: 9631ac63045cfabddacc69fc06e919b4c13eb913
@@ -1085,6 +1093,7 @@ DEPENDENCIES
   sidekiq (< 9)
   sidekiq-bulk (~> 0.2.0)
   sidekiq-scheduler (~> 6.0)
+  sidekiq-undertaker!
   sidekiq-unique-jobs (> 8)
   simple-navigation (~> 4.4)
   simple_form (~> 5.2)
