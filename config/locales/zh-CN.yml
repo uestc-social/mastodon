@@ -187,6 +187,7 @@ zh-CN:
         create_relay: 创建中继
         create_unavailable_domain: 创建不可用域名
         create_user_role: 创建身份组
+        create_username_block: 新建用户名规则
         demote_user: 降权用户
         destroy_announcement: 删除公告
         destroy_canonical_email_block: 删除邮件黑名单条目
@@ -200,6 +201,7 @@ zh-CN:
         destroy_status: 删除贴文
         destroy_unavailable_domain: 删除不可用域名
         destroy_user_role: 删除身份组
+        destroy_username_block: 删除用户名规则
         disable_2fa_user: 禁用双因素认证
         disable_custom_emoji: 禁用自定义表情
         disable_relay: 禁用中继
@@ -234,6 +236,7 @@ zh-CN:
         update_report: 更新举报
         update_status: 更新贴文
         update_user_role: 更新身份组
+        update_username_block: 更新用户名规则
       actions:
         approve_appeal_html: "%{name} 批准了 %{target} 对管理措施的申诉"
         approve_user_html: "%{name} 批准了 %{target} 的注册申请"
@@ -252,6 +255,7 @@ zh-CN:
         create_relay_html: "%{name} 添加了一个中继 %{target}"
         create_unavailable_domain_html: "%{name} 停止了向域名 %{target} 的投递"
         create_user_role_html: "%{name} 创建了 %{target} 身份组"
+        create_username_block_html: "%{name} 新增了有关包含 %{target} 的用户名的规则"
         demote_user_html: "%{name} 降权了用户 %{target}"
         destroy_announcement_html: "%{name} 删除了公告 %{target}"
         destroy_canonical_email_block_html: "%{name} 解除了对哈希值为 %{target} 的邮件的屏蔽"
@@ -265,6 +269,7 @@ zh-CN:
         destroy_status_html: "%{name} 移除了 %{target} 的贴文"
         destroy_unavailable_domain_html: "%{name} 恢复了对域名 %{target} 的投递"
         destroy_user_role_html: "%{name} 删除了 %{target} 身份组"
+        destroy_username_block_html: "%{name} 移除了有关包含 %{target} 的用户名的规则"
         disable_2fa_user_html: "%{name} 禁用了用户 %{target} 的双重身份验证"
         disable_custom_emoji_html: "%{name} 禁用了表情 %{target}"
         disable_relay_html: "%{name} 禁用了中继 %{target}"
@@ -299,6 +304,7 @@ zh-CN:
         update_report_html: "%{name} 更新了举报 %{target}"
         update_status_html: "%{name} 更新了 %{target} 的贴文"
         update_user_role_html: "%{name} 更改了 %{target} 的身份组"
+        update_username_block_html: "%{name} 更新了有关包含 %{target} 的用户名的规则"
       deleted_account: 已删除账户
       empty: 未找到日志。
       filter_by_action: 按操作筛选
@@ -1087,6 +1093,25 @@ zh-CN:
           other: 过去一周有 %{count} 人使用
       title: 推荐与热门
       trending: 热门
+    username_blocks:
+      add_new: 新增
+      block_registrations: 禁止注册
+      comparison:
+        contains: 包含
+        equals: 等于
+      contains_html: 包含%{string}
+      created_msg: 成功创建用户名规则
+      delete: 删除
+      edit:
+        title: 编辑用户名规则
+      matches_exactly_html: 等于%{string}
+      new:
+        create: 创建规则
+        title: 新建用户名规则
+      no_username_block_selected: 因为没有选择任何用户名规则，没有任何更改发生
+      not_permitted: 不允许
+      title: 用户名规则
+      updated_msg: 成功更新用户名规则
     warning_presets:
       add_new: 新增
       delete: 删除
@@ -1644,6 +1669,10 @@ zh-CN:
       title: 新提及
     poll:
       subject: '%{name} 发起的投票已结束'
+    quote:
+      body: '你的嘟文被 %{name} 引用了：'
+      subject: "%{name} 引用了你的嘟文"
+      title: 新引用
     reblog:
       body: '你的贴文被 %{name} 转发了：'
       subject: "%{name} 转发了你的贴文"
@@ -1693,6 +1722,9 @@ zh-CN:
       self_vote: 你不能在自己发起的投票中投票
       too_few_options: 必须有多于一个选项
       too_many_options: 不能包含超过 %{max} 个选项
+    vote: 投票
+  posting_defaults:
+    explanation: 这些设置会在您撰写新嘟文时作为默认值应用，但每篇嘟文的设置也可以在编辑器处单独修改。
   preferences:
     other: 其它
     posting_defaults: 默认发帖设置
@@ -1851,6 +1883,7 @@ zh-CN:
     edited_at_html: 编辑于 %{date}
     errors:
       in_reply_not_found: 你尝试回复的贴文似乎不存在。
+      quoted_status_not_found: 您尝试引用的嘟文似乎不存在。
     over_character_limit: 已超出 %{max} 个字符的限制
     pin_errors:
       direct: 仅对被提及用户可见的贴文无法置顶
@@ -1858,18 +1891,17 @@ zh-CN:
       ownership: 无法置顶其它人的贴文
       reblog: 无法置顶转发
     quote_policies:
-      followers: 粉丝与被提及的用户
-      nobody: 仅提及的用户
-      public: 所有人
+      followers: 仅关注者
+      nobody: 仅限自己
+      public: 任何人
     title: '%{name}：「%{quote}」'
     visibilities:
       direct: 私信
-      private: 仅粉丝可见
-      private_long: 仅粉丝可见
+      private: 仅关注者
       public: 公开
-      public_long: 所有人可见
-      unlisted: 已取消公开
-      unlisted_long: 所有人可见，但不显示在公共时间线
+      public_long: Mastodon 内外皆可见
+      unlisted: 不公开
+      unlisted_long: 不显示在Mastodon的搜索结果、热门趋势、公共时间线上
   statuses_cleanup:
     enabled: 自动删除旧贴文
     enabled_hint: 你的贴文发布达到指定时长后将自动删除，除非符合以下例外情况
