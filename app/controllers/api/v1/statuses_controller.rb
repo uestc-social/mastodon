@@ -293,7 +293,7 @@ class Api::V1::StatusesController < Api::BaseController
     anon_config.enabled &&
     anon_config.account_username.present? &&
     anon_config.tag.present? &&
-    text.strip.match?(/#{Regexp.escape(anon_config.tag)}(?:\s+#{Regexp.escape('👁')}\ufe0f?)?\s*\z/)
+    text.strip.match?(/#{Regexp.escape(anon_config.tag)}(?:\s*#{Regexp.escape('👁')}\ufe0f?)?\s*\z/)
   end
 
   def generate_anonymous_name(account)
