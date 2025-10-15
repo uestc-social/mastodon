@@ -94,7 +94,7 @@ class Api::BaseController < ApplicationController
   def disallow_unauthenticated_api_access?
     return true if ENV['DISALLOW_UNAUTHENTICATED_API_ACCESS'] == 'true'
     return false if functional_endpoint_in_limited_federation_mode?
-    
+
     Rails.configuration.x.mastodon.limited_federation_mode
   end
 
