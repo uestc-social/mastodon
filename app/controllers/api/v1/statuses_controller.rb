@@ -3,6 +3,7 @@
 class Api::V1::StatusesController < Api::BaseController
   include Authorization
   include AsyncRefreshesConcern
+  include Api::InteractionPoliciesConcern
   include Redisable
 
   before_action -> { authorize_if_got_token! :read, :'read:statuses' }, except: [:create, :update, :destroy]
@@ -11,6 +12,7 @@ class Api::V1::StatusesController < Api::BaseController
   before_action :set_statuses, only:         [:index]
   before_action :set_status, only:           [:show, :context]
   before_action :set_thread, only:           [:create]
+  before_action :set_quoted_status, only:    [:create]
   before_action :check_statuses_limit, only: [:index]
 
   override_rate_limit_headers :create, family: :statuses
@@ -35,7 +37,7 @@ class Api::V1::StatusesController < Api::BaseController
   def show
     cache_if_unauthenticated!
     @status = preload_collection([@status], Status).first
-    render json: @status, serializer: REST::StatusSerializer
+    render json: @status, serializer: REST::StatusSerializer, discord_hack: request.user_agent && request.user_agent.include?('Discordbot/2.0')
   end
 
   def context
@@ -66,7 +68,11 @@ class Api::V1::StatusesController < Api::BaseController
       add_async_refresh_header(async_refresh)
     elsif !current_account.nil? && @status.should_fetch_replies?
       add_async_refresh_header(AsyncRefresh.create(refresh_key))
-      ActivityPub::FetchAllRepliesWorker.perform_async(@status.id)
+
+      WorkerBatch.new.within do |batch|
+        batch.connect(refresh_key, threshold: 1.0)
+        ActivityPub::FetchAllRepliesWorker.perform_async(@status.id, { 'batch_id' => batch.id })
+      end
     end
 
     render json: @context, serializer: REST::ContextSerializer, relationships: StatusRelationshipsPresenter.new(statuses, current_user&.account_id)
@@ -103,6 +109,8 @@ class Api::V1::StatusesController < Api::BaseController
       sender_account,
       text: processed_text,
       thread: @thread,
+      quoted_status: @quoted_status,
+      quote_approval_policy: quote_approval_policy,
       media_ids: status_params[:media_ids],
       sensitive: status_params[:sensitive],
       spoiler_text: status_params[:spoiler_text],
@@ -136,6 +144,7 @@ class Api::V1::StatusesController < Api::BaseController
       language: status_params[:language],
       spoiler_text: status_params[:spoiler_text],
       poll: status_params[:poll],
+      quote_approval_policy: quote_approval_policy,
       content_type: status_params[:content_type]
     )
 
@@ -176,6 +185,14 @@ class Api::V1::StatusesController < Api::BaseController
     render json: { error: I18n.t('statuses.errors.in_reply_not_found') }, status: 404
   end
 
+  def set_quoted_status
+    @quoted_status = Status.find(status_params[:quoted_status_id]) if status_params[:quoted_status_id].present?
+    authorize(@quoted_status, :quote?) if @quoted_status.present?
+  rescue ActiveRecord::RecordNotFound, Mastodon::NotPermittedError
+    # TODO: distinguish between non-existing and non-quotable posts
+    render json: { error: I18n.t('statuses.errors.quoted_status_not_found') }, status: 404
+  end
+
   def check_statuses_limit
     raise(Mastodon::ValidationError) if status_ids.size > DEFAULT_STATUSES_LIMIT
   end
@@ -192,6 +209,8 @@ class Api::V1::StatusesController < Api::BaseController
     params.permit(
       :status,
       :in_reply_to_id,
+      :quoted_status_id,
+      :quote_approval_policy,
       :sensitive,
       :spoiler_text,
       :visibility,

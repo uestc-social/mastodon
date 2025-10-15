@@ -370,6 +370,10 @@ zh-CN:
         name: 名称
         permissions_as_keys: 权限
         position: 优先级
+      username_block:
+        allow_with_approval: 注册时需要批准
+        comparison: 比较方法
+        username: 字词匹配
       webhook:
         events: 已启用的事件
         template: 内容模板

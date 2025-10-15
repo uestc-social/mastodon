@@ -13,8 +13,11 @@ import ChevronRightIcon from '@/material-icons/400-24px/chevron_right.svg?react'
 import { Icon }  from 'mastodon/components/icon';
 import { Poll } from 'mastodon/components/poll';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
-import { autoPlayGif, isFeatureEnabled, languages as preloadedLanguages } from 'mastodon/initial_state';
-import { EmojiHTML } from '../features/emoji/emoji_html';
+import { languages as preloadedLanguages } from 'mastodon/initial_state';
+
+import { isModernEmojiEnabled } from '../utils/environment';
+
+import { EmojiHTML } from './emoji/html';
 
 const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
 
@@ -24,7 +27,7 @@ const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
  * @returns {string}
  */
 export function getStatusContent(status) {
-  if (isFeatureEnabled('modern_emojis')) {
+  if (isModernEmojiEnabled()) {
     return status.getIn(['translation', 'content']) || status.get('content');
   }
   return status.getIn(['translation', 'contentHtml']) || status.get('contentHtml');
@@ -47,13 +50,13 @@ class TranslateButton extends PureComponent {
 
       return (
         <div className='translate-button'>
-          <div className='translate-button__meta'>
-            <FormattedMessage id='status.translated_from_with' defaultMessage='Translated from {lang} using {provider}' values={{ lang: languageName, provider }} />
-          </div>
-
           <button className='link-button' onClick={onClick}>
             <FormattedMessage id='status.show_original' defaultMessage='Show original' />
           </button>
+
+          <div className='translate-button__meta'>
+            <FormattedMessage id='status.translated_from_with' defaultMessage='Translated from {lang} using {provider}' values={{ lang: languageName, provider }} />
+          </div>
         </div>
       );
     }
@@ -138,32 +141,6 @@ class StatusContent extends PureComponent {
       onCollapsedToggle(collapsed);
     }
   }
-
-  handleMouseEnter = ({ currentTarget }) => {
-    if (autoPlayGif) {
-      return;
-    }
-
-    const emojis = currentTarget.querySelectorAll('.custom-emoji');
-
-    for (var i = 0; i < emojis.length; i++) {
-      let emoji = emojis[i];
-      emoji.src = emoji.getAttribute('data-original');
-    }
-  };
-
-  handleMouseLeave = ({ currentTarget }) => {
-    if (autoPlayGif) {
-      return;
-    }
-
-    const emojis = currentTarget.querySelectorAll('.custom-emoji');
-
-    for (var i = 0; i < emojis.length; i++) {
-      let emoji = emojis[i];
-      emoji.src = emoji.getAttribute('data-static');
-    }
-  };
 
   componentDidMount () {
     this._updateStatusLinks();
@@ -256,7 +233,13 @@ class StatusContent extends PureComponent {
     if (this.props.onClick) {
       return (
         <>
-          <div className={classNames} ref={this.setRef} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} key='status-content' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+          <div
+            className={classNames}
+            ref={this.setRef}
+            onMouseDown={this.handleMouseDown}
+            onMouseUp={this.handleMouseUp}
+            key='status-content'
+          >
             <EmojiHTML
               className='status__content__text status__content__text--visible translate'
               lang={language}
@@ -273,7 +256,7 @@ class StatusContent extends PureComponent {
       );
     } else {
       return (
-        <div className={classNames} ref={this.setRef} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+        <div className={classNames} ref={this.setRef}>
           <EmojiHTML
             className='status__content__text status__content__text--visible translate'
             lang={language}

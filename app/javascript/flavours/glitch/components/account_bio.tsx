@@ -1,10 +1,14 @@
 import { useCallback } from 'react';
 
+import classNames from 'classnames';
+
 import { useLinks } from 'flavours/glitch/hooks/useLinks';
 
-import { EmojiHTML } from '../features/emoji/emoji_html';
-import { isFeatureEnabled } from '../initial_state';
 import { useAppSelector } from '../store';
+import { isModernEmojiEnabled } from '../utils/environment';
+
+import { AnimateEmojiProvider } from './emoji/context';
+import { EmojiHTML } from './emoji/html';
 
 interface AccountBioProps {
   className: string;
@@ -32,9 +36,7 @@ export const AccountBio: React.FC<AccountBioProps> = ({
     if (!account) {
       return '';
     }
-    return isFeatureEnabled('modern_emojis')
-      ? account.note
-      : account.note_emojified;
+    return isModernEmojiEnabled() ? account.note : account.note_emojified;
   });
   const extraEmojis = useAppSelector((state) => {
     const account = state.accounts.get(accountId);
@@ -46,13 +48,13 @@ export const AccountBio: React.FC<AccountBioProps> = ({
   }
 
   return (
-    <div
-      className={`${className} translate`}
+    <AnimateEmojiProvider
+      className={classNames(className, 'translate')}
       onClickCapture={handleClick}
       ref={handleNodeChange}
     >
       <EmojiHTML htmlString={note} extraEmojis={extraEmojis} />
-    </div>
+    </AnimateEmojiProvider>
   );
 };
 
