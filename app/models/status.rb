@@ -484,7 +484,7 @@ class Status < ApplicationRecord
     return text unless anon_config.enabled && anon_config.tag.present?
     
     pattern = /#{Regexp.escape(anon_config.tag)}\s*(?=(?:#{Regexp.escape(local_only_emoji)}\ufe0f?)?\s*\z)/
-    text.gsub(pattern, '')
+    text.gsub(pattern, '').strip
   end
 
   def status_stat
