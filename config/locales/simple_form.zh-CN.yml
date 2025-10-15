@@ -56,7 +56,8 @@ zh-CN:
         scopes: 该应用将被允许访问哪些 API。如果你选择了一个顶层作用域，则无需选择单个作用域。
         setting_aggregate_reblogs: 对于近期被转发过的贴文，不再显示新的转发（仅影响新收到的转发）
         setting_always_send_emails: 当你活跃使用 Mastodon 时，通常不会发送邮件通知
-        setting_default_quote_policy: 被提及的用户将始终被允许引用。此设置仅对使用下一个 Mastodon 版本创建的贴文生效，但你可以提前选择你的设置
+        setting_default_quote_policy_private: Mastodon上发布的仅限关注者可见的嘟文无法被他人引用。
+        setting_default_quote_policy_unlisted: 当其他人引用你时，他们的嘟文也会从热门时间线上隐藏。
         setting_default_sensitive: 敏感内容默认隐藏，点击即可显示
         setting_display_media_default: 隐藏被标为敏感的内容
         setting_display_media_hide_all: 始终隐藏媒体内容
@@ -159,6 +160,10 @@ zh-CN:
         name: 身份组的公开名称，用于在启用相应设置时外显为徽章
         permissions_as_keys: 此身份组中的用户将有权访问…
         position: 在某些情况下，由较高优先级的身份组决定冲突的解决方式。某些操作只能对优先级较低的身份组执行
+      username_block:
+        allow_with_approval: 不直接禁止注册，而是使匹配的新注册需要你的批准
+        comparison: 屏蔽部分匹配时请注意潜在的Scunthrope问题（正常单词内部包含被屏蔽的部分）
+        username: 匹配将不限大小写及常见同形异义字符，如“4”和“A”及“3”和“E”等
       webhook:
         events: 选择要发送的事件
         template: 使用变量插值撰写你自己的 JSON 数据。留空则使用默认 JSON。
@@ -231,7 +236,7 @@ zh-CN:
         setting_auto_play_gif: 自动播放 GIF 动画
         setting_boost_modal: 在转发前显示确认对话框
         setting_default_language: 贴文语言
-        setting_default_privacy: 贴文可见范围
+        setting_default_privacy: 嘟文可见性
         setting_default_quote_policy: 谁可以引用
         setting_default_sensitive: 总是将媒体标记为敏感
         setting_delete_modal: 在删除贴文前显示确认对话框
@@ -324,6 +329,7 @@ zh-CN:
         follow_request: 有人请求关注你
         mention: 有人提到了你
         pending_account: 有新帐户需要审核
+        quote: 有人引用了我的嘟文
         reblog: 有人转发了你的贴文
         report: 有新举报提交
         software_updates:
@@ -371,7 +377,7 @@ zh-CN:
         permissions_as_keys: 权限
         position: 优先级
       username_block:
-        allow_with_approval: 注册时需要批准
+        allow_with_approval: 允许注册但需要审核
         comparison: 比较方法
         username: 字词匹配
       webhook:
