@@ -91,9 +91,9 @@ class Api::V1::StatusesController < Api::BaseController
 
         if anonymous_name
           cleaned_text = Status.new.clean_anonymous_tag(original_text)
-          
+
           if cleaned_text.blank?
-            Rails.logger.warn("Anonymous post content is empty after cleaning, falling back to normal post")
+            Rails.logger.warn('Anonymous post content is empty after cleaning, falling back to normal post')
             processed_text = original_text
             sender_account = current_user.account
             application_to_use = doorkeeper_token.application
@@ -103,13 +103,13 @@ class Api::V1::StatusesController < Api::BaseController
             application_to_use = nil
           end
         else
-          Rails.logger.warn("Anonymous name generation returned nil, falling back to normal post")
+          Rails.logger.warn('Anonymous name generation returned nil, falling back to normal post')
           processed_text = original_text
           sender_account = current_user.account
           application_to_use = doorkeeper_token.application
         end
       else
-        Rails.logger.warn("Anonymous proxy account not found, falling back to normal post")
+        Rails.logger.warn('Anonymous proxy account not found, falling back to normal post')
         processed_text = original_text
         sender_account = current_user.account
         application_to_use = doorkeeper_token.application
@@ -123,10 +123,10 @@ class Api::V1::StatusesController < Api::BaseController
     begin
       if sender_account != current_user.account && status_params[:media_ids].present?
         transferred_media = current_user.account.media_attachments
-          .where(status_id: nil)
-          .where(id: status_params[:media_ids])
-          .to_a
-        
+                                        .where(status_id: nil)
+                                        .where(id: status_params[:media_ids])
+                                        .to_a
+
         transferred_media.each do |media|
           media.update!(account_id: sender_account.id)
         end
@@ -160,7 +160,7 @@ class Api::V1::StatusesController < Api::BaseController
           Rails.logger.error("Failed to rollback media ownership for media #{media.id}: #{rollback_error.message}")
         end
       end
-      
+
       raise e
     end
 
@@ -291,9 +291,9 @@ class Api::V1::StatusesController < Api::BaseController
   def should_post_anonymously?(text)
     anon_config = Rails.configuration.x.anon
     anon_config.enabled &&
-    anon_config.account_username.present? &&
-    anon_config.tag.present? &&
-    text.strip.match?(/#{Regexp.escape(anon_config.tag)}(?:\s*#{Regexp.escape('👁')}\ufe0f?)?\s*\z/)
+      anon_config.account_username.present? &&
+      anon_config.tag.present? &&
+      text.strip.match?(/#{Regexp.escape(anon_config.tag)}(?:\s*#{Regexp.escape('👁')}\ufe0f?)?\s*\z/)
   end
 
   def generate_anonymous_name(account)
@@ -304,46 +304,44 @@ class Api::V1::StatusesController < Api::BaseController
     current_time_utc = Time.current.utc
     hours_since_epoch = current_time_utc.to_i / 3600
     time_window = hours_since_epoch / period_hours
-    
+
     mapping_key = "anon_names:#{time_window}:mapping"
     used_key = "anon_names:#{time_window}:used"
-    
+
     existing_name = with_redis { |redis_conn| redis_conn.hget(mapping_key, account.username) }
     return existing_name if existing_name.present?
 
     input = "#{account.username}#{anon_config.salt}#{time_window}"
     start_index = Digest::SHA2.hexdigest(input).to_i(16) % anon_config.name_list.size
 
-    selected_name = with_redis do |redis_conn|
+    with_redis do |redis_conn|
       name_list = anon_config.name_list
-      
+
       name_list.size.times do |offset|
         index = (start_index + offset) % name_list.size
         candidate_name = name_list[index]
-        
-        if redis_conn.sadd(used_key, candidate_name) == 1
-          redis_conn.hset(mapping_key, account.username, candidate_name)
-          redis_conn.expire(mapping_key, (period_hours + 1) * 3600)
-          redis_conn.expire(used_key, (period_hours + 1) * 3600)
-          return candidate_name
-        end
+
+        next unless redis_conn.sadd(used_key, candidate_name) == 1
+
+        redis_conn.hset(mapping_key, account.username, candidate_name)
+        redis_conn.expire(mapping_key, (period_hours + 1) * 3600)
+        redis_conn.expire(used_key, (period_hours + 1) * 3600)
+        return candidate_name
       end
-      
+
       base_name = name_list[start_index]
       used_count = redis_conn.scard(used_key)
       suffix_index = used_count % name_list.size
       suffix_name = name_list[suffix_index]
       combined_name = "#{base_name}#{suffix_name}"
-      
+
       redis_conn.sadd(used_key, combined_name)
       redis_conn.hset(mapping_key, account.username, combined_name)
       redis_conn.expire(mapping_key, (period_hours + 1) * 3600)
       redis_conn.expire(used_key, (period_hours + 1) * 3600)
-      
+
       combined_name
     end
-    
-    selected_name
   rescue Redis::BaseError => e
     Rails.logger.error("Anonymous name generation failed: #{e.message}")
     Rails.logger.error(e.backtrace.join("\n"))
