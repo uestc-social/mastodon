@@ -911,6 +911,7 @@ zh-CN:
       no_status_selected: 未选择任何贴文，因此未进行任何更改
       open: 打开贴文
       original_status: 原始贴文
+      quotes: 引用
       reblogs: 转发
       replied_to_html: 已回复给 %{acct_link}
       status_changed: 贴文已更改
@@ -918,6 +919,7 @@ zh-CN:
       title: 用户贴文 - @%{name}
       trending: 热门
       view_publicly: 公开查看
+      view_quoted_post: 查看被引用的嘟文
       visibility: 可见性
       with_media: 包含媒体
     strikes:
@@ -1103,16 +1105,16 @@ zh-CN:
       comparison:
         contains: 包含
         equals: 等于
-      contains_html: 包含%{string}
+      contains_html: 包含 %{string}
       created_msg: 成功创建用户名规则
       delete: 删除
       edit:
         title: 编辑用户名规则
-      matches_exactly_html: 等于%{string}
+      matches_exactly_html: 等于 %{string}
       new:
         create: 创建规则
         title: 新建用户名规则
-      no_username_block_selected: 因为没有选择任何用户名规则，没有任何更改发生
+      no_username_block_selected: 未选中任何用户名规则，因此没有规则并更改
       not_permitted: 不允许
       title: 用户名规则
       updated_msg: 成功更新用户名规则
@@ -1187,10 +1189,10 @@ zh-CN:
     hint_html: 如果你想从另一个帐户迁移到此帐户，你需要在此处创建一个别名，这是将旧帐户的粉丝迁移到此帐户的必要步骤。此操作本身是<strong>无害且可逆的</strong>。<strong>帐户迁移是从旧帐户发起的</strong>。
     remove: 取消链接别名
   appearance:
-    advanced_web_interface: 高级网页界面
-    advanced_web_interface_hint: '如果你想充分利用所有屏幕宽度，高级网页界面允许你配置多个不同的栏目，以便同时查看尽可能多的信息：主页、通知、跨站时间线、任意数量的列表和话题。'
+    advanced_settings: 高级设置
     animations_and_accessibility: 动画与无障碍功能
-    confirmation_dialogs: 确认对话框
+    boosting_preferences: 转嘟设置
+    boosting_preferences_info_html: "<strong>提示：</strong>无论设置如何，按住 <kbd>Shift</kbd> + <kbd>单击</kbd> %{icon} 转嘟图标都将立即进行转嘟。"
     discovery: 发现
     localization:
       body: Mastodon 由志愿者翻译。
@@ -1576,8 +1578,8 @@ zh-CN:
   link_preview:
     author_html: 来自 %{name}
     potentially_sensitive_content:
-      action: 点击查看
-      confirm_visit: 您确定要打开此链接吗？
+      action: 点击显示
+      confirm_visit: 你确定要打开此链接吗？
       hide_button: 隐藏
       label: 可能为敏感内容
   lists:
@@ -1735,7 +1737,7 @@ zh-CN:
       too_many_options: 不能包含超过 %{max} 个选项
     vote: 投票
   posting_defaults:
-    explanation: 这些设置会在您撰写新嘟文时作为默认值应用，但每篇嘟文的设置也可以在编辑器处单独修改。
+    explanation: 这些设置会在发嘟时作为默认值应用，但每条嘟文的设置也可以在编辑器单独修改。
   preferences:
     other: 其它
     posting_defaults: 默认发帖设置
@@ -1888,31 +1890,39 @@ zh-CN:
         other: "%{count} 个视频"
     boosted_from_html: 转发自 %{acct_link}
     content_warning: '内容警告：%{warning}'
+    content_warnings:
+      hide: 隐藏贴文
+      show: 展开
     default_language: 与界面语言相同
     disallowed_hashtags:
       other: '包含不被允许的话题：%{tags}'
     edited_at_html: 编辑于 %{date}
     errors:
       in_reply_not_found: 你尝试回复的贴文似乎不存在。
-      quoted_status_not_found: 您尝试引用的嘟文似乎不存在。
+      quoted_status_not_found: 你尝试引用的嘟文似乎不存在。
     over_character_limit: 已超出 %{max} 个字符的限制
     pin_errors:
       direct: 仅对被提及用户可见的贴文无法置顶
       limit: 你的置顶贴文数量已达上限
       ownership: 无法置顶其它人的贴文
       reblog: 无法置顶转发
+    quote_error:
+      not_available: 嘟文不可用
+      pending_approval: 嘟文待批准
+      revoked: 嘟文已被作者删除
     quote_policies:
-      followers: 仅关注者
-      nobody: 仅限自己
+      followers: 仅粉丝
+      nobody: 仅自己
       public: 任何人
+    quote_post_author: 引用了 %{acct} 的嘟文
     title: '%{name}：「%{quote}」'
     visibilities:
       direct: 私信
-      private: 仅关注者
+      private: 仅粉丝
       public: 公开
       public_long: Mastodon 内外皆可见
       unlisted: 不公开
-      unlisted_long: 不显示在Mastodon的搜索结果、热门趋势、公共时间线上
+      unlisted_long: 不会显示在 Mastodon 的搜索结果、热门、公共时间线上
   statuses_cleanup:
     enabled: 自动删除旧贴文
     enabled_hint: 你的贴文发布达到指定时长后将自动删除，除非符合以下例外情况
