@@ -844,6 +844,10 @@ zh-CN:
         all: 对所有人
         disabled: 不对任何人
         users: 对已登录的本站用户
+      feed_access:
+        modes:
+          authenticated: 仅已登录用户
+          public: 所有人
       others:
         activitypub: ActivityPub
         preamble: 其它设置，包括自定义行为
@@ -907,6 +911,7 @@ zh-CN:
       no_status_selected: 未选择任何贴文，因此未进行任何更改
       open: 打开贴文
       original_status: 原始贴文
+      quotes: 引用嘟文
       reblogs: 转发
       replied_to_html: 已回复给 %{acct_link}
       status_changed: 贴文已更改
@@ -914,6 +919,7 @@ zh-CN:
       title: 用户贴文 - @%{name}
       trending: 热门
       view_publicly: 公开查看
+      view_quoted_post: 查看引用的嘟文
       visibility: 可见性
       with_media: 包含媒体
     strikes:
@@ -1183,10 +1189,10 @@ zh-CN:
     hint_html: 如果你想从另一个帐户迁移到此帐户，你需要在此处创建一个别名，这是将旧帐户的粉丝迁移到此帐户的必要步骤。此操作本身是<strong>无害且可逆的</strong>。<strong>帐户迁移是从旧帐户发起的</strong>。
     remove: 取消链接别名
   appearance:
-    advanced_web_interface: 高级网页界面
-    advanced_web_interface_hint: '如果你想充分利用所有屏幕宽度，高级网页界面允许你配置多个不同的栏目，以便同时查看尽可能多的信息：主页、通知、跨站时间线、任意数量的列表和话题。'
+    advanced_settings: 高级设置
     animations_and_accessibility: 动画与无障碍功能
-    confirmation_dialogs: 确认对话框
+    boosting_preferences: 转嘟首选项
+    boosting_preferences_info_html: "<strong>提示：</strong>无论当前设置如何，对%{icon}转嘟图标按<kbd>Shift</kbd> + <kbd>鼠标单击</kbd>将会立即转嘟。"
     discovery: 发现
     localization:
       body: Mastodon 由志愿者翻译。
@@ -1569,6 +1575,13 @@ zh-CN:
       expires_at: 过期于
       uses: 使用次数
     title: 邀请用户
+  link_preview:
+    author_html: 来自 %{name}
+    potentially_sensitive_content:
+      action: 点击显示
+      confirm_visit: 您确定要打开此链接吗？
+      hide_button: 隐藏
+      label: 可能为敏感内容
   lists:
     errors:
       limit: 你已达到列表数量上限
@@ -1877,6 +1890,9 @@ zh-CN:
         other: "%{count} 个视频"
     boosted_from_html: 转发自 %{acct_link}
     content_warning: '内容警告：%{warning}'
+    content_warnings:
+      hide: 隐藏贴文
+      show: 展开
     default_language: 与界面语言相同
     disallowed_hashtags:
       other: '包含不被允许的话题：%{tags}'
@@ -1890,10 +1906,15 @@ zh-CN:
       limit: 你的置顶贴文数量已达上限
       ownership: 无法置顶其它人的贴文
       reblog: 无法置顶转发
+    quote_error:
+      not_available: 嘟文不可用
+      pending_approval: 嘟文待发布
+      revoked: 嘟文已被作者删除
     quote_policies:
       followers: 仅关注者
       nobody: 仅限自己
       public: 任何人
+    quote_post_author: 引用了 %{acct} 的嘟文
     title: '%{name}：「%{quote}」'
     visibilities:
       direct: 私信
