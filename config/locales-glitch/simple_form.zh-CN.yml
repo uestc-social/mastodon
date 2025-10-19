@@ -26,6 +26,8 @@ zh-CN:
         setting_skin: 皮肤
         setting_system_emoji_font: 为表情使用系统默认字体（仅适用于 Glitch 界面）
         setting_visible_reactions: 可见回应的数量
+      form_admin_settings:
+        bubble_live_feed_access: Access to live feeds featuring bubble posts
       notification_emails:
         reaction: 有人回应了你的贴文
         trending_link: 有新的热门链接需要审核
