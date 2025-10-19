@@ -7,6 +7,7 @@ zh-CN:
       send_paranoid_instructions: 如果你的邮件地址存在于我们的数据库中，你将在几分钟内收到一封包含邮件地址确认指引的邮件。如果你没有收到该邮件，请检查你的垃圾邮件文件夹。
     failure:
       already_authenticated: 你已登录。
+      closed_registrations: 你的注册因网络政策已被阻止。若你认为此结果有误，请联系 %{email}。
       inactive: 你的帐户尚未激活。
       invalid: 无效的 %{authentication_keys} 或密码。
       last_attempt: 在你的帐户被锁定前，你还有一次尝试机会。
