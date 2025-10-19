@@ -54,15 +54,18 @@ zh-CN:
         password: 请使用至少 8 个字符
         phrase: 无论贴文文本或内容警告中的大小写如何，都将进行匹配
         scopes: 该应用将被允许访问哪些 API。如果你选择了一个顶层作用域，则无需选择单个作用域。
+        setting_advanced_layout: 将 Mastodon 的界面以多列布局显示，允许您同时查看时间线、通知及可自主选择的第三列。屏幕尺寸较小的情况下不推荐使用。
         setting_aggregate_reblogs: 对于近期被转发过的贴文，不再显示新的转发（仅影响新收到的转发）
         setting_always_send_emails: 当你活跃使用 Mastodon 时，通常不会发送邮件通知
-        setting_default_quote_policy_private: Mastodon上发布的仅限关注者可见的嘟文无法被他人引用。
-        setting_default_quote_policy_unlisted: 当其他人引用你时，他们的嘟文也会从热门时间线上隐藏。
+        setting_boost_modal: 若启用，转嘟前将会先弹出确认对话框，以便更改转嘟的可见性。
+        setting_default_quote_policy_private: 在 Mastodon 发布的仅粉丝可见的嘟文无法被他人引用。
+        setting_default_quote_policy_unlisted: 当有人引用你时，ta 的嘟文也会从热门时间线上隐藏。
         setting_default_sensitive: 敏感内容默认隐藏，点击即可显示
         setting_display_media_default: 隐藏被标为敏感的内容
         setting_display_media_hide_all: 始终隐藏媒体内容
         setting_display_media_show_all: 始终显示媒体内容
         setting_emoji_style: 如何显示表情。“自动”会尝试使用系统原生表情，但对于旧版浏览器会回退到 Twemoji。
+        setting_quick_boosting_html: 启用后，点击 %{boost_icon} 转嘟按钮将立即进行转嘟，而不是弹出转嘟/引用下拉菜单。这会将引用操作移至 %{options_icon} 更多选项菜单。
         setting_system_scrollbars_ui: 仅适用于基于 Safari 和 Chrome 的桌面浏览器
         setting_use_blurhash: 渐变效果基于被隐藏视觉元素的颜色，但会模糊掉所有细节
         setting_use_pending_items: 时间线的更新内容将需要点击才会显示，而不会自动滚动
@@ -105,7 +108,6 @@ zh-CN:
         status_page_url: 一个页面的 URL，人们可以在服务中断期间查看此站点的状态
         theme: 未登录的访客和新用户看到的主题。
         thumbnail: 与你的站点信息一同显示的图片，比例大致为 2:1。
-        timeline_preview: 未登录的访客将能够浏览站点上的最新公开贴文。
         trendable_by_default: 跳过对热门内容的人工审核。单个热门项目仍然可以从热门中移除。
         trends: 热门会显示哪些贴文、话题和新闻故事正在你的站点上获得关注。
         trends_as_landing_page: 向未登录的用户和访客显示热门内容，而非本站点的描述。需要启用热门功能。
@@ -161,9 +163,9 @@ zh-CN:
         permissions_as_keys: 此身份组中的用户将有权访问…
         position: 在某些情况下，由较高优先级的身份组决定冲突的解决方式。某些操作只能对优先级较低的身份组执行
       username_block:
-        allow_with_approval: 不直接禁止注册，而是使匹配的新注册需要你的批准
+        allow_with_approval: 不直接禁止注册，而是要求符合规则的新注册经过你的手动批准
         comparison: 屏蔽部分匹配时请注意潜在的Scunthrope问题（正常单词因内部包含被屏蔽的部分而被屏蔽）
-        username: 匹配将不限大小写及常见同形异义字符，如“4”和“A”及“3”和“E”等
+        username: 匹配不限大小写及常见同形异义字符，如“4”和“a”及“3”和“e”等
       webhook:
         events: 选择要发送的事件
         template: 使用变量插值撰写你自己的 JSON 数据。留空则使用默认 JSON。
@@ -234,12 +236,12 @@ zh-CN:
         setting_aggregate_reblogs: 在时间线中将转发单独分组
         setting_always_send_emails: 总是发送邮件通知
         setting_auto_play_gif: 自动播放 GIF 动画
-        setting_boost_modal: 在转发前显示确认对话框
+        setting_boost_modal: 在转嘟前显示确认对话框
         setting_default_language: 贴文语言
         setting_default_privacy: 嘟文可见性
         setting_default_quote_policy: 谁可以引用
         setting_default_sensitive: 总是将媒体标记为敏感
-        setting_delete_modal: 在删除贴文前显示确认对话框
+        setting_delete_modal: 在删除嘟文前显示确认对话框
         setting_disable_hover_cards: 鼠标悬停时不显示账户卡片
         setting_disable_swiping: 禁用滑动手势
         setting_display_media: 显示媒体
@@ -250,6 +252,7 @@ zh-CN:
         setting_expand_spoilers: 总是展开有内容警告的贴文
         setting_hide_network: 隐藏你的社交关系
         setting_missing_alt_text_modal: 在发布没有替代文本的媒体前显示确认对话框
+        setting_quick_boosting: 启用快速转嘟
         setting_reduce_motion: 减少动画中的动态效果
         setting_system_font_ui: 使用系统默认字体
         setting_system_scrollbars_ui: 使用系统默认滚动条
@@ -283,12 +286,16 @@ zh-CN:
         content_cache_retention_period: 外站内容保留期限
         custom_css: 自定义 CSS
         favicon: 站点图标
+        local_live_feed_access: 展示本站嘟文的实时动态访问权限
+        local_topic_feed_access: 展示本站嘟文的话题标签及实时动态访问权限
         mascot: 自定义吉祥物（旧版）
         media_cache_retention_period: 媒体缓存留存期限
         min_age: 最低年龄要求
         peers_api_enabled: 通过 API 发布已发现的站点列表
         profile_directory: 启用账户目录
         registrations_mode: 谁可以注册
+        remote_live_feed_access: 展示外站嘟文的实时动态访问权限
+        remote_topic_feed_access: 展示外站嘟文的话题标签及实时动态访问权限
         require_invite_text: 需要注册理由
         show_domain_blocks: 显示站点屏蔽条目
         show_domain_blocks_rationale: 显示站点屏蔽原因
@@ -301,7 +308,6 @@ zh-CN:
         status_page_url: 状态页 URL
         theme: 默认主题
         thumbnail: 站点缩略图
-        timeline_preview: 允许用户不经身份验证访问公开时间线
         trendable_by_default: 允许话题不经审核进入热门
         trends: 启用热门
         trends_as_landing_page: 将热门作为首页
@@ -379,7 +385,7 @@ zh-CN:
       username_block:
         allow_with_approval: 允许注册但需要审核
         comparison: 比较方法
-        username: 字词匹配
+        username: 要匹配的关键词
       webhook:
         events: 已启用的事件
         template: 内容模板
