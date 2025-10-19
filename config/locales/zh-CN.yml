@@ -844,6 +844,10 @@ zh-CN:
         all: 对所有人
         disabled: 不对任何人
         users: 对已登录的本站用户
+      feed_access:
+        modes:
+          authenticated: 仅已登录用户
+          public: 所有人
       others:
         activitypub: ActivityPub
         preamble: 其它设置，包括自定义行为
@@ -1569,6 +1573,13 @@ zh-CN:
       expires_at: 过期于
       uses: 使用次数
     title: 邀请用户
+  link_preview:
+    author_html: 来自 %{name}
+    potentially_sensitive_content:
+      action: 点击查看
+      confirm_visit: 您确定要打开此链接吗？
+      hide_button: 隐藏
+      label: 可能为敏感内容
   lists:
     errors:
       limit: 你已达到列表数量上限
