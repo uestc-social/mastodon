@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> This repository has been deprecated. Subsequent development will proceed at `https://git.univ.town/univtown/mastodon`.
+
 # Mastodon on uestc.social
 
 This is a fork of [Mastodon](https://joinmastodon.org), with [Chuckya](TheEssem/mastodon) as its upstream. Chuckya's original README is reproduced below.
